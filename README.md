@@ -13,6 +13,7 @@ As I have stated before, I wanted to use techonology to help me reach my goals, 
 #### Programming Language
 - Python 3.8.5
 #### Packages
+- Pandas 1.1.3
 - Requests 2.28.2
 - Gspread 5.7.2
 - Pygsheets 2.0.6
