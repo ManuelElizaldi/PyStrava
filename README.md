@@ -9,7 +9,7 @@ Since starting this journey I have seen progress in physical health, physical ab
 As I have stated before, I wanted to use techonology to help me reach my goals, therefore I built a Python script that pulls data from Strava's server, cleans it and then uploads it to Google Sheets. With the output file I can produce a dashboard in Google Looker Studio where I can find all my workout statistics. 
 
 ## Project Description
-In order to use any of the scripts in this project, first you have to create an account in [Strava](https://www.strava.com/) then, you have to start a App inside your profile so that you get the necessary credentials, i.e. Client ID and Client Secret. Also, you have to change some of the privacy setting in your profile, which can be found inside your profile and then go to the menu: Privacy Controls, here you have to set the 'Who Can See' settings for Profile Page and Activities to everyone like so: ![PrivacySettings](Images/PrivacySettings.png {width: 200px;})
+In order to use any of the scripts in this project, first you have to create an account in [Strava](https://www.strava.com/) then, you have to start a App inside your profile so that you get the necessary credentials, i.e. Client ID and Client Secret. Also, you have to change some of the privacy setting in your profile, which can be found inside your profile and then go to the menu: Privacy Controls, here you have to set the 'Who Can See' settings for Profile Page and Activities to everyone like so: ![PrivacySettings](Images/PrivacySettings.png | widt = 200)
 
 ### Technologies Used
 #### Programming Language
