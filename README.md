@@ -5,10 +5,12 @@ During the pandemic I promised myself to set my physical health as one of my pri
 
 Since starting this journey I have seen progress in physical health, physical abilities and mental health. I have reached goals that never seemed possible and started to believe in myself. I have discovered that I am much more capable of what I initially thought. When I first started working out consistently running 10km was miserable, now I have completed [Austin's Half Marathon](https://youraustinmarathon.com/), a [10km Spartan Race](https://www.spartan.com/) and I am registered for Austin's 2024 Maratho and an Ultra Marathon (50km) in July 2023. For this reason I am also gonna write a section about my philosophy of traning in hopes that someone looking to better their health feels inspired by this project and can chase that better version of themselves that is out there waiting to be found.
 
-## Goals and Hypothesis
-As I have stated before, I wanted to use techonology to help me reach my goals, therefore I want to build a dashboard in Google Looker Studio where I can find all my workout statistics.
+## Goals
+As I have stated before, I wanted to use techonology to help me reach my goals, therefore I built a Python script that pulls data from Strava's server, cleans it and then uploads it to Google Sheets. With the output file I can produce a dashboard in Google Looker Studio where I can find all my workout statistics. 
 
 ## Project Description
+
+
 ### Technologies Used
 #### Programming Language
 - Python 3.8.5
@@ -18,6 +20,8 @@ As I have stated before, I wanted to use techonology to help me reach my goals, 
 - Gspread 5.7.2
 - Pygsheets 2.0.6
 - Webbrowser
+#### Relevant Documentation
+[Strava's API documentation](https://developers.strava.com/)
 
 I started recording since 05-20-2020 and as of 03-26-2023 I'v logged over 600 different workouts, ranging from running to skiing, we will take a closer look at the different activities.
 ![WorkoutTypes](https://user-images.githubusercontent.com/75768112/228368984-e482e29c-74ff-4bed-b00c-4b4f937ae6e0.png)
