@@ -8,22 +8,23 @@ Since starting this journey I have seen progress in physical health, physical ab
 ## Goals
 As I have stated before, I wanted to use techonology to help me reach my goals, therefore I built a Python script that pulls data from Strava's server, cleans it and then uploads it to Google Sheets. With the output file I can produce a dashboard in Google Looker Studio where I can find all my workout statistics. 
 
-## Project Description
-In order to use any of the scripts in this project, first you have to create an account in [Strava](https://www.strava.com/) then, you have to start an App in the My App menu inside your profile. Once this step is done you will be given a Client ID and Client Secret which are used to access the API. Also, you have to change the privacy setting in your profile, which can be found in the menu: Privacy Controls, here you have to set the 'Who Can See' settings for Profile Page and Activities to 'Everyone' to be able to pull the workout data through the API. Here's an image of how it should look:
-
-<img src="https://raw.githubusercontent.com/ManuelElizaldi/Workout-Analysis-API/main/Images/PrivacySettings.png"/>
-
-### Technologies Used
-#### Programming Language
+## Technologies Used
+### Programming Language
 - Python 3.8.5
-#### Packages
+### Packages
 - Pandas 1.1.3
 - Requests 2.28.2
 - Gspread 5.7.2
 - Pygsheets 2.0.6
 - Webbrowser
-#### Relevant Documentation
+### Relevant Documentation
 [Strava's API documentation](https://developers.strava.com/)
+
+## Project Description
+In order to use any of the scripts in this project, first you have to create an account in [Strava](https://www.strava.com/) then, you have to start an App in the My App menu inside your profile. Once this step is done you will be given a Client ID and Client Secret which are used to access the API. Also, you have to change the privacy setting in your profile, which can be found in the menu: Privacy Controls, here you have to set the 'Who Can See' settings for Profile Page and Activities to 'Everyone' to be able to pull the workout data through the API. Here's an image of how it should look:
+
+<img src="https://raw.githubusercontent.com/ManuelElizaldi/Workout-Analysis-API/main/Images/PrivacySettings.png"/>
+
 
 I started recording since 05-20-2020 and as of 03-26-2023 I'v logged over 600 different workouts, ranging from running to skiing, we will take a closer look at the different activities.
 ![WorkoutTypes](Images/WorkoutTypes.png)
