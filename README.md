@@ -31,9 +31,18 @@ After those steps are done, before you use any of the API calls to pull data, we
 ``` 
 https://www.strava.com/oauth/authorize?client_id={your_client_id}&response_type=code&redirect_uri=http://localhost/&approval_prompt=force&scope=profile:read_all,activity:read_all
 ```
-After your open the link you will see this window, click on authorize.
+When you open the link you will see this window, click on authorize.
 
 ![AuthorizationStep1](Images/StravaAuthorizationStep1.png)
+
+After you authorize, don't panic, but you will see the following page.
+
+Save the code in your script. Now you have all the necessary information and authorizations to use Strava's API.
+
+![AuthorizationStep2](Images/StravaAuthorizationStep2.png)
+
+
+
 
  get our access code and authorize the connection between Strava and our app. Here I use the package [Webbrowser](https://docs.python.org/3/library/webbrowser.html) to open this page directly from the script and then declare the code as a variable. 
 
