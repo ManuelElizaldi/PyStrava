@@ -33,7 +33,7 @@ https://www.strava.com/oauth/authorize?client_id={your_client_id}&response_type=
 ```
 After your open the link you will see this window, click on authorize.
 
-!()[]
+![AuthorizationStep1](Images/StravaAuthorizationStep1.png)
 
  get our access code and authorize the connection between Strava and our app. Here I use the package [Webbrowser](https://docs.python.org/3/library/webbrowser.html) to open this page directly from the script and then declare the code as a variable. 
 
