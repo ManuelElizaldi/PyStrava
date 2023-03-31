@@ -37,7 +37,7 @@ When you open the link you will see this window, click on authorize.
 
 After you authorize, don't panic, but you will see the following page.
 
-Save the code in your script. Now you have all the necessary information and authorizations to use Strava's API.
+Save the code (red box) in your script. Now you have all the necessary information and authorizations to use Strava's API.
 
 ![AuthorizationStep2](Images/StravaAuthorizationStep2.png)
 
