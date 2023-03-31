@@ -33,7 +33,7 @@ https://www.strava.com/oauth/authorize?client_id={your_client_id}&response_type=
 ```
 When you open the link you will see this window, click on authorize.
 
-<img src="https://raw.githubusercontent.com/ManuelElizaldi/Workout-Analysis-API/main/Images/StravaAuthorizationStep1.png"/ weidth="1920" height="700">
+<img src="https://raw.githubusercontent.com/ManuelElizaldi/Workout-Analysis-API/main/Images/StravaAuthorizationStep1.png" width="1920" height="800"/>
 ![AuthorizationStep1](Images/StravaAuthorizationStep1.png)
 
 After you authorize, don't panic, but you will see the following page.
