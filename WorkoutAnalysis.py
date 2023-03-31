@@ -11,8 +11,10 @@ import webbrowser
 # Importing credentials for Strava's API
 from Credentials import StravaCredentials
 
-# From the StravaCredentials file we are importing 
+# From the StravaCredentials file we are importing we declare the necessary credentials to make API calls.
 data = StravaCredentials.data
+webbrowser.open(f"https://www.strava.com/oauth/authorize?client_id={data['client_id']}&response_type=code&redirect_uri=http://localhost/&approval_prompt=force&scope=profile:read_all,activity:read_all")
+code = input("From the web broswer enter the code:")
 
 # Creating date variable
 today = date.today().strftime('%B/%d/%Y')
@@ -23,8 +25,6 @@ token = requests.post(url= 'https://www.strava.com/api/v3/oauth/token',data=data
 # Accessing the token json to get refresh token and access token
 refresh_token = token['refresh_token']
 access_token = token['access_token']
-
-
 
 # Setting up url and page
 # This API request gives us the list of activities. 
