@@ -27,7 +27,15 @@ In order to use any of the scripts in this project there are a couple of steps t
 
 <img src="https://raw.githubusercontent.com/ManuelElizaldi/Workout-Analysis-API/main/Images/PrivacySettings.png"/>
 
-After those steps are done, before you use any of the API calls to pull data, we have to open the following link, changing the ```{client_id}``` with your own: ``` https://www.strava.com/oauth/authorize?client_id={client_id}&response_type=code&redirect_uri=http://localhost/&approval_prompt=force&scope=profile:read_all,activity:read_all ``` to get our access code and authorize the connection between Strava and our app. Here I use the package [Webbrowser](https://docs.python.org/3/library/webbrowser.html) to open this page directly from the script and then declare the code as a variable. 
+After those steps are done, before you use any of the API calls to pull data, we have to open the following link, changing the ```{client_id}``` with your own: 
+``` 
+https://www.strava.com/oauth/authorize?client_id={your_client_id}&response_type=code&redirect_uri=http://localhost/&approval_prompt=force&scope=profile:read_all,activity:read_all
+```
+After your open the link you will see this window, click on authorize.
+
+!()[]
+
+ get our access code and authorize the connection between Strava and our app. Here I use the package [Webbrowser](https://docs.python.org/3/library/webbrowser.html) to open this page directly from the script and then declare the code as a variable. 
 
 After those steps are done, you also need to write a python script containing your Strava App credentials and the grant type set as ``` authorization_code ```, just as this piece of code:  
 
