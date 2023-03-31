@@ -27,7 +27,6 @@ In order to use any of the scripts in this project, first you have to create an 
 
 <img src="https://raw.githubusercontent.com/ManuelElizaldi/Workout-Analysis-API/main/Images/PrivacySettings.png"/>
 
-
 I started recording since 05-20-2020 and as of 03-26-2023 I'v logged over 600 different workouts, ranging from running to skiing, we will take a closer look at the different activities.
 ![WorkoutTypes](Images/WorkoutTypes.png)
 
