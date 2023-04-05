@@ -7,9 +7,14 @@ import gspread_dataframe as gd
 import pygsheets
 from datetime import date
 import webbrowser
+import Functions
 
 # Importing credentials for Strava's API
 from Credentials import StravaCredentials
+
+# Setting up parameters for write_to_gsheet function
+service_file_path = r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\Workout-Analysis-API\Credentials\pacific-castle-303123-909a5ddcda92.json'
+spreadsheet_id = '1pomkAzlndHBl_czERrwKkoZFUkJRGFjyhRTeoWA6CS4'
 
 # From the StravaCredentials file we are importing we declare the necessary credentials to make API calls.
 data = StravaCredentials.data
