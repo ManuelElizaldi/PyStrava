@@ -4,6 +4,8 @@ import gspread
 from df2gspread import df2gspread as d2g
 import gspread_dataframe as gd
 import pygsheets
+import time
+from time import sleep 
 
 # Setting up parameters for write_to_gsheet function
 service_file_path = r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\Workout-Analysis-API\Credentials\pacific-castle-303123-909a5ddcda92.json'
@@ -89,6 +91,37 @@ def GetWorkoutData(workout_list):
             else:
                 print('Error in authorization or API limit exceeded, stopping extraction')
                 break
+    return workout_info
+
+def GetAllWorkouts(workout_list, access_token):
+    workout_info = []
+    workout_num = 1
+    rate_limit = 100
+    time_interval = 900  # 15 minutes = 900 seconds
+    wait_time = ((len(workout_list)/100) * 900)/60
+
+    # Perform iterations while respecting the rate limit
+    print(f'Extracting all workouts, due to the API rate limit, this will take {wait_time} minutes to run.')
+    for i in workout_list:
+        print('Extracting workout:', workout_num)
+        req = requests.get(url=f'https://www.strava.com/api/v3/activities/{i}?access_token='+access_token)
+        if req.status_code == 200:
+            req = req.json()
+            workout_info.append(req)
+            workout_num += 1
+        elif req.status_code == 429 and 'message' in req.json() and req.json()['message'] == 'Rate Limit Exceeded':
+            # If rate limit exceeded error is received, wait for 15 minutes before continuing
+            print('Rate limit exceeded. Waiting for 15 minutes...')
+            time.sleep(time_interval)
+        else:
+            print('Error occurred during API request:', req.status_code, req.json())
+            break
+
+        # Pause after every 100 iterations and wait for 15 minutes
+        if workout_num % rate_limit == 0:
+            print(f'Reached rate limit of {rate_limit} requests. Sleeping for {int(time_interval/60)} minutes.')
+            time.sleep(time_interval)
+
     return workout_info
 
 # This function will parse the workout json, grab the relevant columns, clean the units and create a lap counter for the final dataframe
