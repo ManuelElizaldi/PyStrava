@@ -7,10 +7,11 @@ import gspread_dataframe as gd
 import pygsheets
 from datetime import date
 import webbrowser
-import Functions
+from Functions import *
 
 # Importing credentials for Strava's API
 from Credentials import StravaCredentials
+import Functions
 
 # Setting up parameters for write_to_gsheet function
 service_file_path = r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\Workout-Analysis-API\Credentials\pacific-castle-303123-909a5ddcda92.json'
@@ -18,38 +19,31 @@ spreadsheet_id = '1pomkAzlndHBl_czERrwKkoZFUkJRGFjyhRTeoWA6CS4'
 
 # From the StravaCredentials file we are importing we declare the necessary credentials to make API calls.
 data = StravaCredentials.data
-webbrowser.open(f"https://www.strava.com/oauth/authorize?client_id={data['client_id']}&response_type=code&redirect_uri=http://localhost/&approval_prompt=force&scope=profile:read_all,activity:read_all")
-code = input("From the web broswer enter the code:")
 
 # Creating date variable
 today = date.today().strftime('%B/%d/%Y')
 
-# Getting refresh token
-token = requests.post(url= 'https://www.strava.com/api/v3/oauth/token',data=data).json()
-
 # Accessing the token json to get refresh token and access token
-refresh_token = token['refresh_token']
-access_token = token['access_token']
+access_token = GetToken(data)
 
-# Setting up url and page
-# This API request gives us the list of activities. 
-# The table lacks certain details that we will get from another API request
-page = 1
-url = "https://www.strava.com/api/v3/activities"
-access_token = token['access_token']
-# Create the dataframe ready for the API call to store your activity data
-activities = pd.DataFrame()
-while True:
-    # get page of activities from Strava
-    print('Getting page number:',page)
-    r = requests.get(url + '?access_token=' + access_token + '&per_page=200' + '&page=' + str(page))
-    r = r.json()
-    print(f'Extraction of page {page} Complete')
-    # if no results then exit loop
-    if (not r):
-        print('Extration Done')
-        break
-    r = pd.json_normalize(r)
-    activities = activities.append(r)
-    
-    page += 1
+# Getting all workouts general table, from this table we get the list of workout ids
+general_table = GetWorkouts(access_token)
+# Creating the list of workout ids
+all_workouts_list = list(general_table['id'])
+
+# Creating a json with the detailed view of all workouts
+# This includes detailes like calories burned per workout and other variables that the general_table does not have
+all_workouts_json = GetAllWorkouts(all_workouts_list,access_token)
+
+# Cleaning the json and converting it into a dataframe. Also we create the workout's round details
+all_workouts_df = CleanWorkoutJson(all_workouts_json)
+
+# Creating a dataframe with general statistics 
+all_workouts_desc = DescribeWorkoutdf(all_workouts_df)
+
+# Uploading the workout dataframe and the workout description df to google sheets
+sheet_name = 'All_Workouts_Table'
+WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,all_workouts_df)
+
+sheet_name = 'All_Workouts_Desc'
+WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,all_workouts_desc)

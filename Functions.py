@@ -18,7 +18,7 @@ def GetToken(data):
     
     return access_token
 
-# Function that returns the general list of activities. This list lacks certain details that we get from another api call
+# Function that returns the general list of activities. This list lacks certain details that we can get from another api call
 def GetWorkouts(access_token):    
     page = 1
     url = "https://www.strava.com/api/v3/activities"
@@ -93,6 +93,8 @@ def GetWorkoutData(workout_list):
                 break
     return workout_info
 
+
+# This function is very similar to the GetWorkoutData() but it has a built in timer that waits 15 minutes when it reaches the API limit 
 def GetAllWorkouts(workout_list, access_token):
     workout_info = []
     workout_num = 1
@@ -100,7 +102,6 @@ def GetAllWorkouts(workout_list, access_token):
     time_interval = 900  # 15 minutes = 900 seconds
     wait_time = ((len(workout_list)/100) * 900)/60
 
-    # Perform iterations while respecting the rate limit
     print(f'Extracting all workouts, due to the API rate limit, this will take {wait_time} minutes to run.')
     for i in workout_list:
         print('Extracting workout:', workout_num)
@@ -173,9 +174,10 @@ def CleanWorkoutJson(workout_json):
     merged['lap_count'] = pd.to_numeric(merged['lap_count'])
     return merged
 
+# This function gives us a general description of the list of workouts
 def DescribeWorkoutdf(workout_df):
-    first_workout = min(workout_df['start_date'])
-    last_workout=max(workout_df['start_date'])
+    first_workout = min(workout_df['start_date'], default="EMPTY")
+    last_workout=max(workout_df['start_date'], default="EMPTY")
     avg_workout_duration=round(workout_df['workout_time_min'].mean(),2)
     avg_calories_burned_per_workout=workout_df['calories'].mean()
     avg_distance=round(workout_df['distance'].mean(),0)
