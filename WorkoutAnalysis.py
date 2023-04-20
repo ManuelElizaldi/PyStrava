@@ -53,8 +53,6 @@ general_stats_df = CreateGeneralStatsdf(general_table)
 
 # Creating the list of workout ids
 all_workouts_list = list(general_table['id'])
-# Testing:
-all_workouts_list = all_workouts_list[0:20]
 
 # Creating a json with the detailed view of all workouts
 # This includes detailes like calories burned per workout and other variables that the general_table does not have
