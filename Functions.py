@@ -60,7 +60,7 @@ def GetWorkouts(access_token):
         'elev_high',
         'elev_low']]
         
-        clean_activities = clean_activities.rename(columns={'elapsed_time':'workout_time_sec','sport_type':'workout_type'})
+        clean_activities = clean_activities.rename(columns={'elapsed_time':'workout_time_sec'})
         
         return clean_activities
 

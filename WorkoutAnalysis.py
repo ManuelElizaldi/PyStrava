@@ -33,7 +33,13 @@ data = StravaCredentials.data
 today = date.today().strftime('%B/%d/%Y')
 
 # Accessing the token json to get refresh token and access token
-access_token = GetToken(data)
+# Getting refresh and access token
+token = requests.post(url= 'https://www.strava.com/api/v3/oauth/token',data=data).json()
+
+# Accessing the token json to get refresh token and access token
+refresh_token = token['refresh_token']
+access_token = token['access_token']
+print(access_token)
 
 # Getting all workouts general table, from this table we get the list of workout ids
 general_table = GetWorkouts(access_token)
@@ -45,7 +51,9 @@ activities_breakdown = CreateActivitiesBreakdown(general_table)
 general_stats_df = CreateGeneralStatsdf(general_table)
 
 # Creating the list of workout ids
-all_workouts_list = list(general_table['id'][0:20])
+all_workouts_list = list(general_table['id'])
+# Testing:
+all_workouts_list = all_workouts_list[0:20]
 
 # Creating a json with the detailed view of all workouts
 # This includes detailes like calories burned per workout and other variables that the general_table does not have
@@ -63,3 +71,9 @@ WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,all_workouts_df)
 
 sheet_name = 'All_Workouts_Desc'
 WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,all_workouts_desc)
+
+sheet_name = 'general_stats'
+WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,general_stats_df)
+
+sheet_name = 'activities_breakdown'
+WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,activities_breakdown)
