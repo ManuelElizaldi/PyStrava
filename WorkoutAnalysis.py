@@ -54,6 +54,9 @@ general_stats_df = CreateGeneralStatsdf(general_table)
 # Creating the list of workout ids
 all_workouts_list = list(general_table['id'])
 
+# Testing:
+all_workouts_list = all_workouts_list[0:20]
+
 # Creating a json with the detailed view of all workouts
 # This includes detailes like calories burned per workout and other variables that the general_table does not have
 all_workouts_json = GetAllWorkouts(all_workouts_list,access_token)
@@ -61,8 +64,19 @@ all_workouts_json = GetAllWorkouts(all_workouts_list,access_token)
 # Cleaning the json and converting it into a dataframe. Also we create the workout's round details
 all_workouts_df = CleanWorkoutJson(all_workouts_json)
 
-# Creating a dataframe with general statistics 
+# Creating additional dataframes for specific activities:
+# Running type workouts
+running_workouts_df = all_workouts_df.loc[all_workouts_df['workout_type'].isin(['Run','TrailRun'])]
+# Biking type workouts
+biking_workouts_df = all_workouts_df.loc[all_workouts_df['workout_type'].isin(['Ride','MountainBikeRide'])]
+# Functional type workouts
+functional_workouts_df = all_workouts_df.loc[all_workouts_df['workout_type'].isin(['Functional-Cardio Workout'])]
+
+# Creating a dataframe with general statistics for all sports/workout types
 all_workouts_desc = DescribeWorkoutdf(all_workouts_df)
+running_workouts_desc = DescribeWorkoutdf(running_workouts_df)
+biking_workouts_desc = DescribeWorkoutdf(biking_workouts_df)
+functional_workouts_desc = DescribeWorkoutdf(functional_workouts_df)
 
 print('Uploading data to google sheets.')
 # Uploading the workout dataframe and the workout description df to google sheets
@@ -71,6 +85,15 @@ WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,all_workouts_df)
 
 sheet_name = 'All_Workouts_Desc'
 WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,all_workouts_desc)
+
+sheet_name = 'running_workouts_desc'
+WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,running_workouts_desc)
+
+sheet_name = 'biking_workouts_desc'
+WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,running_workouts_desc)
+
+sheet_name = 'functional_workouts_desc'
+WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,running_workouts_desc)
 
 sheet_name = 'general_stats'
 WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,general_stats_df)
