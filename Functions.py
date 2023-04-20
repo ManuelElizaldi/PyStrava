@@ -79,7 +79,7 @@ def CleanGeneral_Table(general_table):
     general_table[["start_date"]] = pd.to_datetime(general_table['start_date']).dt.date
 
     # Changing name of workout type => Workout
-    general_table['sports_type'] = general_table['sports_type'].replace({'Workout':'Functional-Cardio Workout'})
+    general_table['sport_type'] = general_table['sport_type'].replace({'Workout':'Functional-Cardio Workout'})
     
     return general_table
 
@@ -93,7 +93,7 @@ def CreateActivitiesBreakdown(general_table):
 
     # Breakdown of workout types:
     new = [today_msg,total_workouts]
-    activities_breakdown = general_table['sports_type'].value_counts().rename_axis('Sport').reset_index(name='Count')
+    activities_breakdown = general_table['sport_type'].value_counts().rename_axis('Sport').reset_index(name='Count')
     activities_breakdown = activities_breakdown.append(pd.Series(new, index=['Sport','Count']), ignore_index=True)
     return activities_breakdown
 
@@ -101,13 +101,13 @@ def CreateGeneralStatsdf(general_table):
     print('Creating the Genearl Statistics table.')
     # Creating additional dataframes for specific activities:
     # Running type workouts
-    running_activities = general_table.loc[general_table['sports_type'].isin(['Run','TrailRun'])]
+    running_activities = general_table.loc[general_table['sport_type'].isin(['Run','TrailRun'])]
 
     # Biking type workouts
-    biking_activities = general_table.loc[general_table['sports_type'].isin(['Ride','MountainBikeRide'])]
+    biking_activities = general_table.loc[general_table['sport_type'].isin(['Ride','MountainBikeRide'])]
 
     # Functional type workouts
-    functional_activities = general_table.loc[general_table['sports_type'].isin(['Functional-Cardio Workout'])]
+    functional_activities = general_table.loc[general_table['sport_type'].isin(['Functional-Cardio Workout'])]
     first_recorded_workout = min(general_table['start_date'])
     most_recent_workout=max(general_table['start_date'])
     average_workout_duration=round(general_table['workout_time_min'].mean(),2)

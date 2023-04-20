@@ -14,8 +14,10 @@ from Credentials import StravaCredentials
 import Functions
 
 # Setting up parameters for write_to_gsheet function
-service_file_path = r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\Workout-Analysis-API\Credentials\pacific-castle-303123-909a5ddcda92.json'
-spreadsheet_id = '1IyEEDEPNtLTigZGgQP0Rhq5_di1Bzit1ZBERn8zNsvE' # Currently setup for testing
+# service_file_path = r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\Workout-Analysis-API\Credentials\pacific-castle-303123-909a5ddcda92.json'
+# spreadsheet_id = '1IyEEDEPNtLTigZGgQP0Rhq5_di1Bzit1ZBERn8zNsvE' # Currently setup for testing
+service_file_path = r''
+spreadsheet_id = '' # Currently setup for testing
 
 # From the StravaCredentials file we are importing we declare the necessary credentials to make API calls.
 data = StravaCredentials.data
@@ -39,7 +41,6 @@ token = requests.post(url= 'https://www.strava.com/api/v3/oauth/token',data=data
 # Accessing the token json to get refresh token and access token
 refresh_token = token['refresh_token']
 access_token = token['access_token']
-print(access_token)
 
 # Getting all workouts general table, from this table we get the list of workout ids
 general_table = GetWorkouts(access_token)
@@ -65,6 +66,7 @@ all_workouts_df = CleanWorkoutJson(all_workouts_json)
 # Creating a dataframe with general statistics 
 all_workouts_desc = DescribeWorkoutdf(all_workouts_df)
 
+print('Uploading data to google sheets.')
 # Uploading the workout dataframe and the workout description df to google sheets
 sheet_name = 'All_Workouts_Table'
 WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,all_workouts_df)
