@@ -15,10 +15,19 @@ import Functions
 
 # Setting up parameters for write_to_gsheet function
 service_file_path = r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\Workout-Analysis-API\Credentials\pacific-castle-303123-909a5ddcda92.json'
-spreadsheet_id = '1pomkAzlndHBl_czERrwKkoZFUkJRGFjyhRTeoWA6CS4'
+spreadsheet_id = '1IyEEDEPNtLTigZGgQP0Rhq5_di1Bzit1ZBERn8zNsvE' # Currently setup for testing
 
 # From the StravaCredentials file we are importing we declare the necessary credentials to make API calls.
 data = StravaCredentials.data
+
+# Pending:
+# if data = None:
+#     data = {
+#     'client_id': input('Please enter your Client Id:'),
+#     'client_secret': input('Please enter your Client Secret Number:')
+#     'code': ,
+#     'grant_type':'authorization_code'
+# }
 
 # Creating date variable
 today = date.today().strftime('%B/%d/%Y')
@@ -28,8 +37,15 @@ access_token = GetToken(data)
 
 # Getting all workouts general table, from this table we get the list of workout ids
 general_table = GetWorkouts(access_token)
+# Cleaning the general table
+general_table = CleanGeneral_Table(general_table)
+# Creating the activities breakdown table -> count of each workout type 
+activities_breakdown = CreateActivitiesBreakdown(general_table)
+# Creating the General Stats table
+general_stats_df = CreateGeneralStatsdf(general_table)
+
 # Creating the list of workout ids
-all_workouts_list = list(general_table['id'])
+all_workouts_list = list(general_table['id'][0:20])
 
 # Creating a json with the detailed view of all workouts
 # This includes detailes like calories burned per workout and other variables that the general_table does not have

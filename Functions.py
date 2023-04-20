@@ -1,11 +1,12 @@
 import requests
 import pandas as pd
 import gspread
-from df2gspread import df2gspread as d2g
+from df2gspread import df2gspread as d2g 
 import gspread_dataframe as gd
 import pygsheets
 import time
 from time import sleep 
+from datetime import date
 
 # Setting up parameters for write_to_gsheet function
 service_file_path = r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\Workout-Analysis-API\Credentials\pacific-castle-303123-909a5ddcda92.json'
@@ -24,6 +25,7 @@ def GetWorkouts(access_token):
     url = "https://www.strava.com/api/v3/activities"
     # Create the dataframe ready for the API call to store your activity data
     activities = pd.DataFrame()
+    print('Extracting worokouts for general table.')
     while True:
         # get page of activities from Strava
         print('Getting page number:',page)
@@ -58,7 +60,79 @@ def GetWorkouts(access_token):
         'elev_high',
         'elev_low']]
         
+        clean_activities = clean_activities.rename(columns={'elapsed_time':'workout_time_sec','sport_type':'workout_type'})
+        
         return clean_activities
+
+# Function that cleans the output from the function GetWorkouts()
+def CleanGeneral_Table(general_table):
+    print('Cleaning General Table')
+    general_table['aprox_calories_burned'] = round((general_table['workout_time_sec']/60) * ((0.6309*general_table['average_heartrate']) + (0.1988*80) + (0.2017*26 - 55.0969)) / 4.184,0)
+
+    # from meters to kilometers
+    general_table[['distance']] = round(general_table['distance']/1000,2)
+
+    # from seconds to minutes
+    general_table['workout_time_min'] = round(general_table['workout_time_sec']/60,2)
+
+    # Fix start_date column into the correct format
+    general_table[["start_date"]] = pd.to_datetime(general_table['start_date']).dt.date
+
+    # Changing name of workout type => Workout
+    general_table['sports_type'] = general_table['sports_type'].replace({'Workout':'Functional-Cardio Workout'})
+    
+    return general_table
+
+# This function will create a dataframe/pivot table with the count of every sport type
+def CreateActivitiesBreakdown(general_table):
+    print('Creating Activities Breakdown table')
+    today = date.today().strftime('%B/%d/%Y')
+    # Variables for activities breakdown dataframe 
+    today_msg = f'Total workouts as of {today}'
+    total_workouts = len(general_table)
+
+    # Breakdown of workout types:
+    new = [today_msg,total_workouts]
+    activities_breakdown = general_table['sports_type'].value_counts().rename_axis('Sport').reset_index(name='Count')
+    activities_breakdown = activities_breakdown.append(pd.Series(new, index=['Sport','Count']), ignore_index=True)
+    return activities_breakdown
+
+def CreateGeneralStatsdf(general_table):
+    print('Creating the Genearl Statistics table.')
+    # Creating additional dataframes for specific activities:
+    # Running type workouts
+    running_activities = general_table.loc[general_table['sports_type'].isin(['Run','TrailRun'])]
+
+    # Biking type workouts
+    biking_activities = general_table.loc[general_table['sports_type'].isin(['Ride','MountainBikeRide'])]
+
+    # Functional type workouts
+    functional_activities = general_table.loc[general_table['sports_type'].isin(['Functional-Cardio Workout'])]
+    first_recorded_workout = min(general_table['start_date'])
+    most_recent_workout=max(general_table['start_date'])
+    average_workout_duration=round(general_table['workout_time_min'].mean(),2)
+    aprox_average_calories_burned_per_workout=round(general_table['aprox_calories_burned'].mean(),0)
+    average_distance_ran=round(running_activities['distance'].mean(),0)
+    average_biking_distance=round(biking_activities['distance'].mean(),0)
+
+    # Creating dataframe from general statistics variables
+    # Create the DataFrame
+    general_stats_df = pd.DataFrame({
+    'First Workout':first_recorded_workout,
+    'Most Recent Workout': most_recent_workout,
+    'Average Workout Duration in Minutes':average_workout_duration,
+    'Approximate Average Calories Burned Per Workout':aprox_average_calories_burned_per_workout,
+    'Average Distance Ran in Kilometers':average_distance_ran,
+    'Average Biking Distance in Kilometers':average_biking_distance
+    },index=['Info'])
+
+    # Transposing dataframe, setting new index and column
+    general_stats_df = general_stats_df.T
+    general_stats_df = general_stats_df.reset_index()
+    general_stats_df = general_stats_df.rename(columns={'index':'Info','Info':'Data'})
+    print(f'First recorded workout: {first_recorded_workout}')
+    print(f'Most recent workout: {most_recent_workout}')
+    return general_stats_df
     
 # Get detailed view of workouts function:
 # This function will get the data for each workout, if it reaches the API request limit it will stop the process
