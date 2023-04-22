@@ -8,6 +8,11 @@ Since starting this journey I have seen progress in physical health, physical ab
 ## Goals
 As I have stated before, I wanted to use techonology to help me reach my goals, therefore I built a Python script that pulls data from Strava's server, cleans it and then uploads it to Google Sheets. With the output file I can produce a dashboard in Google Looker Studio where I can find all my workout statistics. 
 
+Likewise, I want to build a machine learning model that can classify 3 types of workouts: 
+  1) Low Effort 
+  2) Medium Effort 
+  3) High Effort
+
 ## Technologies Used
 ### Programming Language
 - Python 3.8.5
@@ -22,7 +27,7 @@ As I have stated before, I wanted to use techonology to help me reach my goals, 
 ### Relevant Documentation
 [Strava's API documentation](https://developers.strava.com/)
 
-## Project Description
+## How to set up project
 In order to use any of the scripts in this project there are a couple of steps that need to be done. First you have to create an account in [Strava](https://www.strava.com/), then you have to start an App in the My App menu inside your profile. Once this step is done you will be given a Client ID and Client Secret which are used to access the API through the python script. Also, you have to change the privacy setting in your profile, which can be found in the menu: Privacy Controls, here you have to set the 'Who Can See' settings for Profile Page and Activities to 'Everyone' to be able to pull the workout data through the API. Here's an image of how it should look:
 
 <img src="https://raw.githubusercontent.com/ManuelElizaldi/Workout-Analysis-API/main/Images/PrivacySettings.png"/>
