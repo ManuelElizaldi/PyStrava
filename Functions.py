@@ -1,8 +1,5 @@
 import requests
 import pandas as pd
-import gspread
-from df2gspread import df2gspread as d2g 
-import gspread_dataframe as gd
 import pygsheets
 import time
 from time import sleep 
@@ -127,9 +124,9 @@ def CreateGeneralStatsdf(general_table):
     },index=['Info'])
 
     # Transposing dataframe, setting new index and column
-    general_stats_df = general_stats_df.T
-    general_stats_df = general_stats_df.reset_index()
-    general_stats_df = general_stats_df.rename(columns={'index':'Info','Info':'Data'})
+    # general_stats_df = general_stats_df.T
+    # general_stats_df = general_stats_df.reset_index()
+    # general_stats_df = general_stats_df.rename(columns={'index':'Info','Info':'Data'})
     print(f'First recorded workout: {first_recorded_workout}')
     print(f'Most recent workout: {most_recent_workout}')
     return general_stats_df
@@ -271,9 +268,9 @@ def DescribeWorkoutdf(workout_df):
     },index=['Info'])
 
     # Transposing dataframe, setting new index and column
-    grl_stats_df = grl_stats_df.T
-    grl_stats_df = grl_stats_df.reset_index()
-    grl_stats_df = grl_stats_df.rename(columns={'index':'Info','Info':'Data'})
+    # grl_stats_df = grl_stats_df.T
+    # grl_stats_df = grl_stats_df.reset_index()
+    # grl_stats_df = grl_stats_df.rename(columns={'index':'Info','Info':'Data'})
     return grl_stats_df
 
 # This function uses gspread and pygsheets modules to upload data to google sheets
