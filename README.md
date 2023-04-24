@@ -103,6 +103,7 @@ If these instructions were not clear I suggest you read through these articles:
 - [Gspread Authentication](https://docs.gspread.org/en/latest/oauth2.html#enable-api-access)
 - [Strava's API documentation](https://developers.strava.com/)
 
+------------------------------------------------------------------
 ## Project Desription
 
 I started recording since 05-20-2020 and as of 03-26-2023 I'v logged over 600 different workouts, ranging from running to skiing, we will take a closer look at the different activities.
