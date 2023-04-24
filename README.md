@@ -59,6 +59,27 @@ After the API is enabled, we have to get a Google service account, which is an a
 6. Press on ⋮ near recently created service account and select “Manage keys” and then click on “ADD KEY > Create new key”
 7. Select the JSON option and press "Continue".
 
+The resulting file will look something like this:
+``` 
+{
+  "type": "service_account",
+  "project_id": "pacific-castle-303123",
+  "private_key_id": "xxx",
+  "private_key": "xxx",
+  "client_email": "manuel-elizaldi@pacific-castle-303123.iam.gserviceaccount.com",
+  "client_id": "118237617576468519006",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/manuel-elizaldi%40pacific-castle-303123.iam.gserviceaccount.com"
+}
+``` 
+Make sure to add the path to the json file like so in the script:
+``` service_file_path = r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\Workout-Analysis-API\Credentials\pacific-castle-303123-909a5ddcda92.json'```
+And also declare the sheet id which you can get from the link of the Google Sheet you created to store the data from this project:
+![Google Sheet Id](Images/GoogleSheetId.jpeg)
+
+
 
 If this instructions are not clear I suggest you read through this article: [Gspread Authentication](https://docs.gspread.org/en/latest/oauth2.html#enable-api-access)
 
