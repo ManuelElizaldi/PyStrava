@@ -57,7 +57,7 @@ After the API is enabled, we have to get a Google service account, which is an a
 4. Answer all the questions and then click on "Create" and "Done".
 5. Click "Manage service accounts" in the "Service accounts section".
 6. Press on ⋮ near recently created service account and select “Manage keys” and then click on “ADD KEY > Create new key”
-7. Select the JSON option and press Continue
+7. Select the JSON option and press "Continue".
 
 
 If this instructions are not clear I suggest you read through this article: [Gspread Authentication](https://docs.gspread.org/en/latest/oauth2.html#enable-api-access)
