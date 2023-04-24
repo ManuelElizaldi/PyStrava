@@ -29,6 +29,7 @@ Likewise, I want to build a machine learning model that can classify 3 types of 
 - [Requests](https://requests.readthedocs.io/en/latest/)
 
 ## How to set up project
+### Strava - API access
 In order to use any of the scripts in this project there are a couple of steps that need to be done. First you have to create an account in [Strava](https://www.strava.com/), then you have to start an App in the My App menu inside your profile. Once this step is done you will be given a Client ID and Client Secret which are used to access the API through the python script. Also, you have to change the privacy setting in your profile, which can be found in the menu: Privacy Controls, here you have to set the 'Who Can See' settings for Profile Page and Activities to 'Everyone' to be able to pull the workout data through the API. Here's an image of how it should look:
 
 <img src="https://raw.githubusercontent.com/ManuelElizaldi/Workout-Analysis-API/main/Images/PrivacySettings.png"/>
@@ -45,6 +46,25 @@ After you authorize, you will see the following page, don't panic, this is what 
 
 ![AuthorizationStep2](Images/StravaAuthorizationStep2.png)
 
+## Google Sheets API 
+In order to use the package Pygsheets to uplaod data to Google Drive from our python script, we first need to create a project in the [Google Developers Console](https://console.cloud.google.com/projectselector2/apis/dashboard?pli=1&supportedpurview=project&authuser=1). In the box labeled “Search for APIs and Services”, search for “Google Drive API” and enable it, then in the box labeled “Search for APIs and Services”, search for “Google Sheets API” and enable it. 
+
+After the API is enabled, we have to get a Google service account, which is an account intended for non-human users, i.e. our python script. These are the steps to getting a service account:
+
+1. In the "API & Services", go to "Credentials".
+2. Choose "Create Credentials".
+3. Click on "Service account key".
+4. Answer all the questions and then click on "Create" and "Done".
+5. Click "Manage service accounts" in the "Service accounts section".
+6. Press on ⋮ near recently created service account and select “Manage keys” and then click on “ADD KEY > Create new key”
+7. Select the JSON option and press Continue
+
+
+If this instructions are not clear I suggest you read through this article: [Gspread Authentication](https://docs.gspread.org/en/latest/oauth2.html#enable-api-access)
+
+
+
+## Credentials File
 ```
 data = {
 'client_id': 'xxxx',
