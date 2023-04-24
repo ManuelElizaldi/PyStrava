@@ -46,6 +46,18 @@ After you authorize, you will see the following page, don't panic, this is what 
 
 ![AuthorizationStep2](Images/StravaAuthorizationStep2.png)
 
+Make sure to declare your data variable like so in your script or declare it in a config.py file and import it to your main script. Your data dictionary should look like this:
+
+```
+data = {
+'client_id': 'xxxx',
+'client_secret':'xxxx',
+'code': xxxx,
+'grant_type':'authorization_code'
+}
+```
+This dictionary holds the required credentials to run any Strava API.
+
 ## Google Sheets API 
 In order to use the package Pygsheets to uplaod data to Google Drive from our python script, we first need to create a project in the [Google Developers Console](https://console.cloud.google.com/projectselector2/apis/dashboard?pli=1&supportedpurview=project&authuser=1). In the box labeled “Search for APIs and Services”, search for “Google Drive API” and enable it, then in the box labeled “Search for APIs and Services”, search for “Google Sheets API” and enable it. 
 
@@ -78,23 +90,15 @@ Make sure to add the path to the json file like so in the script:
 
 ``` service_file_path = r'\GoogleCredentials.json'```
 
+From this Json, grab the ```"client_email"``` and share your Google sheet with it just like you would share it with somone else.
+
 And also declare the sheet id which you can get from the link of the Google Sheet you created to store the data from this project:
 
-![Google Sheet Id](Images/GoogleSheetId.jpeg)
+![GoogleSheetId](/Images/GoogleSheetId.jpg)
 
 If this instructions are not clear I suggest you read through this article: [Gspread Authentication](https://docs.gspread.org/en/latest/oauth2.html#enable-api-access)
 
 
-
-## Credentials File
-```
-data = {
-'client_id': 'xxxx',
-'client_secret':'xxxx',
-'code': xxxx,
-'grant_type':'authorization_code'
-}
-```
 
 
 
@@ -103,7 +107,7 @@ When running the script, there will be a part where a browser widnow will pop up
 
 
 I started recording since 05-20-2020 and as of 03-26-2023 I'v logged over 600 different workouts, ranging from running to skiing, we will take a closer look at the different activities.
-![WorkoutTypes](/Images/GoogleSheetId.jpg)
+
 
 
 
