@@ -1,7 +1,7 @@
 # Workout-Analysis
 # Table of Contents:
-- [Introduction](https://github.com/ManuelElizaldi/Workout-Analysis-API/edit/main/README.md#introduction)
-- [Goals](https://github.com/ManuelElizaldi/Workout-Analysis-API/edit/main/README.md#goals)
+- [Introduction](#introduction)
+- [Goals](#goals)
 #WORK IN PROGRESS :no_entry:
 ## Introduction
 During the pandemic I promised myself to set my physical health as one of my priorities. To do that, I wanted to use technology to help me achieve my goals by having a digital record of all the workouts I've done in order to force myself to stay disciplined and on track. I've been using my Garmin smartwatch and Strava's app to keep a log of all my acitivites. In this project one of my objectives is to use the statistical tools I've learned through out my career and build a dashboard where I can visualize my progress.  
