@@ -75,7 +75,9 @@ The resulting file will look something like this:
 }
 ``` 
 Make sure to add the path to the json file like so in the script:
+
 ``` service_file_path = r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\Workout-Analysis-API\Credentials\pacific-castle-303123-909a5ddcda92.json'```
+
 And also declare the sheet id which you can get from the link of the Google Sheet you created to store the data from this project:
 ![Google Sheet Id](Images/GoogleSheetId.jpeg)
 
