@@ -76,12 +76,11 @@ The resulting file will look something like this:
 ``` 
 Make sure to add the path to the json file like so in the script:
 
-``` service_file_path = r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\Workout-Analysis-API\Credentials\pacific-castle-303123-909a5ddcda92.json'```
+``` service_file_path = r'\GoogleCredentials.json'```
 
 And also declare the sheet id which you can get from the link of the Google Sheet you created to store the data from this project:
+
 ![Google Sheet Id](Images/GoogleSheetId.jpeg)
-
-
 
 If this instructions are not clear I suggest you read through this article: [Gspread Authentication](https://docs.gspread.org/en/latest/oauth2.html#enable-api-access)
 
@@ -104,7 +103,7 @@ When running the script, there will be a part where a browser widnow will pop up
 
 
 I started recording since 05-20-2020 and as of 03-26-2023 I'v logged over 600 different workouts, ranging from running to skiing, we will take a closer look at the different activities.
-![WorkoutTypes](Images/WorkoutTypes.png)
+![WorkoutTypes](/Images/GoogleSheetId.jpg)
 
 
 
