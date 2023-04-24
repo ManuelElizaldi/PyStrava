@@ -46,7 +46,7 @@ After you authorize, you will see the following page, don't panic, this is what 
 
 ![AuthorizationStep2](Images/StravaAuthorizationStep2.png)
 
-Make sure to declare your data variable like so in your script or declare it in a config.py file and import it to your main script. Your data dictionary should look like this:
+Make sure to declare your data variable in your script or declare it in a config.py file and import it to your main script. Your data dictionary should look like this:
 
 ```
 data = {
@@ -56,6 +56,7 @@ data = {
 'grant_type':'authorization_code'
 }
 ```
+
 This dictionary holds the required credentials to run any Strava API.
 
 ## Google Sheets API 
@@ -96,21 +97,15 @@ And also declare the sheet id which you can get from the link of the Google Shee
 
 ![GoogleSheetId](/Images/GoogleSheetId.jpg)
 
-If this instructions are not clear I suggest you read through this article: [Gspread Authentication](https://docs.gspread.org/en/latest/oauth2.html#enable-api-access)
+After all this steps are done, now you can run the WorkoutAnalysis.py file and extract all your workouts from Strava! 
 
+If these instructions were not clear I suggest you read through these articles: 
+- [Gspread Authentication](https://docs.gspread.org/en/latest/oauth2.html#enable-api-access)
+- [Strava's API documentation](https://developers.strava.com/)
 
-
-
-
-When running the script, there will be a part where a browser widnow will pop up asking you to log in to your Strava account and authorize 
-
-
+## Project Desription
 
 I started recording since 05-20-2020 and as of 03-26-2023 I'v logged over 600 different workouts, ranging from running to skiing, we will take a closer look at the different activities.
-
-
-
-
 As of 2-11-2023 I have logged over 600 activities consisting of different types of physical exercises. I started recording my workouts in order to keep me on track of my goals.  to determine some basic questions like, how consistent have I been, 
 
 when I first created my [Strava](https://www.strava.com/dashboard) account. At first, this data was gathered using my cellphone, linking Samsung's Health App to Strava, but then I switched to a [Garming Pheonix 6](https://www.garmin.com/en-US/p/702902) smart watch. This allowed me to get more metrics like heart rate, which I use to calculate the approximate calories I burn in a workout
