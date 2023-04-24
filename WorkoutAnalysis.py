@@ -1,10 +1,6 @@
 # Packages required for this project:
 import requests
 import pandas as pd
-import gspread
-from df2gspread import df2gspread as d2g
-import gspread_dataframe as gd
-import pygsheets
 from datetime import date
 import webbrowser
 from Functions import *
@@ -22,14 +18,16 @@ spreadsheet_id = '' # Currently setup for testing
 # From the StravaCredentials file we are importing we declare the necessary credentials to make API calls.
 data = StravaCredentials.data
 
-# Pending:
-# if data = None:
-#     data = {
-#     'client_id': input('Please enter your Client Id:'),
-#     'client_secret': input('Please enter your Client Secret Number:')
-#     'code': ,
-#     'grant_type':'authorization_code'
-# }
+
+if data == None:
+    client_id = input('Input your Client ID:')
+    client_secret = input('Input your Client Secret:')
+    data = {
+    'client_id': client_id,
+    'client_secret': client_secret,
+    'code': data['code'],
+    'grant_type':'authorization_code'
+}
 
 # Creating date variable
 today = date.today().strftime('%B/%d/%Y')
