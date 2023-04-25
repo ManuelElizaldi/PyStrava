@@ -75,8 +75,9 @@ Before we can start using Strava's API we first need to complete a couple of ste
 <img src="https://raw.githubusercontent.com/ManuelElizaldi/Workout-Analysis-API/main/Images/PrivacySettings.png"/>
 
 3. Create a Strava application inside this link: [Create a Strava ApplicationI](https://www.strava.com/settings/api)
+4. You can answer all the questions however you want, just make sure the “Authorization Callback Domain” field is set to “localhost”. Like so:
 
-![Creating an App](Images/CreatingApp.png)
+![Strava Application Fields](Images/StravaApplicationFields.png)
 
 In order to use any of the scripts in this project there are a couple of steps that need to be done. First you have to create an account in [Strava](https://www.strava.com/), then you have to start an App in the My App menu inside your profile. Once this step is done you will be given a Client ID and Client Secret which are used to access the API through the python script. Also, you have to change the privacy setting in your profile, which can be found in the menu: Privacy Controls, here you have to set the 'Who Can See' settings for Profile Page and Activities to 'Everyone' to be able to pull the workout data through the API. Here's an image of how it should look:
 
