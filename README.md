@@ -12,8 +12,6 @@
   <br>
 </h1>
 
-
---------------------------------------
 <h3 align="center">
   <br>
   :star: Star this project on GitHub — it motivates me a lot!
