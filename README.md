@@ -1,12 +1,18 @@
 <h1 align="center">
   <br>
+  #WORK IN PROGRESS :no_entry:
+  <br>
+ </h1>
+ 
+<h1 align="center">
+  <br>
   <a href=""><img src="https://github.com/ManuelElizaldi/PyStrava/blob/main/Images/ProjectLogo2.png" alt="PyStrava" width="400"></a>
   <br>
   PyStrava
   <br>
 </h1>
 
-#WORK IN PROGRESS :no_entry:
+
 --------------------------------------
 <h3 align="center">
   <br>
