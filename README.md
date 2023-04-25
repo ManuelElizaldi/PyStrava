@@ -8,6 +8,12 @@
 
 #WORK IN PROGRESS :no_entry:
 --------------------------------------
+<h3 align="center">
+  <br>
+  :star: Star this project on GitHub — it motivates me a lot!
+  <br>
+</h3>
+
 # Workout-Analysis
 # Table of Contents:
 - [Introduction](#introduction)
