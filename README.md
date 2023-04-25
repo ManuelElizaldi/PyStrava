@@ -1,3 +1,11 @@
+<h1 align="center">
+  <br>
+  <img src="https://github.com/ManuelElizaldi/PyStrava/Images/ProjectLogo.png" alt="PyStrava" width="200"></a>
+  <br>
+  PyStrava
+  <br>
+</h1
+
 #WORK IN PROGRESS :no_entry:
 --------------------------------------
 # Workout-Analysis
