@@ -14,7 +14,11 @@
 
 <h3 align="center">
   <br>
-  :star: Star this project on GitHub — it motivates me a lot!
+  :star: Star this project on GitHub — it motivates me a lot and you will stay up to date on the project!
+  <br>
+  <br>
+  <img src="https://img.shields.io/github/repo-size/ManuelElizaldi/PyStrava"/>
+  <a><img src="https://img.shields.io/website?up_message=Portfolio%20Website&url=https%3A%2F%2Fmanuelelizaldi.github.io%2Findex.html"/></a>
   <br>
 </h3>
 
