@@ -24,7 +24,7 @@
 
 # Workout-Analysis
 # Table of Contents:
-- [Project Desription](#project-description)
+- [Project Desription](#project-desription)
 - [Goals](#goals)
 - [Technologies Used](#technologies-used)
 - [Project Setup](#project-setup)
