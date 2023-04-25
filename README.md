@@ -1,10 +1,10 @@
 <h1 align="center">
   <br>
-  <img src="https://github.com/ManuelElizaldi/PyStrava/Images/ProjectLogo.png" alt="PyStrava" width="200"></a>
+  <a href=""><img src="https://github.com/ManuelElizaldi/PyStrava/blob/main/Images/ProjectLogo2.png" alt="Markdownify" width="200"></a>
   <br>
   PyStrava
   <br>
-</h1
+</h1>
 
 #WORK IN PROGRESS :no_entry:
 --------------------------------------
