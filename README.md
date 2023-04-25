@@ -42,7 +42,7 @@ During the pandemic I promised myself to set my physical health as one of my pri
 Since starting this journey I have seen progress in physical health, physical abilities and mental health. I have reached goals that never seemed possible and started to believe in myself. I have discovered that I am much more capable of what I initially thought. When I first started working out consistently running 10km was miserable, now I have completed [Austin's Half Marathon](https://youraustinmarathon.com/), a [10km Spartan Race](https://www.spartan.com/) and I am registered for Austin's 2024 Marathon and an Ultra Marathon (50km) in July 2023. For this reason I am also gonna write a section about my philosophy of traning in hopes that someone looking to better their health feels inspired by this project and can chase that better version of themselves that is out there waiting to be found.
 
 ## Goals
-As I have stated before, I wanted to use techonology to help me reach my goals, therefore I built a Python script that pulls data from Strava's server, cleans it and then uploads it to Google Sheets. With the output file I can produce a dashboard in Google Looker Studio where I can find all my workout statistics. With this dashboard I want to understand which type of physical activities r
+As I have stated before, I wanted to use techonology to help me reach my goals, therefore I built a Python script that pulls data from Strava's server, cleans it and then uploads it to Google Sheets. With the output file I can produce a dashboard in Google Looker Studio where I can find all my workout statistics. With this dashboard I want to understand which type of physical activities r 
 
 Likewise, I want to build a machine learning model that can classify 3 types of workouts: 
   1) Low Effort 
@@ -72,10 +72,15 @@ In order to use any of the scripts in this project there are a couple of steps t
 
 <img src="https://raw.githubusercontent.com/ManuelElizaldi/Workout-Analysis-API/main/Images/PrivacySettings.png"/>
 
-After those steps are done, before you use any of the API calls to pull data, we have to open the following link to get our authorization code. Here I use the package [Webbrowser](https://docs.python.org/3/library/webbrowser.html) to open this page directly from the script but you can do it manually too, just note that this code will expire. Change the ```{client_id}``` with your own and open the link: 
+⚠️ <- make sure this part is good
+After those steps are done, before you use any of the API calls to pull data, we need to get our authorization code, which we get by opening the following link:
+
 ``` python
 https://www.strava.com/oauth/authorize?client_id={client_id}&response_type=code&redirect_uri=http://localhost/&approval_prompt=force&scope=profile:read_all,activity:read_all
 ```
+
+In the WorkoutAnalysis.py file I use the package [Webbrowser](https://docs.python.org/3/library/webbrowser.html) to open this page directly from the script but you can do it manually too, just note that this code will expire. Change the ```{client_id}``` with your own and you shuold be able to access the authorization window. 
+
 When you open the page you will see this window, click on authorize.
 
 ![AuthorizationStep1](Images/StravaAuthorizationStep1.png)
