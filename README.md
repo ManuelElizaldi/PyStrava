@@ -68,7 +68,7 @@ Likewise, I want to build a machine learning model that can classify 3 types of 
 Before we can start using Strava's API we first need to complete a couple of steps to gain access:
 
 1. If you haven't already, create an account in [Strava](https://www.strava.com/)
-2. Head to “Privacy Controls” and set “Profile Page” and “Activities” to Everyone, like this:
+2. Head to your Profile Settings and then click on “Privacy Controls” and set “Profile Page” and “Activities” to Everyone, like this:
 
 <img src="https://raw.githubusercontent.com/ManuelElizaldi/Workout-Analysis-API/main/Images/PrivacySettings.png"/>
 
