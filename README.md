@@ -63,7 +63,6 @@ Likewise, I want to build a machine learning model that can classify 3 types of 
 - [Pygsheets](https://pygsheets.readthedocs.io/en/stable/)
 - [Requests](https://requests.readthedocs.io/en/latest/)
 - [Gspread Authentication](https://docs.gspread.org/en/latest/oauth2.html#enable-api-access)
-- [Strava's API documentation](https://developers.strava.com/)
 
 ## Project Setup
 ### Strava - API access
