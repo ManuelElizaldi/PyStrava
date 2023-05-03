@@ -108,6 +108,9 @@ data = {
 
 This dictionary holds the required credentials to run any Strava API.
 
+If these instructions were not clear I suggest you read through these articles: 
+- [Strava's API documentation](https://developers.strava.com/)
+
 ### Google Sheets API 
 In order to use the package Pygsheets to uplaod data to Google Drive from our python script, we first need to create a project in the [Google Developers Console](https://console.cloud.google.com/projectselector2/apis/dashboard?pli=1&supportedpurview=project&authuser=1). In the box labeled “Search for APIs and Services”, search for “Google Drive API” and enable it, then in the box labeled “Search for APIs and Services”, search for “Google Sheets API” and enable it. 
 
@@ -152,10 +155,9 @@ After all this steps are done, now you can run the WorkoutAnalysis.py file and e
 
 If these instructions were not clear I suggest you read through these articles: 
 - [Gspread Authentication](https://docs.gspread.org/en/latest/oauth2.html#enable-api-access)
-- [Strava's API documentation](https://developers.strava.com/)
+
 
 ------------------------------------------------------------------
 
-
-### Analysis 
-### Dashboard
+## Analysis 
+## Dashboard
