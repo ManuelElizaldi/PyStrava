@@ -24,27 +24,28 @@
 
 # Workout-Analysis
 # Table of Contents:
-- [Project Desription](#project-desription)
+- [Introduction & Project Desription](#introduction--project-desription)
 - [Goals](#goals)
 - [Technologies Used](#technologies-used)
 - [Project Setup](#project-setup)
 
-## Project Desription
+## Introduction & Project Desription
 
-I started recording since 05-20-2020 and as of 03-26-2023 I'v logged over 600 different workouts, consisting of different types of physical exercises
-As of 2-11-2023 I have logged over 600 activities consisting of different types of physical exercises. I started recording my workouts in order to keep me on track of my goals.  to determine some basic questions like, how consistent have I been, 
+During the pandemic I promised myself to set my physical health as one of my priorities. To do that, I wanted to use technology to help me achieve my goals by having a digital record of all the workouts I've done in order to force myself to stay disciplined and on track. I've been using my Garmin smartwatch and Strava's app to keep a log of all my acitivites. Since starting this journey I have seen progress in physical health, physical abilities and mental health. I have reached goals that never seemed possible and started to believe in myself. I have discovered that I am much more capable of what I initially thought. When I first started working out consistently running 10km was miserable, now I have completed [Austin's Half Marathon](https://youraustinmarathon.com/), a [10km Spartan Race](https://www.spartan.com/) and I am registered for Austin's 2024 Marathon and an Ultra Marathon (50km) in July 2023. For this reason I am also gonna write a section about my philosophy of traning in hopes that someone looking to better their health feels inspired by this project and can chase that better version of themselves that is out there waiting to be found. 
 
-when I first created my [Strava](https://www.strava.com/dashboard) account. At first, this data was gathered using my cellphone, linking Samsung's Health App to Strava, but then I switched to a [Garming Pheonix 6](https://www.garmin.com/en-US/p/702902) smart watch. This allowed me to get more metrics like heart rate, which I use to calculate the approximate calories I burn in a workout
+when I first created my [Strava](https://www.strava.com/dashboard) account. At first, this data was gathered using my cellphone, linking Samsung's Health App to Strava, but then I switched to a [Garming Pheonix 6](https://www.garmin.com/en-US/p/702902) smart watch. This allowed me to gatter more metrics which I use to answer questions about my progress and then build a machine learning model. 
 
-
-During the pandemic I promised myself to set my physical health as one of my priorities. To do that, I wanted to use technology to help me achieve my goals by having a digital record of all the workouts I've done in order to force myself to stay disciplined and on track. I've been using my Garmin smartwatch and Strava's app to keep a log of all my acitivites. In this project one of my objectives is to use the statistical tools I've learned through out my career and build a dashboard where I can visualize my progress.  
-
-Since starting this journey I have seen progress in physical health, physical abilities and mental health. I have reached goals that never seemed possible and started to believe in myself. I have discovered that I am much more capable of what I initially thought. When I first started working out consistently running 10km was miserable, now I have completed [Austin's Half Marathon](https://youraustinmarathon.com/), a [10km Spartan Race](https://www.spartan.com/) and I am registered for Austin's 2024 Marathon and an Ultra Marathon (50km) in July 2023. For this reason I am also gonna write a section about my philosophy of traning in hopes that someone looking to better their health feels inspired by this project and can chase that better version of themselves that is out there waiting to be found.
+I've been logging workouts since 05-20-2020 and as of 03-26-2023 I'v logged over 600 different workouts consisting of different types of physical exercises. This gives me enough data to accomplish my goals for this project.
 
 ## Goals
-As I have stated , I wanted to use techonology to help me reach my goals, therefore I built a Python script that pulls data from Strava's server, cleans it and then uploads it to Google Sheets. With the output file I can produce a dashboard in Google Looker Studio where I can find all my workout statistics. With this dashboard I want to understand which type of physical activities r 
+1. Build a python script that extracts all my workout data from Strava.
+2. Clean and prepare data to be uploaded to Google Drive
+3. Build a dashboard containing workout metrics in Google Looker.
 
-Likewise, I want to build a machine learning model that can classify 3 types of workouts: 
+The data pipeline for this project looks like this:
+![DataPipeline](/Images/DataPipeline.png)
+
+Additionally, with this data I will build a machine learning multi label classification model to classify my workouts based in 3 categories:
   1) Low Effort 
   2) Medium Effort 
   3) High Effort
@@ -78,9 +79,6 @@ Before we can start using Strava's API we first need to complete a couple of ste
 
 ![Strava Application Fields](Images/StravaApplicationFields.png)
 
-
-
-⚠️ <- make sure this part is good
 After those steps are done, before you use any of the API calls to pull data, we need to get our authorization code, which we get by opening the following link:
 
 ``` python
@@ -97,7 +95,7 @@ After you authorize, you will see the following page, don't panic, this is what 
 
 ![AuthorizationStep2](Images/StravaAuthorizationStep2.png)
 
-Make sure to declare your data variable in your script or declare it in a config.py file and import it to your main script. Your data dictionary should look like this:
+Make sure to declare your data dictionary-variable in your script or declare it in a config.py file and import it to your main script. Your data dictionary should look like this:
 
 ``` python
 data = {
@@ -109,6 +107,9 @@ data = {
 ```
 
 This dictionary holds the required credentials to run any Strava API.
+
+If these instructions were not clear I suggest you read through these articles: 
+- [Strava's API documentation](https://developers.strava.com/)
 
 ### Google Sheets API 
 In order to use the package Pygsheets to uplaod data to Google Drive from our python script, we first need to create a project in the [Google Developers Console](https://console.cloud.google.com/projectselector2/apis/dashboard?pli=1&supportedpurview=project&authuser=1). In the box labeled “Search for APIs and Services”, search for “Google Drive API” and enable it, then in the box labeled “Search for APIs and Services”, search for “Google Sheets API” and enable it. 
@@ -154,10 +155,9 @@ After all this steps are done, now you can run the WorkoutAnalysis.py file and e
 
 If these instructions were not clear I suggest you read through these articles: 
 - [Gspread Authentication](https://docs.gspread.org/en/latest/oauth2.html#enable-api-access)
-- [Strava's API documentation](https://developers.strava.com/)
+
 
 ------------------------------------------------------------------
 
-
-### Analysis 
-### Dashboard
+## Analysis 
+## Dashboard
