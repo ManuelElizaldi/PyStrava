@@ -78,6 +78,9 @@ def CleanGeneral_Table(general_table):
     # Changing name of workout type => Workout
     general_table['sport_type'] = general_table['sport_type'].replace({'Workout':'Functional-Cardio Workout'})
     
+    # Chaning from m/s to km/h
+    general_table[['max_speed']] = general_table['max_speed'] * 3.6
+    general_table[['average_speed']] = general_table['average_speed'] * 3.6
     return general_table
 
 # This function will create a dataframe/pivot table with the count of every sport type
@@ -202,7 +205,9 @@ def CleanWorkoutJson(workout_json):
     df[['distance']] = round(df['distance']/1000,2)
     df['workout_time_min'] = round(df['elapsed_time']/60,2)
     df[["start_date"]] = pd.to_datetime(df['start_date']).dt.date
-    df = df.rename(columns={'id':'activity_id'})
+    df[['average_speed']] = df['average_speed'] * 3.6
+    df[['max_speed']] = df['max_speed'] * 3.6
+    df = df.rename(columns={'id':'activity_id','average_speed':'average_speed_km/h','max_speed':'max_speed_km/h'})
     df = df[['activity_id',
                'name',
                'start_date',
@@ -213,8 +218,8 @@ def CleanWorkoutJson(workout_json):
                'total_elevation_gain',
                'start_latlng',
                'end_latlng',
-               'average_speed',
-               'max_speed',
+               'average_speed_km/h',
+               'max_speed_km/h',
                'average_temp',
                'average_heartrate',
                'max_heartrate']]
@@ -226,8 +231,8 @@ def CleanWorkoutJson(workout_json):
                                                 'elapsed_time':'lap_elapsed_time_min',
                                                 'distance':'lap_distance',
                                                 'average_heartrate':'lap_average_heartrate',
-                                                'max_heartrate':'lap_max_heartrate',
-                                                'average_speed':'lap_average_speed',
+                                                'max_heartrate':'lap_max_heartrate_km/h',
+                                                'average_speed':'lap_average_speed_km/h',
                                                 'max_speed':'lap_max_speed'})
     workout_laps['lap_elapsed_time_min'] = round(workout_laps['lap_elapsed_time_min']/60,2)
     workout_laps['lap_distance'] = round(workout_laps['lap_distance']/1000,2)
@@ -252,6 +257,10 @@ def DescribeWorkoutdf(workout_df):
     avg_workout_duration=round(workout_df['workout_time_min'].mean(),2)
     avg_calories_burned_per_workout=workout_df['calories'].mean()
     avg_distance=round(workout_df['distance'].mean(),0)
+    avg_heart_rate=round(workout_df['average_heartrate'].mean(),0)
+    avg_max_heart_rate=round(workout_df['max_heartrate'].mean(),0)
+    avg_speed=round(workout_df['average_speed_km/h'].mean(),0) * 3.6
+    avg_max_speed=round(workout_df['max_speed_km/h'].mean(),0) * 3.6
     workout_counter = len(workout_df)
     avg_laps = round(workout_df['lap_count'].mean(),0)
 
@@ -263,6 +272,10 @@ def DescribeWorkoutdf(workout_df):
         'Average Workout Duration in Minutes':avg_workout_duration,
         'Average Calories Burned Per Workout':avg_calories_burned_per_workout,
         'Average Distance in Kilometers':avg_distance,
+        'Average Heart Rate':avg_heart_rate,
+        'Average Max Hear Rate':avg_max_heart_rate,
+        'Average Speed km/h':avg_speed,
+        'Average Max Speed km/h':avg_max_speed,
         'Number of Workouts:': workout_counter,
         'Average Number of Laps':avg_laps
     },index=['Info'])
