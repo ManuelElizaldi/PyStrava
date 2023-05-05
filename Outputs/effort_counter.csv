@@ -1,0 +1,14 @@
+,sport_type,High Effort,Low Effort,Medium Effort,No Effort
+0,AlpineSki,3.0,-,-,-
+1,Functional-Cardio Workout,147.0,99.0,202.0,51.0
+2,Hike,3.0,1.0,-,-
+3,Kayaking,-,-,1.0,-
+4,MountainBikeRide,9.0,-,1.0,-
+5,Ride,6.0,5.0,5.0,1.0
+6,Rowing,-,-,1.0,1.0
+7,Run,49.0,2.0,7.0,4.0
+8,Swim,-,7.0,1.0,8.0
+9,TrailRun,3.0,-,-,-
+10,Walk,4.0,4.0,1.0,5.0
+11,WeightTraining,-,12.0,7.0,11.0
+12,Yoga,-,-,-,6.0
