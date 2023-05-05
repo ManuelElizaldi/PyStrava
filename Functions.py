@@ -1,5 +1,6 @@
 import requests
 import pandas as pd
+import numpy as np
 import pygsheets
 import time
 from time import sleep 
@@ -249,6 +250,231 @@ def CleanWorkoutJson(workout_json):
     merged = df.merge(lap_stats, on = 'activity_id')
     merged['lap_count'] = pd.to_numeric(merged['lap_count'])
     return merged
+
+# This function creates the score columns used to build the k nearest neighbors model 
+# points are marked with comments
+def CreateScoreColumns(df):    
+    distance_conditions = [
+        (df['distance']==0), # 1
+        (df['sport_type'].isin(['Run', 'TrailRun'])) & (df['distance'] >= 0) & (df['distance'] < 5), # 5
+        (df['sport_type'].isin(['Run', 'TrailRun'])) & (df['distance'] >= 5) & (df['distance'] < 10), # 10 
+        (df['sport_type'].isin(['Run', 'TrailRun'])) & (df['distance'] >= 10) & (df['distance'] < 13), # 25 
+        (df['sport_type'].isin(['Run', 'TrailRun'])) & (df['distance'] >= 13), # 30
+        (df['sport_type'].isin(['Ride', 'MountainBikeRide'])) & (df['distance'] >= 1) & (df['distance'] < 5), # 5
+        (df['sport_type'].isin(['Ride', 'MountainBikeRide'])) & (df['distance'] >= 5) & (df['distance'] < 8.5), # 10
+        (df['sport_type'].isin(['Ride', 'MountainBikeRide'])) & (df['distance'] >= 8.5) & (df['distance'] < 12), # 15
+        (df['sport_type'].isin(['Ride', 'MountainBikeRide'])) & (df['distance'] >= 12) & (df['distance'] < 15), # 20
+        (df['sport_type'].isin(['Ride', 'MountainBikeRide'])) & (df['distance'] >= 15), # 25
+        (df['sport_type'].isin(['AlpineSki']) & (df['distance'] >= 10) & (df['distance'] < 15)), # 10
+        (df['sport_type'].isin(['AlpineSki']) & (df['distance'] >= 15) & (df['distance'] < 20)), # 15
+        (df['sport_type'].isin(['AlpineSki']) & (df['distance'] >= 20)), # 20
+        (df['sport_type'].isin(['Swim'])) & (df['distance'] >= 0.10) & (df['distance'] < 0.20), # 10
+        (df['sport_type'].isin(['Swim'])) & (df['distance'] >= 0.20) & (df['distance'] < 0.30), # 15
+        (df['sport_type'].isin(['Swim'])) & (df['distance'] >= 0.30) & (df['distance'] < 0.35), # 20
+        (df['sport_type'].isin(['Swim'])) & (df['distance'] >= 0.35) & (df['distance'] < 0.40), # 25
+        (df['sport_type'].isin(['Swim'])) & (df['distance'] >= 0.40), # 30
+        (df['distance']> 0.5) & (df['distance'] < 1), # 1
+        (df['distance']> 1) & (df['distance'] < 2), # 2
+        (df['distance']> 2) & (df['distance'] < 3), # 3
+        (df['distance']> 3) & (df['distance'] < 4), # 4
+        (df['distance']> 4) # 5
+        ]
+
+    distance_conditions_values = [1, 5, 10, 25, 30, # running
+                                5, 10, 15, 20, 25, # biking
+                                10, 15, 20, # skiing
+                                10, 15, 20, 25, 30, # swimming
+                                1, 2, 3, 4, 5 # special activitie 
+                                ]
+
+    # applying conditions and values
+    df['distance_score'] = np.select(distance_conditions, distance_conditions_values)
+
+    workout_time_condition = [
+        (df['workout_time_min'] >= 2) & (df['workout_time_min'] < 10),
+        (df['workout_time_min'] >= 10) & (df['workout_time_min'] < 15),
+        (df['workout_time_min'] >= 15) & (df['workout_time_min'] < 20),
+        (df['workout_time_min'] >= 20) & (df['workout_time_min'] < 25),
+        (df['workout_time_min'] >= 25) & (df['workout_time_min'] < 30),
+        (df['workout_time_min'] >= 20) & (df['workout_time_min'] < 35),
+        (df['workout_time_min'] >= 35) & (df['workout_time_min'] < 40),
+        (df['workout_time_min'] >= 40) & (df['workout_time_min'] < 45),
+        (df['workout_time_min'] >= 45) & (df['workout_time_min'] < 50),
+        (df['workout_time_min'] >= 55) & (df['workout_time_min'] < 60),
+        (df['workout_time_min'] >= 60)
+    ]
+
+    workout_time_values = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
+
+    # applying the conditions and values to the dataframe
+    df['workout_time_score'] = np.select(workout_time_condition, workout_time_values)
+
+    # building calories conditions and values
+    calories_conditions = [(df['calories'] >= 0) & (df['calories'] < 100), # 5
+                        (df['calories'] >= 100) & (df['calories'] < 200), # 15
+                        (df['calories'] >= 200) & (df['calories'] < 300), # 25
+                        (df['calories'] >= 300) & (df['calories'] < 400), # 35
+                        (df['calories'] >= 400) & (df['calories'] < 500), # 40
+                        (df['calories'] >= 500) & (df['calories'] < 600), # 50
+                        (df['calories'] >= 600) & (df['calories'] < 700), # 60
+                        (df['calories'] >= 700) & (df['calories'] < 800), # 70
+                        (df['calories'] >= 800) & (df['calories'] < 900), # 80
+                        (df['calories'] >= 900) & (df['calories'] < 1000), # 90
+                        (df['calories'] >= 1000) # 100
+                        ] 
+
+    calories_values = [5, 15, 25, 35, 40, 50, 60, 70, 80, 90, 100]
+
+    df['calorie_score'] = np.select(calories_conditions, calories_values)
+
+
+    # Building elevation conditions and values
+    elevation_conditions = [(df['total_elevation_gain'] == 0),
+                            (df['total_elevation_gain'] >= 1) & (df['total_elevation_gain'] < 100),
+                            (df['total_elevation_gain'] >=100) & (df['total_elevation_gain'] < 200),
+                            (df['total_elevation_gain'] >= 200) & (df['total_elevation_gain'] < 300),
+                            (df['total_elevation_gain'] >= 300) & (df['total_elevation_gain'] < 400),
+                            (df['total_elevation_gain'] >= 400) & (df['total_elevation_gain'] < 500),
+                            (df['total_elevation_gain']> 500)]
+
+    elevation_values = [1,5,10,15,20,25,30]
+
+
+    df['total_elevation_gain_score'] = np.select(elevation_conditions, elevation_values)
+
+
+    # replacing some of the Nans with 1 
+    df['average_heartrate'] = df['average_heartrate'].fillna(1)
+    # building average heartrate conditions and values
+    avg_heartrate_conditions = [
+                                (df['average_heartrate'] > 0) & (df['average_heartrate'] < 100),
+                                (df['average_heartrate'] >= 100) & (df['average_heartrate'] < 130),
+                                (df['average_heartrate'] >= 130) & (df['average_heartrate'] < 145),
+                                (df['average_heartrate'] >= 145) & (df['average_heartrate'] < 155),
+                                (df['average_heartrate'] >= 155) & (df['average_heartrate'] < 165),
+                                (df['average_heartrate'] >= 165) & (df['average_heartrate'] < 170),
+                                (df['average_heartrate'] >= 170)
+                                ]
+
+    avg_heartrate_values = [5, 10, 15, 20, 30, 35, 40]
+
+    df['average_heartrate_score'] = np.select(avg_heartrate_conditions, avg_heartrate_values)
+
+    # replacing some of the Nans with 1 
+    df['max_heartrate'] = df['max_heartrate'].fillna(1)
+
+    # building max heartrate conditions and values
+    max_heartrate_conditions = [
+        (df['max_heartrate'] >= 0) & (df['max_heartrate'] < 80),
+        (df['max_heartrate'] >= 80) & (df['max_heartrate'] < 130),
+        (df['max_heartrate'] >= 130) & (df['max_heartrate'] < 165),
+        (df['max_heartrate'] >= 165) & (df['max_heartrate'] < 175),
+        (df['max_heartrate'] >= 175) & (df['max_heartrate'] < 185),
+        (df['max_heartrate'] >= 180)
+    ]
+
+    max_heartrate_values = [5, 10, 15, 25, 30, 35]
+
+    df['max_heartrate_score'] = np.select(max_heartrate_conditions, max_heartrate_values)
+
+
+    # avg time per lap conditions and values
+    avg_time_per_lap_conditions = [
+                                (df['avg_time_per_lap'] >= 0) & (df['avg_time_per_lap'] < 5),
+                                (df['avg_time_per_lap'] >= 5) & (df['avg_time_per_lap'] < 10),
+                                (df['avg_time_per_lap'] >= 10) & (df['avg_time_per_lap'] < 20),
+                                (df['avg_time_per_lap'] >= 20) & (df['avg_time_per_lap'] < 30),
+                                (df['avg_time_per_lap'] >= 30)
+                                ]
+
+
+    avg_time_per_lap_values = [1, 5, 10, 15, 20]
+
+
+    df['avg_time_per_lap_score'] = np.select(avg_time_per_lap_conditions, avg_time_per_lap_values)
+
+
+    # lap count conditions and values
+    lap_count_conditions = [(df['lap_count'] >= 0) & (df['lap_count'] < 3),
+                            (df['lap_count'] >= 3) & (df['lap_count'] < 4),
+                            (df['lap_count'] >= 4) & (df['lap_count'] < 5),
+                            (df['lap_count'] >= 5) & (df['lap_count'] < 6),
+                            (df['lap_count'] >= 6)
+                            ]
+
+    lap_count_values = [5, 10, 20, 25, 35]
+
+    df['lap_count_score'] = np.select(lap_count_conditions, lap_count_values)
+
+    # average speed conditions and values
+    avg_speed_conditions = [(df['sport_type'].isin(['Ride', 'MountainBikeRide'])) & (df['average_speed_km/h'] >= 0) & (df['average_speed_km/h'] < 6), #5 
+                            (df['sport_type'].isin(['Ride', 'MountainBikeRide'])) & (df['average_speed_km/h'] >= 6) & (df['average_speed_km/h'] < 12),#10
+                            (df['sport_type'].isin(['Ride', 'MountainBikeRide'])) & (df['average_speed_km/h'] >= 12) & (df['average_speed_km/h'] < 14),#15
+                            (df['sport_type'].isin(['Ride', 'MountainBikeRide'])) & (df['average_speed_km/h'] >= 14) & (df['average_speed_km/h'] < 18),#20
+                            (df['sport_type'].isin(['Ride', 'MountainBikeRide'])) & (df['average_speed_km/h'] >= 18),#25
+                            (df['average_speed_km/h'] == 0), #1
+                            (df['average_speed_km/h'] >= 0) & (df['average_speed_km/h'] < 5), # 5
+                            (df['average_speed_km/h'] >= 5) & (df['average_speed_km/h'] < 7), # 10
+                            (df['average_speed_km/h'] >= 7) & (df['average_speed_km/h'] < 9), # 15
+                            (df['average_speed_km/h'] >= 9) & (df['average_speed_km/h'] < 10), # 25 
+                            (df['average_speed_km/h'] >= 10) & (df['average_speed_km/h'] < 11), # 30
+                            (df['average_speed_km/h'] >= 11) , # 35
+    ]
+    avg_speed_values = [5,10,15,20,25,1,5,10,15,25,30,35]
+
+
+    df['avg_speed_score'] = np.select(avg_speed_conditions, avg_speed_values)
+
+
+    # max speed conditions and values
+    max_speed_conditions = [(df['sport_type'].isin(['Ride', 'MountainBikeRide'])) & (df['max_speed_km/h'] >= 0) & (df['max_speed_km/h'] < 15), # 5
+                            (df['sport_type'].isin(['Ride', 'MountainBikeRide'])) & (df['max_speed_km/h'] >= 15) & (df['max_speed_km/h'] < 20),# 10
+                            (df['sport_type'].isin(['Ride', 'MountainBikeRide'])) & (df['max_speed_km/h'] >= 20) & (df['max_speed_km/h'] < 25),# 15
+                            (df['sport_type'].isin(['Ride', 'MountainBikeRide'])) & (df['max_speed_km/h'] >= 25) & (df['max_speed_km/h'] < 30),# 20
+                            (df['sport_type'].isin(['Ride', 'MountainBikeRide'])) & (df['max_speed_km/h'] >= 30) & (df['max_speed_km/h'] < 35),# 25
+                            (df['sport_type'].isin(['Ride', 'MountainBikeRide'])) & (df['max_speed_km/h'] >= 35),# 30
+                            (df['max_speed_km/h'] == 0), # 1
+                            (df['max_speed_km/h'] >= 0) & (df['max_speed_km/h'] < 5),# 5
+                            (df['max_speed_km/h'] >= 5) & (df['max_speed_km/h'] < 10), # 10
+                            (df['max_speed_km/h'] >= 10) & (df['max_speed_km/h'] < 15), # 15
+                            (df['max_speed_km/h'] >= 15) & (df['max_speed_km/h'] < 20),# 20
+                            (df['max_speed_km/h'] >= 25) & (df['max_speed_km/h'] < 30),# 25
+                            (df['max_speed_km/h'] >= 30) & (df['max_speed_km/h'] < 35),# 30 
+                            (df['max_speed_km/h'] >= 35)# 35
+                            ]
+
+    max_speed_values = [5, 10, 15, 20, 25, 30, 1, 5, 10, 15, 20, 25, 30, 35]
+
+
+    df['max_speed_score'] = np.select(max_speed_conditions, max_speed_values)
+
+
+    # Getting effort score for each workout
+    df['effort_score'] = df['distance_score'] + df['workout_time_score'] + df['calorie_score'] + df['total_elevation_gain_score'] + df['average_heartrate_score'] + df['max_heartrate_score'] + df['avg_time_per_lap_score'] +df['lap_count_score'] + df['avg_speed_score'] +df['max_speed_score']
+
+
+    # creating low, medium and high effort scores column depending on the total amount of points
+    score_conditions = [(df['effort_score'] >= 0) & (df['effort_score'] < 100),
+                        (df['effort_score'] >= 100) & (df['effort_score'] < 125),
+                        (df['effort_score'] >= 125) & (df['effort_score'] < 150),
+                        (df['effort_score'] >= 150)]
+
+    score_values = ['No Effort','Low Effort','Medium Effort','High Effort']
+
+
+    df['effort_score_label'] = np.select(score_conditions, score_values)
+
+
+    score_rank_conditions = [(df['effort_score_label'] == 'No Effort'),
+                            (df['effort_score_label'] == 'Low Effort'),
+                            (df['effort_score_label'] == 'Medium Effort'),
+                            (df['effort_score_label'] == 'High Effort')]
+
+    score_rank_values = ['1','2','3','4']
+    df['effort_score_rank'] = np.select(score_rank_conditions, score_rank_values)
+    
+    return df
+
 
 # This function gives us a general description of the list of workouts
 def DescribeWorkoutdf(workout_df):
