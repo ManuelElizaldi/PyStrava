@@ -86,7 +86,7 @@ while True:
 
 general_table = clean_activities.copy()
 general_table = general_table.rename(columns={'elapsed_time':'workout_time_sec'})
-general_table.to_csv(r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\PyStrava\Outputs\test.csv')
+#general_table.to_csv(r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\PyStrava\Outputs\test.csv')
 print('General Table created successfully.')
 
 # Cleaning the general table
@@ -100,7 +100,7 @@ general_stats_df = CreateGeneralStatsdf(general_table)
 all_workouts_list = list(general_table['id'])
 
 # Testing:
-all_workouts_list = all_workouts_list[0:20]
+#all_workouts_list = all_workouts_list[0:20]
 
 # Creating a json with the detailed view of all workouts
 # This includes detailes like calories burned per workout and other variables that the general_table does not have
@@ -109,7 +109,12 @@ all_workouts_json = GetAllWorkouts(all_workouts_list,access_token)
 
 # Cleaning the json and converting it into a dataframe. Also we create the workout's round details
 all_workouts_df = CleanWorkoutJson(all_workouts_json)
-all_workouts_df.to_csv(r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\PyStrava\Outputs\test.csv')
+#all_workouts_df.to_csv(r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\PyStrava\Outputs\test.csv')
+
+# Creating effort score columns
+print('Calculating level of effort columns.')
+all_workouts_df = CreateScoreColumns(all_workouts_df)
+
 # Creating additional dataframes for specific activities:
 # Running type workouts
 running_workouts_df = all_workouts_df.loc[all_workouts_df['sport_type'].isin(['Run','TrailRun'])]
@@ -124,6 +129,13 @@ all_workouts_desc = DescribeWorkoutdf(all_workouts_df)
 running_workouts_desc = DescribeWorkoutdf(running_workouts_df)
 biking_workouts_desc = DescribeWorkoutdf(biking_workouts_df)
 functional_workouts_desc = DescribeWorkoutdf(functional_workouts_df)
+
+# Generating the table that shows how many workouts for each effort level 
+running_effort_table = EffortLevelBreakdown(running_workouts_df)
+biking_effort_table = EffortLevelBreakdown(biking_workouts_df)
+functional_effort_table = EffortLevelBreakdown(functional_workouts_df)
+all_workouts_effort_table = EffortLevelBreakdown(all_workouts_df)
+
 
 print('Uploading data to google sheets.')
 # Uploading the workout dataframe and the workout description df to google sheets
