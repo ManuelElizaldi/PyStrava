@@ -168,3 +168,6 @@ If these instructions were not clear I suggest you read through these articles:
 ## Dashboard
 
 ## Areas Of Improvement
+- Real time stats
+- Merge with garmin data for more variables - more precise model
+- gather more data 
