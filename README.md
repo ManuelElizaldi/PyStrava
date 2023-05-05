@@ -163,6 +163,7 @@ If these instructions were not clear I suggest you read through these articles:
 ![ConfussionMatrix](/Images/ConfussionMatrix-white.png)
 ![WorkoutEffortCounter](/Images/WorkoutLevelOfEffortDistribution.png)
 ![TypesOfSports](/Images/SportCount.png)
+![TypesOfSportsByEffort](/Images/WorkoutLevelOfEffortBySportType.png)
 
 ## Dashboard
 
