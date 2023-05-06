@@ -171,3 +171,4 @@ If these instructions were not clear I suggest you read through these articles:
 - Real time stats
 - Merge with garmin data for more variables - more precise model
 - gather more data 
+- ratios between variables
