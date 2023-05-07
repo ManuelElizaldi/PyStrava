@@ -172,3 +172,5 @@ If these instructions were not clear I suggest you read through these articles:
 - Merge with garmin data for more variables - more precise model
 - gather more data 
 - ratios between variables
+- workouts like bouldering are not being tracked 
+- strenght output is not being tracked 
