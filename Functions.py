@@ -128,9 +128,9 @@ def CreateGeneralStatsdf(general_table):
     },index=['Info'])
 
     # Transposing dataframe, setting new index and column
-    # general_stats_df = general_stats_df.T
-    # general_stats_df = general_stats_df.reset_index()
-    # general_stats_df = general_stats_df.rename(columns={'index':'Info','Info':'Data'})
+    general_stats_df = general_stats_df.T
+    general_stats_df = general_stats_df.reset_index()
+    general_stats_df = general_stats_df.rename(columns={'index':'Info','Info':'Data'})
     print(f'First recorded workout: {first_recorded_workout}')
     print(f'Most recent workout: {most_recent_workout}')
     return general_stats_df
@@ -475,6 +475,10 @@ def CreateScoreColumns(df):
     
     return df
 
+# Creating function that generates the effort counter table by workout
+def EffortLevelBreakdown(df):
+    effort_counter_table = df.groupby(['sport_type', 'effort_score_label'])['effort_score_label'].count().unstack().fillna('-')
+    return effort_counter_table
 
 # This function gives us a general description of the list of workouts
 def DescribeWorkoutdf(workout_df):
@@ -507,9 +511,9 @@ def DescribeWorkoutdf(workout_df):
     },index=['Info'])
 
     # Transposing dataframe, setting new index and column
-    # grl_stats_df = grl_stats_df.T
-    # grl_stats_df = grl_stats_df.reset_index()
-    # grl_stats_df = grl_stats_df.rename(columns={'index':'Info','Info':'Data'})
+    grl_stats_df = grl_stats_df.T
+    grl_stats_df = grl_stats_df.reset_index()
+    grl_stats_df = grl_stats_df.rename(columns={'index':'Info','Info':'Data'})
     return grl_stats_df
 
 # This function uses gspread and pygsheets modules to upload data to google sheets

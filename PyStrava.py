@@ -139,6 +139,7 @@ all_workouts_effort_table = EffortLevelBreakdown(all_workouts_df)
 
 print('Uploading data to google sheets.')
 # Uploading the workout dataframe and the workout description df to google sheets
+# Change the sheet name to the name in your own google sheet
 sheet_name = 'All_Workouts_Table'
 WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,all_workouts_df)
 
@@ -159,3 +160,15 @@ WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,general_stats_df)
 
 sheet_name = 'activities_breakdown'
 WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,activities_breakdown)
+
+sheet_name = 'effort_level_running'
+WriteToGsheet(service_file_path, spreadsheet_id,sheet_name,running_effort_table)
+
+sheet_name = 'effort_level_biking'
+WriteToGsheet(service_file_path, spreadsheet_id,sheet_name,biking_effort_table)
+
+sheet_name = 'effort_level_functional'
+WriteToGsheet(service_file_path, spreadsheet_id,sheet_name,functional_effort_table)
+
+sheet_name = 'all_effort_levels'
+WriteToGsheet(service_file_path, spreadsheet_id,sheet_name,all_workouts_effort_table)
