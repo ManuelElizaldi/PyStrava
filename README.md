@@ -66,6 +66,8 @@ Additionally, with this data I will build a machine learning multi label classif
 - [Gspread Authentication](https://docs.gspread.org/en/latest/oauth2.html#enable-api-access)
 
 ## Project Setup
+Before you can use the [PyStrava Notebook](https://github.com/ManuelElizaldi/PyStrava/blob/main/PyStrava_Notebook.ipynb) or the [PyStrava Script](https://github.com/ManuelElizaldi/PyStrava/blob/main/PyStrava.py) you need to follow these instructions: 
+
 ### Strava - API access
 Before we can start using Strava's API we first need to complete a couple of steps to gain access:
 
