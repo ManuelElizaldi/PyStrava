@@ -45,10 +45,11 @@ I've been logging workouts since 05-20-2020 and as of 03-26-2023 I'v logged over
 The data pipeline for this project looks like this:
 ![DataPipeline](/Images/DataPipeline.png)
 
-Additionally, with this data I will build a machine learning multi label classification model to classify my workouts based in 3 categories:
-  1) Low Effort 
-  2) Medium Effort 
-  3) High Effort
+Additionally, with this data I will build a machine learning multi label classification model to classify my workouts based in 4 categories:
+  1) No Effort
+  2) Low Effort 
+  3) Medium Effort 
+  4) High Effort
 
 ## Technologies Used
 ### Programming Language
