@@ -58,8 +58,12 @@ Additionally, with this data I will build a machine learning multi label classif
 - Google Looker Studio
 ### Packages
 - Pandas 1.1.3
+- numpy 1.22.4
+- matplotlib 3.3.2
 - Requests 2.28.2
 - Pygsheets 2.0.6
+- scikit-learn 1.2.2
+- Webbrowser
 ### Relevant Documentation
 - [Strava's API documentation](https://developers.strava.com/)
 - [Pygsheets](https://pygsheets.readthedocs.io/en/stable/)
@@ -88,13 +92,13 @@ After those steps are done, before you use any of the API calls to pull data, we
 https://www.strava.com/oauth/authorize?client_id={client_id}&response_type=code&redirect_uri=http://localhost/&approval_prompt=force&scope=profile:read_all,activity:read_all
 ```
 
-In the WorkoutAnalysis.py file I use the package [Webbrowser](https://docs.python.org/3/library/webbrowser.html) to open this page directly from the script but you can do it manually too, just note that this code will expire. Change the ```{client_id}``` with your own and you shuold be able to access the authorization window. 
+In the [PyStrava Notebook](https://github.com/ManuelElizaldi/PyStrava/blob/main/PyStrava_Notebook.ipynb) and the [PyStrava Script](https://github.com/ManuelElizaldi/PyStrava/blob/main/PyStrava.py) I use the package [Webbrowser](https://docs.python.org/3/library/webbrowser.html) to open this page directly from the script but you can do it manually too. This code will expire, so if you are not getting access you might need to run it again. Change the ```{client_id}``` with your own and you shuold be able to access the authorization window. 
 
 When you open the page you will see this window, click on authorize.
 
 ![AuthorizationStep1](Images/StravaAuthorizationStep1.png)
 
-After you authorize, you will see the following page, don't panic, this is what we want. Save the code (red box) in your script. Now you have all the necessary information and authorizations to use Strava's API.
+After you authorize, you will see the following page, don't panic, this is what we want. Save the code (red box) in your script. Now you have all the necessary information and authorizations to use Strava's API. While the script is running, make sure you don't close this window.
 
 ![AuthorizationStep2](Images/StravaAuthorizationStep2.png)
 
@@ -111,7 +115,7 @@ data = {
 
 This dictionary holds the required credentials to run any Strava API.
 
-If these instructions were not clear I suggest you read through these articles: 
+If these instructions were not clear I suggest you read through this page: 
 - [Strava's API documentation](https://developers.strava.com/)
 
 ### Google Sheets API 
@@ -147,16 +151,20 @@ Make sure to add the path to the json file like so in the script:
 ```python 
 service_file_path = r'\GoogleCredentials.json'
 ```
+Or add it to your Config.py file. I used the path option. 
 
 From this Json, grab the ```"client_email"``` and share your Google sheet with it just like you would share it with somone else.
 
 And also declare the sheet id which you can get from the link of the Google Sheet you created to store the data from this project:
 
 ![GoogleSheetId](/Images/GoogleSheetId.jpg)
+```
+spreadsheet_id = '1pomkAzlndHBl_czERrwKkoZFUkJRGFjyhRTeoWA6CS4'
+```
 
-After all this steps are done, now you can run the WorkoutAnalysis.py file and extract all your workouts from Strava! 
+After all this steps are done, now you can run the [PyStrava Notebook](https://github.com/ManuelElizaldi/PyStrava/blob/main/PyStrava_Notebook.ipynb) and the [PyStrava Script](https://github.com/ManuelElizaldi/PyStrava/blob/main/PyStrava.py) to extract all your workouts from Strava and upload them to Google Drive! 
 
-If these instructions were not clear I suggest you read through these articles: 
+If these instructions were not clear I suggest you read through this article: 
 - [Gspread Authentication](https://docs.gspread.org/en/latest/oauth2.html#enable-api-access)
 
 
