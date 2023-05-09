@@ -151,16 +151,20 @@ Make sure to add the path to the json file like so in the script:
 ```python 
 service_file_path = r'\GoogleCredentials.json'
 ```
+Or add it to your Config.py file. I used the path option. 
 
 From this Json, grab the ```"client_email"``` and share your Google sheet with it just like you would share it with somone else.
 
 And also declare the sheet id which you can get from the link of the Google Sheet you created to store the data from this project:
 
 ![GoogleSheetId](/Images/GoogleSheetId.jpg)
+```
+spreadsheet_id = '1pomkAzlndHBl_czERrwKkoZFUkJRGFjyhRTeoWA6CS4'
+```
 
-After all this steps are done, now you can run the WorkoutAnalysis.py file and extract all your workouts from Strava! 
+After all this steps are done, now you can run the [PyStrava Notebook](https://github.com/ManuelElizaldi/PyStrava/blob/main/PyStrava_Notebook.ipynb) and the [PyStrava Script](https://github.com/ManuelElizaldi/PyStrava/blob/main/PyStrava.py) to extract all your workouts from Strava and upload them to Google Drive! 
 
-If these instructions were not clear I suggest you read through these articles: 
+If these instructions were not clear I suggest you read through this article: 
 - [Gspread Authentication](https://docs.gspread.org/en/latest/oauth2.html#enable-api-access)
 
 
