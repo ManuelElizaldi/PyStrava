@@ -209,6 +209,10 @@ def CleanWorkoutJson(workout_json):
     df[['average_speed']] = df['average_speed'] * 3.6
     df[['max_speed']] = df['max_speed'] * 3.6
     df = df.rename(columns={'id':'activity_id','average_speed':'average_speed_km/h','max_speed':'max_speed_km/h'})
+    # Creating the start and end latitude and longitude
+    df[['start_lat', 'start_long']] = df['start_latlng'].apply(lambda x: pd.Series(str(x).strip('[]').split(',')))
+    df[['end_lat', 'end_long']] = df['end_latlng'].apply(lambda x: pd.Series(str(x).strip('[]').split(',')))
+
     df = df[['activity_id',
                'name',
                'start_date',
@@ -217,13 +221,17 @@ def CleanWorkoutJson(workout_json):
                'workout_time_min',
                'calories',
                'total_elevation_gain',
-               'start_latlng',
-               'end_latlng',
+               'start_lat',
+               'start_long',
+               'end_lat',
+               'end_long',
                'average_speed_km/h',
                'max_speed_km/h',
                'average_temp',
                'average_heartrate',
                'max_heartrate']]
+    
+
     
     workout_laps = pd.json_normalize(workout_json,'laps')
     workout_laps = workout_laps[['activity.id','name','elapsed_time','distance','average_heartrate','max_heartrate','average_speed','max_speed']]
