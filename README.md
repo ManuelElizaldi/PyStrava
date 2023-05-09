@@ -63,6 +63,7 @@ Additionally, with this data I will build a machine learning multi label classif
 - Requests 2.28.2
 - Pygsheets 2.0.6
 - scikit-learn 1.2.2
+- Webbrowser
 ### Relevant Documentation
 - [Strava's API documentation](https://developers.strava.com/)
 - [Pygsheets](https://pygsheets.readthedocs.io/en/stable/)
@@ -91,13 +92,13 @@ After those steps are done, before you use any of the API calls to pull data, we
 https://www.strava.com/oauth/authorize?client_id={client_id}&response_type=code&redirect_uri=http://localhost/&approval_prompt=force&scope=profile:read_all,activity:read_all
 ```
 
-In the WorkoutAnalysis.py file I use the package [Webbrowser](https://docs.python.org/3/library/webbrowser.html) to open this page directly from the script but you can do it manually too, just note that this code will expire. Change the ```{client_id}``` with your own and you shuold be able to access the authorization window. 
+In the [PyStrava Notebook](https://github.com/ManuelElizaldi/PyStrava/blob/main/PyStrava_Notebook.ipynb) and the [PyStrava Script](https://github.com/ManuelElizaldi/PyStrava/blob/main/PyStrava.py) I use the package [Webbrowser](https://docs.python.org/3/library/webbrowser.html) to open this page directly from the script but you can do it manually too. This code will expire, so if you are not getting access you might need to run it again. Change the ```{client_id}``` with your own and you shuold be able to access the authorization window. 
 
 When you open the page you will see this window, click on authorize.
 
 ![AuthorizationStep1](Images/StravaAuthorizationStep1.png)
 
-After you authorize, you will see the following page, don't panic, this is what we want. Save the code (red box) in your script. Now you have all the necessary information and authorizations to use Strava's API.
+After you authorize, you will see the following page, don't panic, this is what we want. Save the code (red box) in your script. Now you have all the necessary information and authorizations to use Strava's API. While the script is running, make sure you don't close this window.
 
 ![AuthorizationStep2](Images/StravaAuthorizationStep2.png)
 
@@ -114,7 +115,7 @@ data = {
 
 This dictionary holds the required credentials to run any Strava API.
 
-If these instructions were not clear I suggest you read through these articles: 
+If these instructions were not clear I suggest you read through this page: 
 - [Strava's API documentation](https://developers.strava.com/)
 
 ### Google Sheets API 
