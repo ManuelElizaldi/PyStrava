@@ -58,8 +58,11 @@ Additionally, with this data I will build a machine learning multi label classif
 - Google Looker Studio
 ### Packages
 - Pandas 1.1.3
+- numpy 1.22.4
+- matplotlib 3.3.2
 - Requests 2.28.2
 - Pygsheets 2.0.6
+- scikit-learn 1.2.2
 ### Relevant Documentation
 - [Strava's API documentation](https://developers.strava.com/)
 - [Pygsheets](https://pygsheets.readthedocs.io/en/stable/)
