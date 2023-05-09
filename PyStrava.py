@@ -11,22 +11,24 @@ import Functions
 
 # Setting up parameters for write_to_gsheet function
 service_file_path = r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\PyStrava\Credentials\pacific-castle-303123-909a5ddcda92.json'
-spreadsheet_id = '1IyEEDEPNtLTigZGgQP0Rhq5_di1Bzit1ZBERn8zNsvE' # Currently setup for testing
-#service_file_path = r''
-#spreadsheet_id = '' # Currently setup for testing
+# spreadsheet_id = '1IyEEDEPNtLTigZGgQP0Rhq5_di1Bzit1ZBERn8zNsvE' # Currently setup for testing
+spreadsheet_id = '1pomkAzlndHBl_czERrwKkoZFUkJRGFjyhRTeoWA6CS4' # spreadsheet connected to dashboard in looker 
 
 # From the StravaCredentials file we are importing we declare the necessary credentials to make API calls.
-data = StravaCredentials.data
-
-if data == None:
-    client_id = input('Input your Client ID:')
-    client_secret = input('Input your Client Secret:')
-    data = {
-    'client_id': client_id,
-    'client_secret': client_secret,
-    'code': data['code'],
-    'grant_type':'authorization_code'
-}
+try:
+    data = StravaCredentials.data
+except:
+    if data == None:
+        client_id = input('Input your Client ID:')
+        client_secret = input('Input your Client Secret:')
+        webbrowser.open(f"https://www.strava.com/oauth/authorize?client_id={client_id}&response_type=code&redirect_uri=http://localhost/&approval_prompt=force&scope=profile:read_all,activity:read_all")
+        code = input("From the web broswer enter the code:")
+        data = {
+        'client_id': client_id,
+        'client_secret': client_secret,
+        'code': code,
+        'grant_type':'authorization_code'
+    }
 
 # Creating date variable
 today = date.today().strftime('%B/%d/%Y')
@@ -93,8 +95,6 @@ print('General Table created successfully.')
 general_table = CleanGeneral_Table(general_table)
 # Creating the activities breakdown table -> count of each workout type 
 activities_breakdown = CreateActivitiesBreakdown(general_table)
-# Creating the General Stats table
-general_stats_df = CreateGeneralStatsdf(general_table)
 
 # Creating the list of workout ids
 all_workouts_list = list(general_table['id'])
@@ -115,25 +115,14 @@ all_workouts_df = CleanWorkoutJson(all_workouts_json)
 print('Calculating level of effort columns.')
 all_workouts_df = CreateScoreColumns(all_workouts_df)
 
-# Creating additional dataframes for specific activities:
-# Running type workouts
-running_workouts_df = all_workouts_df.loc[all_workouts_df['sport_type'].isin(['Run','TrailRun'])]
-# Biking type workouts
-biking_workouts_df = all_workouts_df.loc[all_workouts_df['sport_type'].isin(['Ride','MountainBikeRide'])]
-# Functional type workouts
-functional_workouts_df = all_workouts_df.loc[all_workouts_df['sport_type'].isin(['Functional-Cardio Workout'])]
+# saving dataframe
+all_workouts_df.to_csv(r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\PyStrava\Outputs\workouts_df.csv')
 
 # Creating a dataframe with general statistics for all sports/workout types
 print('Creating description of workouts.')
 all_workouts_desc = DescribeWorkoutdf(all_workouts_df)
-running_workouts_desc = DescribeWorkoutdf(running_workouts_df)
-biking_workouts_desc = DescribeWorkoutdf(biking_workouts_df)
-functional_workouts_desc = DescribeWorkoutdf(functional_workouts_df)
 
 # Generating the table that shows how many workouts for each effort level 
-running_effort_table = EffortLevelBreakdown(running_workouts_df)
-biking_effort_table = EffortLevelBreakdown(biking_workouts_df)
-functional_effort_table = EffortLevelBreakdown(functional_workouts_df)
 all_workouts_effort_table = EffortLevelBreakdown(all_workouts_df)
 
 
@@ -143,32 +132,11 @@ print('Uploading data to google sheets.')
 sheet_name = 'All_Workouts_Table'
 WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,all_workouts_df)
 
-sheet_name = 'All_Workouts_Desc'
+sheet_name = 'All_Workouts_Desc_Table'
 WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,all_workouts_desc)
 
-sheet_name = 'running_workouts_desc'
-WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,running_workouts_desc)
-
-sheet_name = 'biking_workouts_desc'
-WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,running_workouts_desc)
-
-sheet_name = 'functional_workouts_desc'
-WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,running_workouts_desc)
-
-sheet_name = 'general_stats'
-WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,general_stats_df)
-
-sheet_name = 'activities_breakdown'
+sheet_name = 'Activities_Breakdown'
 WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,activities_breakdown)
 
-sheet_name = 'effort_level_running'
-WriteToGsheet(service_file_path, spreadsheet_id,sheet_name,running_effort_table)
-
-sheet_name = 'effort_level_biking'
-WriteToGsheet(service_file_path, spreadsheet_id,sheet_name,biking_effort_table)
-
-sheet_name = 'effort_level_functional'
-WriteToGsheet(service_file_path, spreadsheet_id,sheet_name,functional_effort_table)
-
-sheet_name = 'all_effort_levels'
+sheet_name = 'All_Effort_Levels'
 WriteToGsheet(service_file_path, spreadsheet_id,sheet_name,all_workouts_effort_table)
