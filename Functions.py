@@ -61,6 +61,57 @@ def GetWorkouts(access_token):
         clean_activities = clean_activities.rename(columns={'elapsed_time':'workout_time_sec'})
         
         return clean_activities
+    
+# define a function to retrieve activities from Strava API
+def retrieve_activities(access_token):
+    url = "https://www.strava.com/api/v3/activities"
+    activities = pd.DataFrame()
+    page = 1
+    while True:
+        # get page of activities from Strava
+        print('Getting page number:', page)
+        r = requests.get(url + '?access_token=' + access_token + '&per_page=200' + '&page=' + str(page))
+        
+        # check for rate limit exceeded error
+        if r.status_code != 200:
+            print('Error:',r.status_code, 'stopping extraction')
+            break
+    
+        else:
+            r = r.json()
+            print(f'Extraction of page {page} complete')
+            # if no results then exit loop
+            if (not r):
+                print('Extraction done')
+                break
+            r = pd.json_normalize(r)
+            activities = activities.append(r) # type: ignore
+            page += 1
+
+    try:
+        # clean up the dataframe
+        clean_activities = activities[['id',
+            'name',
+            'distance',
+            'elapsed_time',
+            'total_elevation_gain',
+            'sport_type',
+            'start_date',
+            'achievement_count',
+            'athlete_count',
+            'start_latlng',
+            'end_latlng',
+            'average_speed',
+            'max_speed',
+            'average_temp',
+            'average_heartrate',
+            'max_heartrate',
+            'average_cadence',
+            'elev_high',
+            'elev_low']]
+        return clean_activities
+    except:
+        ('Error occurred during extraction')
 
 # Function that cleans the output from the function GetWorkouts()
 def CleanGeneral_Table(general_table):
@@ -209,6 +260,7 @@ def CleanWorkoutJson(workout_json):
     df[['average_speed']] = df['average_speed'] * 3.6
     df[['max_speed']] = df['max_speed'] * 3.6
     df = df.rename(columns={'id':'activity_id','average_speed':'average_speed_km/h','max_speed':'max_speed_km/h'})
+    df['sport_type'] = df['sport_type'].replace({'Workout':'Functional-Cardio Workout'})
     # Creating the start and end latitude and longitude
     df[['start_lat', 'start_long']] = df['start_latlng'].apply(lambda x: pd.Series(str(x).strip('[]').split(',')))
     df[['end_lat', 'end_long']] = df['end_latlng'].apply(lambda x: pd.Series(str(x).strip('[]').split(',')))

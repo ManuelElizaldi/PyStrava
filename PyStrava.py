@@ -46,47 +46,8 @@ print('Generating Genearl Table.')
 
 # This API request gives us the general list of activities. 
 # The table lacks certain details that we will get from another API request 
-page = 1
-url = "https://www.strava.com/api/v3/activities"
-#access_token = token['access_token']
-#access_token = token
-# Create the dataframe ready for the API call to store your activity data
-activities = pd.DataFrame()
-while True:
-    # get page of activities from Strava
-    print('Getting page number:',page)
-    r = requests.get(url + '?access_token=' + access_token + '&per_page=200' + '&page=' + str(page))
-    r = r.json()
-    print(f'Extraction of page {page} Complete')
-    # if no results then exit loop
-    if (not r):
-        print('Extration Done')
-        break
-    r = pd.json_normalize(r)
-    activities = activities.append(r) # type: ignore
-    
-    page += 1
-
-    clean_activities = activities[['id',
-    'name',
-    'distance',
-    'elapsed_time',
-    'total_elevation_gain',
-    'sport_type',
-    'start_date','achievement_count',
-    'athlete_count',
-    'start_latlng',
-    'end_latlng',
-    'average_speed',
-    'max_speed',
-    'average_temp',
-    'average_heartrate',
-    'max_heartrate',
-    'average_cadence',
-    'elev_high',
-    'elev_low']]
-
-general_table = clean_activities.copy()
+activities = retrieve_activities(access_token)
+general_table = activities.copy()
 general_table = general_table.rename(columns={'elapsed_time':'workout_time_sec'})
 #general_table.to_csv(r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\PyStrava\Outputs\test.csv')
 print('General Table created successfully.')
@@ -109,7 +70,9 @@ all_workouts_json = GetAllWorkouts(all_workouts_list,access_token)
 
 # Cleaning the json and converting it into a dataframe. Also we create the workout's round details
 all_workouts_df = CleanWorkoutJson(all_workouts_json)
-#all_workouts_df.to_csv(r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\PyStrava\Outputs\test.csv')
+
+
+all_workouts_df.to_csv(r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\PyStrava\Outputs\test.csv')
 
 # Creating effort score columns
 print('Calculating level of effort columns.')
