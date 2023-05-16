@@ -25,21 +25,21 @@
 
 ## Introduction & Project Desription
 
-Back in 2020, during the pandemic I promised myself to set my physical health as one of my priorities. To do that, I wanted to use technology to help me achieve my goals. By having a digital record of all my workouts, I forced myself to stay disciplined and on track. I've been using my Garmin smartwatch and Strava's app to keep a log of all my acitivites. Since starting this journey I have seen progress in physical health, physical abilities and mental health. I have reached goals that never seemed possible and started to believe in myself and I have discovered that I am much more capable of what I initially thought. When I first started working out consistently running 10km was miserable, now I have completed [Austin's Half Marathon](https://youraustinmarathon.com/), a [10km Spartan Race](https://www.spartan.com/), I will soon run a an Ultra Marathon (50km) in July 2023 and I am registered for Austin's 2024 Marathon. 
+Back in 2020, during the pandemic, I promised myself to prioritize my physical health. To achieve this, I wanted to use technology. By maintaining a digital record of all my workouts, I compelled myself to stay disciplined and on track. I have been using my Garmin smartwatch and the Strava app to log all my activities. Since embarking on this journey, I have witnessed progress in my physical health, abilities, and mental well-being. I have accomplished goals that once seemed impossible, and I have gained self-belief, realizing that I am far more capable than I thought. Initially, running 10km was a struggle, but now I have completed Austin's Half Marathon, a 10km Spartan Race, and I have plans to participate in an Ultra Marathon (50km) in July 2023. Additionally, I am registered for Austin's 2024 Marathon.
 
-Leveraging my knowlege on programming and data analysis I want to explore other ways technology can help me improve my fitness. In this project I use Strava's API to download all my workouts, build an ETL pipeline that will clean the data and then upload it to a Google Sheet. This Google Sheet will then be used to build a dashboard with statistics about my workouts. 
+Leveraging my programming and data analysis skills, I aim to explore other ways in which technology can improve my fitness journey. In this project, I utilize Strava API to download all my workouts, build an ETL pipeline to clean the data, and then upload it to a Google Sheet. This Google Sheet will serve as the foundation for a workout statistics dashboard.
 
-For the Machine Learning aspect of the project we will use my workout data to train a Multi Label Classification Model to categorize the level of effort for each activity. 
+Regarding the Machine Learning aspect of the project, I will utilize my workout data to train a Multi Label Classification Model that categorizes the level of effort for each activity.
 
 ## Goals
 1. Build a python script that extracts all my workout data from Strava.
 2. Clean and prepare data to be uploaded to Google Drive.
 3. Build a dashboard containing workout metrics in Google Looker.
-4. Train a K-Nearest Neighbors model to categorize my workouts in 4 different labels:
-  - No Effort
-  - Low Effort 
-  - Medium Effort 
-  - High Effort
+4. Train a K-Nearest Neighbors model to classify my workouts in 4 different categories:
+    - No Effort
+    - Low Effort 
+    - Medium Effort 
+    - High Effort
 
 The data pipeline for this project looks like this:
 ![DataPipeline](/Images/DataPipeline.png)
