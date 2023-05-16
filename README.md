@@ -1,11 +1,5 @@
 <h1 align="center">
   <br>
-  #WORK IN PROGRESS :no_entry:
-  <br>
- </h1>
- 
-<h1 align="center">
-  <br>
   <a href=""><img src="https://github.com/ManuelElizaldi/PyStrava/blob/main/Images/ProjectLogo2.png" alt="PyStrava" width="400"></a>
   <br>
   PyStrava
@@ -31,9 +25,11 @@
 
 ## Introduction & Project Desription
 
-Back in 2020, During the pandemic I promised myself to set my physical health as one of my priorities. To do that, I wanted to use technology to help me achieve my goals. By having a digital log of all my workouts I forced myself to stay disciplined and on track. I've been using my Garmin smartwatch and Strava's app to keep a log of all my acitivites. Since starting this journey I have seen progress in physical health, physical abilities and mental health. I have reached goals that never seemed possible and started to believe in myself. I have discovered that I am much more capable of what I initially thought. When I first started working out consistently running 10km was miserable, now I have completed [Austin's Half Marathon](https://youraustinmarathon.com/), a [10km Spartan Race](https://www.spartan.com/), I will soon run a an Ultra Marathon (50km) in July 2023 and I am registered for Austin's 2024 Marathon. 
+Back in 2020, furing the pandemic I promised myself to set my physical health as one of my priorities. To do that, I wanted to use technology to help me achieve my goals. By having a digital log of all my workouts, I forced myself to stay disciplined and on track. I've been using my Garmin smartwatch and Strava's app to keep a log of all my acitivites. Since starting this journey I have seen progress in physical health, physical abilities and mental health. I have reached goals that never seemed possible and started to believe in myself and I have discovered that I am much more capable of what I initially thought. When I first started working out consistently running 10km was miserable, now I have completed [Austin's Half Marathon](https://youraustinmarathon.com/), a [10km Spartan Race](https://www.spartan.com/). I will soon run a an Ultra Marathon (50km) in July 2023 and I am registered for Austin's 2024 Marathon. 
 
+Leveraging my knowlege on programming and data analysis I want to explore other ways technology can help me improve my fitness. We will use Strava's API to download all my workouts, build an ETL pipeline that will clean the data and then upload it to a Google Sheet. This Google Sheet will then be used to build a dashboard with statistics about my workouts. 
 
+For the Machine Learning aspect of the project we will train a model using my workout data to classify the level of effort for each activity. 
 
 [Strava](https://www.strava.com/dashboard) 
 [Garming Pheonix 6 smartwatch](https://www.garmin.com/en-US/p/702902) 
@@ -42,7 +38,7 @@ I've been logging workouts since 05-20-2020 and as of 03-26-2023 I'v logged over
 
 ## Goals
 1. Build a python script that extracts all my workout data from Strava.
-2. Clean and prepare data to be uploaded to Google Drive
+2. Clean and prepare data to be uploaded to Google Drive.
 3. Build a dashboard containing workout metrics in Google Looker.
 
 The data pipeline for this project looks like this:
