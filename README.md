@@ -174,6 +174,8 @@ After running the script you should see all your data inside the file.
 ------------------------------------------------------------------
 
 ## Analysis 
+I first started recording workouts in May 20, 2020 and as of May 9, 2023 I have recorded 687 workouts
+
 ![ConfussionMatrix](/Images/ConfussionMatrix-white.png)
 ![WorkoutEffortCounter](/Images/WorkoutLevelOfEffortDistribution.png)
 ![TypesOfSports](/Images/SportCount.png)
