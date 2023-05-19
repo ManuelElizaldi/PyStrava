@@ -161,12 +161,11 @@ If these instructions were not clear I suggest you read through this article:
 - [Gspread Authentication](https://docs.gspread.org/en/latest/oauth2.html#enable-api-access)
 
 ### How to use
-In order for the [PyStrava Script](https://github.com/ManuelElizaldi/PyStrava/blob/main/PyStrava.py) to work, we need to make sure we create 4 tabs inside the Google Sheet file that will hold our data. If you don't want to modify the script, make sure you create the following tabs with the same syntax:
+In order for the [PyStrava Script](https://github.com/ManuelElizaldi/PyStrava/blob/main/PyStrava.py) to work, we need to make sure we create 3 tabs inside the Google Sheet file that will hold our data. If you don't want to modify the script, make sure you create the following tabs with the same syntax:
 
 - All_Workouts_Table
 - All_Workouts_Desc_Table
 - Activities_Breakdown
-- All_Effort_Levels
 
 If these tabs don't exist or are misspelled you will get an error.
 After running the script you should see all your data inside the file.
