@@ -55,7 +55,7 @@ The data pipeline for this project looks like this:
 - matplotlib 3.3.2
 - Requests 2.28.2
 - Pygsheets 2.0.6
-- scikit-learn 1.2.2
+- Scikit-Learn 1.2.2
 - Gspread 5.7.2
 - Webbrowser
 ### Relevant Documentation
@@ -113,7 +113,7 @@ If these instructions were not clear I suggest you read through this page:
 - [Strava's API documentation](https://developers.strava.com/)
 
 ### Google Sheets API 
-In order to use the package Pygsheets to uplaod data to Google Drive from our python script, we first need to create a project in the [Google Developers Console](https://console.cloud.google.com/projectselector2/apis/dashboard?pli=1&supportedpurview=project&authuser=1). In the box labeled “Search for APIs and Services”, search for “Google Drive API” and enable it, then in the box labeled “Search for APIs and Services”, search for “Google Sheets API” and enable it. 
+In order to use the package Pygsheets to uplaod data to Google Drive and Gspread to download it from our python script, we first need to create a project in the [Google Developers Console](https://console.cloud.google.com/projectselector2/apis/dashboard?pli=1&supportedpurview=project&authuser=1). In the box labeled “Search for APIs and Services”, search for “Google Drive API” and enable it, then in the box labeled “Search for APIs and Services”, search for “Google Sheets API” and enable it. 
 
 After the API is enabled, we have to get a Google service account, which is an account intended for non-human users, i.e. our python script. These are the steps to getting a service account:
 
