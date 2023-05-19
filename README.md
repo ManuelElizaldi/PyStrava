@@ -1,11 +1,5 @@
 <h1 align="center">
   <br>
-  #WORK IN PROGRESS :no_entry:
-  <br>
- </h1>
- 
-<h1 align="center">
-  <br>
   <a href=""><img src="https://github.com/ManuelElizaldi/PyStrava/blob/main/Images/ProjectLogo2.png" alt="PyStrava" width="400"></a>
   <br>
   PyStrava
@@ -31,25 +25,24 @@
 
 ## Introduction & Project Desription
 
-During the pandemic I promised myself to set my physical health as one of my priorities. To do that, I wanted to use technology to help me achieve my goals by having a digital record of all the workouts I've done in order to force myself to stay disciplined and on track. I've been using my Garmin smartwatch and Strava's app to keep a log of all my acitivites. Since starting this journey I have seen progress in physical health, physical abilities and mental health. I have reached goals that never seemed possible and started to believe in myself. I have discovered that I am much more capable of what I initially thought. When I first started working out consistently running 10km was miserable, now I have completed [Austin's Half Marathon](https://youraustinmarathon.com/), a [10km Spartan Race](https://www.spartan.com/) and I am registered for Austin's 2024 Marathon and an Ultra Marathon (50km) in July 2023. For this reason I am also gonna write a section about my philosophy of traning in hopes that someone looking to better their health feels inspired by this project and can chase that better version of themselves that is out there waiting to be found. 
+Back in 2020, during the pandemic, I promised myself to prioritize my physical health. To achieve this, I wanted to use technology. By maintaining a digital record of all my workouts, I compelled myself to stay disciplined and on track. I have been using my Garmin smartwatch and the Strava app to log all my activities. Since embarking on this journey, I have witnessed progress in my physical health, abilities, and mental well-being. I have accomplished goals that once seemed impossible, and I have gained self-belief, realizing that I am far more capable than I thought. Initially, running 10km was a struggle, but now I have completed Austin's Half Marathon, a 10km Spartan Race, and I have plans to participate in an Ultra Marathon (50km) in July 2023. Additionally, I am registered for Austin's 2024 Marathon.
 
-when I first created my [Strava](https://www.strava.com/dashboard) account. At first, this data was gathered using my cellphone, linking Samsung's Health App to Strava, but then I switched to a [Garming Pheonix 6](https://www.garmin.com/en-US/p/702902) smart watch. This allowed me to gatter more metrics which I use to answer questions about my progress and then build a machine learning model. 
+Leveraging my programming and data analysis skills, I aim to explore other ways in which technology can improve my fitness journey. In this project, I utilize Strava API to download all my workouts, build an ETL pipeline to clean the data, and then upload it to a Google Sheet. This Google Sheet will serve as the foundation for a workout statistics dashboard.
 
-I've been logging workouts since 05-20-2020 and as of 03-26-2023 I'v logged over 600 different workouts consisting of different types of physical exercises. This gives me enough data to accomplish my goals for this project.
+Regarding the Machine Learning aspect of the project, I will utilize my workout data to train a Multi Label Classification Model that categorizes the level of effort for each activity.
 
 ## Goals
 1. Build a python script that extracts all my workout data from Strava.
-2. Clean and prepare data to be uploaded to Google Drive
+2. Clean and prepare data to be uploaded to Google Drive.
 3. Build a dashboard containing workout metrics in Google Looker.
+4. Train a K-Nearest Neighbors model to classify my workouts in 4 different categories:
+    - No Effort
+    - Low Effort 
+    - Medium Effort 
+    - High Effort
 
 The data pipeline for this project looks like this:
 ![DataPipeline](/Images/DataPipeline.png)
-
-Additionally, with this data I will build a machine learning multi label classification model to classify my workouts based in 4 categories:
-  1) No Effort
-  2) Low Effort 
-  3) Medium Effort 
-  4) High Effort
 
 ## Technologies Used
 ### Programming Language
@@ -167,10 +160,22 @@ After all this steps are done, now you can run the [PyStrava Notebook](https://g
 If these instructions were not clear I suggest you read through this article: 
 - [Gspread Authentication](https://docs.gspread.org/en/latest/oauth2.html#enable-api-access)
 
+### How to use
+In order for the [PyStrava Script](https://github.com/ManuelElizaldi/PyStrava/blob/main/PyStrava.py) to work, we need to make sure we create 4 tabs inside the Google Sheet file that will hold our data. If you don't want to modify the script, make sure you create the following tabs with the same syntax:
+
+- All_Workouts_Table
+- All_Workouts_Desc_Table
+- Activities_Breakdown
+- All_Effort_Levels
+
+If these tabs don't exist or are misspelled you will get an error.
+After running the script you should see all your data inside the file.
 
 ------------------------------------------------------------------
 
 ## Analysis 
+I first started recording workouts in May 20, 2020 and as of May 9, 2023 I have recorded 687 workouts
+
 ![ConfussionMatrix](/Images/ConfussionMatrix-white.png)
 ![WorkoutEffortCounter](/Images/WorkoutLevelOfEffortDistribution.png)
 ![TypesOfSports](/Images/SportCount.png)
@@ -185,3 +190,4 @@ If these instructions were not clear I suggest you read through this article:
 - ratios between variables
 - workouts like bouldering are not being tracked 
 - strenght output is not being tracked 
+- Being able to share a dashboard so that other people cna use it
