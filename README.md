@@ -56,6 +56,7 @@ The data pipeline for this project looks like this:
 - Requests 2.28.2
 - Pygsheets 2.0.6
 - scikit-learn 1.2.2
+- Gspread 5.7.2
 - Webbrowser
 ### Relevant Documentation
 - [Strava's API documentation](https://developers.strava.com/)
