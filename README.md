@@ -170,7 +170,9 @@ In order for the [PyStrava Script](https://github.com/ManuelElizaldi/PyStrava/bl
 
 If these tabs don't exist or are misspelled you will get an error.
 After running the script you should see all your data inside the file.
-If you already have data in your Google Sheet and you just want to add new workouts, you can run the [PyStrava Script](https://github.com/ManuelElizaldi/PyStrava/blob/main/Update_GoogleSheet.py). This will add any new workouts.
+
+### Updating your existing data
+If you already have data in your Google Sheet and you just want to add new workouts, you can run the [Update Google Sheet](https://github.com/ManuelElizaldi/PyStrava/blob/main/Update_GoogleSheet.py). This will add any new workouts.
 
 ------------------------------------------------------------------
 
