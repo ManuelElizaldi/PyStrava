@@ -100,6 +100,3 @@ WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,all_workouts_desc)
 
 sheet_name = 'Activities_Breakdown'
 WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,activities_breakdown)
-
-sheet_name = 'All_Effort_Levels'
-WriteToGsheet(service_file_path, spreadsheet_id,sheet_name,all_workouts_effort_table)

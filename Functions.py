@@ -18,50 +18,6 @@ def GetToken(data):
     
     return access_token
 
-# Function that returns the general list of activities. This list lacks certain details that we can get from another api call
-def GetWorkouts(access_token):    
-    page = 1
-    url = "https://www.strava.com/api/v3/activities"
-    # Create the dataframe ready for the API call to store your activity data
-    activities = pd.DataFrame()
-    print('Extracting worokouts for general table.')
-    while True:
-        # get page of activities from Strava
-        print('Getting page number:',page)
-        r = requests.get(url + '?access_token=' + access_token + '&per_page=200' + '&page=' + str(page))
-        r = r.json()
-        print(f'Extraction of page {page} Complete')
-        # if no results then exit loop
-        if (not r):
-            print('Extration Done')
-            break
-        r = pd.json_normalize(r)
-        activities = activities.append(r) # type: ignore
-        
-        page += 1
-
-        clean_activities = activities[['id',
-        'name',
-        'distance',
-        'elapsed_time',
-        'total_elevation_gain',
-        'sport_type',
-        'start_date','achievement_count',
-        'athlete_count',
-        'start_latlng',
-        'end_latlng',
-        'average_speed',
-        'max_speed',
-        'average_temp',
-        'average_heartrate',
-        'max_heartrate',
-        'average_cadence',
-        'elev_high',
-        'elev_low']]
-        
-        clean_activities = clean_activities.rename(columns={'elapsed_time':'workout_time_sec'})
-        
-        return clean_activities
     
 # define a function to retrieve activities from Strava API
 def retrieve_activities(access_token):
@@ -229,7 +185,7 @@ def GetAllWorkouts(workout_list, access_token):
     time_interval = 900  # 15 minutes = 900 seconds
     wait_time = ((len(workout_list)/100) * 900)/60
 
-    print(f'Extracting all workouts, due to the API rate limit, this will take {wait_time} minutes to run.')
+    print(f'Extracting all workouts, this will take {wait_time} minutes to run.')
     for i in workout_list:
         print('Extracting workout:', workout_num)
         req = requests.get(url=f'https://www.strava.com/api/v3/activities/{i}?access_token='+access_token)
@@ -538,7 +494,8 @@ def CreateScoreColumns(df):
 
 # Creating function that generates the effort counter table by workout
 def EffortLevelBreakdown(df):
-    effort_counter_table = df.groupby(['sport_type', 'effort_score_label'])['effort_score_label'].count().unstack().fillna('-')
+    effort_counter_table = pd.pivot_table(df, values = 'activity_id',index = ['sport_type'], columns=['effort_score_label'], aggfunc='count').fillna('-')
+    effort_counter_table = effort_counter_table.reset_index() 
     return effort_counter_table
 
 # This function gives us a general description of the list of workouts
@@ -595,5 +552,5 @@ def WriteToGsheet(service_file_path, spreadsheet_id, sheet_name, data_df):
         pass
     wks_write = sh.worksheet_by_title(sheet_name)
     wks_write.clear('A1',None,'*')
-    wks_write.set_dataframe(data_df, (1,1), encoding='utf-8', fit=True)
+    wks_write.set_dataframe(data_df, (0,0), encoding='utf-8', fit=True)
     wks_write.frozen_rows = 1
