@@ -4,6 +4,7 @@ import numpy as np
 import pygsheets
 import time
 from time import sleep 
+import datetime
 from datetime import date
 
 # Setting up parameters for write_to_gsheet function
@@ -542,8 +543,12 @@ def EffortLevelBreakdown(df):
 
 # This function gives us a general description of the list of workouts
 def DescribeWorkoutdf(workout_df):
-    first_workout = min(workout_df['start_date'], default="EMPTY")
-    last_workout=max(workout_df['start_date'], default="EMPTY")
+    # Convert 'start_date' column to datetime.date data type
+    workout_df['start_date'] = pd.to_datetime(workout_df['start_date']).dt.date
+    
+    # Create variables to hold values
+    first_workout = min(workout_df['start_date'], default=datetime.date.min)
+    last_workout=max(workout_df['start_date'], default=datetime.date.min)
     avg_workout_duration=round(workout_df['workout_time_min'].mean(),2)
     avg_calories_burned_per_workout=workout_df['calories'].mean()
     avg_distance=round(workout_df['distance'].mean(),0)
