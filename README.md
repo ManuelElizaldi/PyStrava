@@ -196,5 +196,4 @@ These are some features I plan to implement over time.
 - Improve the effort score model by creating ratios between variables, for example: calories burned every 10 minutes during a workout. 
 - Find a way to track activities like bouldering or Soccer. 
 - Likewise, strenght output is not being tracked, this could add another dimension of information to the machine learning model.
-- Being able to share a dashboard so that other people cna use it.
 - I need to gather more data, so the more workouts I do, the better the model works.
