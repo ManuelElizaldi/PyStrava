@@ -22,6 +22,7 @@
 - [Goals](#goals)
 - [Technologies Used](#technologies-used)
 - [Project Setup](#project-setup)
+- [Areas of Improvement](#areas-of-improvement)
 
 ## Introduction & Project Desription
 
