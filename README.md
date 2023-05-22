@@ -186,6 +186,7 @@ I first started recording workouts in May 20, 2020 and as of May 9, 2023 I have 
 ![TypesOfSportsByEffort](/Images/WorkoutLevelOfEffortBySportType.png)
 
 ## Dashboard
+[Looker Dashboard](https://lookerstudio.google.com/reporting/c8efd23d-4f39-42d1-a336-26aebac76fa5)
 
 ## Areas Of Improvement
 These are some features I plan to implement over time. 
