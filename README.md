@@ -189,6 +189,12 @@ I first started recording workouts in May 20, 2020 and as of May 18, 2023 I have
 ## Dashboard
 [Looker Dashboard](https://lookerstudio.google.com/reporting/c8efd23d-4f39-42d1-a336-26aebac76fa5)
 
+### Copy this dashboard template 
+If you want to use this dashboard as a template for your own analysis, follow these steps. 
+1. Open the [Dashboard](https://lookerstudio.google.com/reporting/c8efd23d-4f39-42d1-a336-26aebac76fa5), and on the  ⋮  button, click "Make a copy".
+2. In this window, you will select ![]()
+![]()
+
 ## Areas Of Improvement
 These are some features I plan to implement over time. 
 - Implement real time reporting so that we don't have to run the Update_GoogleSheet.py file everytime we want to update our database in Google Sheet. 
