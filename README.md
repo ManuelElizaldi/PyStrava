@@ -187,10 +187,11 @@ I first started recording workouts in May 20, 2020 and as of May 9, 2023 I have 
 ## Dashboard
 
 ## Areas Of Improvement
-- Real time stats
-- Merge with garmin data for more variables - more precise model
+These are some features I plan to implement over time. 
+- Implement real time reporting so that we dont have to run the Update_GoogleSheet.py file everytime we want to update our databse in Google Sheet. 
+- Garmin has its own API infrastructure that I want to leverage in this project to improve the machine learning model. Some of the data available for Garmin is: [VO2 Max](https://www.healthline.com/health/vo2-max) and Sleep data. 
 - gather more data 
-- ratios between variables
+- Create ratios between variables, like Calories burned per 10 minutes. 
 - workouts like bouldering are not being tracked 
 - strenght output is not being tracked 
 - Being able to share a dashboard so that other people cna use it
