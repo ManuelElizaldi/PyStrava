@@ -178,7 +178,8 @@ If you already have data in your Google Sheet and you just want to add new worko
 ------------------------------------------------------------------
 
 ## Analysis 
-I first started recording workouts in May 20, 2020 and as of May 9, 2023 I have recorded 687 workouts
+I first started recording workouts in May 20, 2020 and as of May 18, 2023 I have recorded 695 different activities. Here's a breakdown of my activities:
+
 
 ![ConfussionMatrix](/Images/ConfussionMatrix-white.png)
 ![WorkoutEffortCounter](/Images/WorkoutLevelOfEffortDistribution.png)
