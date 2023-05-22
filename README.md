@@ -22,6 +22,7 @@
 - [Goals](#goals)
 - [Technologies Used](#technologies-used)
 - [Project Setup](#project-setup)
+- [Areas of Improvement](#areas-of-improvement)
 
 ## Introduction & Project Desription
 
@@ -55,7 +56,8 @@ The data pipeline for this project looks like this:
 - matplotlib 3.3.2
 - Requests 2.28.2
 - Pygsheets 2.0.6
-- scikit-learn 1.2.2
+- Scikit-Learn 1.2.2
+- Gspread 5.7.2
 - Webbrowser
 ### Relevant Documentation
 - [Strava's API documentation](https://developers.strava.com/)
@@ -112,7 +114,7 @@ If these instructions were not clear I suggest you read through this page:
 - [Strava's API documentation](https://developers.strava.com/)
 
 ### Google Sheets API 
-In order to use the package Pygsheets to uplaod data to Google Drive from our python script, we first need to create a project in the [Google Developers Console](https://console.cloud.google.com/projectselector2/apis/dashboard?pli=1&supportedpurview=project&authuser=1). In the box labeled “Search for APIs and Services”, search for “Google Drive API” and enable it, then in the box labeled “Search for APIs and Services”, search for “Google Sheets API” and enable it. 
+In order to use the package Pygsheets to uplaod data to Google Drive and Gspread to download it from our python script, we first need to create a project in the [Google Developers Console](https://console.cloud.google.com/projectselector2/apis/dashboard?pli=1&supportedpurview=project&authuser=1). In the box labeled “Search for APIs and Services”, search for “Google Drive API” and enable it, then in the box labeled “Search for APIs and Services”, search for “Google Sheets API” and enable it. 
 
 After the API is enabled, we have to get a Google service account, which is an account intended for non-human users, i.e. our python script. These are the steps to getting a service account:
 
@@ -170,10 +172,14 @@ In order for the [PyStrava Script](https://github.com/ManuelElizaldi/PyStrava/bl
 If these tabs don't exist or are misspelled you will get an error.
 After running the script you should see all your data inside the file.
 
+### Updating your existing data
+If you already have data in your Google Sheet and you just want to add new workouts, you can run the [Update Google Sheet](https://github.com/ManuelElizaldi/PyStrava/blob/main/Update_GoogleSheet.py). This will add any new workouts.
+
 ------------------------------------------------------------------
 
 ## Analysis 
-I first started recording workouts in May 20, 2020 and as of May 9, 2023 I have recorded 687 workouts
+I first started recording workouts in May 20, 2020 and as of May 18, 2023 I have recorded 695 different activities. Here's a breakdown of my activities:
+
 
 ![ConfussionMatrix](/Images/ConfussionMatrix-white.png)
 ![WorkoutEffortCounter](/Images/WorkoutLevelOfEffortDistribution.png)
@@ -181,12 +187,14 @@ I first started recording workouts in May 20, 2020 and as of May 9, 2023 I have 
 ![TypesOfSportsByEffort](/Images/WorkoutLevelOfEffortBySportType.png)
 
 ## Dashboard
+[Looker Dashboard](https://lookerstudio.google.com/reporting/c8efd23d-4f39-42d1-a336-26aebac76fa5)
 
 ## Areas Of Improvement
-- Real time stats
-- Merge with garmin data for more variables - more precise model
-- gather more data 
-- ratios between variables
-- workouts like bouldering are not being tracked 
-- strenght output is not being tracked 
-- Being able to share a dashboard so that other people cna use it
+These are some features I plan to implement over time. 
+- Implement real time reporting so that we don't have to run the Update_GoogleSheet.py file everytime we want to update our database in Google Sheet. 
+- Garmin has its own API infrastructure that I want to leverage in this project to improve the machine learning model. Some of the data available that I am intrested in implementing is: [VO2 Max](https://www.healthline.com/health/vo2-max) and Sleep data. 
+- Strava offers a premium membership that offers more workout statistics, I am also intrested in implementing some of that into this project. 
+- Improve the effort score model by creating ratios between variables, for example: calories burned every 10 minutes during a workout. 
+- Find a way to track activities like bouldering or Soccer. 
+- Likewise, strenght output is not being tracked, this could add another dimension of information to the machine learning model.
+- I need to gather more data, so the more workouts I do, the better the model works.
