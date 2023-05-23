@@ -193,9 +193,12 @@ I first started recording workouts in May 20, 2020 and as of May 18, 2023 I have
 If you want to use this dashboard as a template for your own analysis, follow these steps. 
 1. Open the [Dashboard](https://lookerstudio.google.com/reporting/c8efd23d-4f39-42d1-a336-26aebac76fa5), and on the  ⋮  button, click "Make a copy".
 2. Click on Create a Data Source 
+
 ![Copy This Report Window](/Images/CopyThisReport.png)
+
 4. Click Google Sheets from the Google Connectors and select the Google Sheet you created for this project
-![Google Connectors](/Images/GoogleConnector.png)
+
+After these steps are done, you should have a copy of dashboard inside your Google Looker. 
 
 ## Areas Of Improvement
 These are some features I plan to implement over time. 
