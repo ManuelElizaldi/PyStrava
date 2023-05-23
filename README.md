@@ -196,9 +196,9 @@ If you want to use this dashboard as a template for your own analysis, follow th
 
 ![Copy This Report Window](/Images/CopyThisReport.png)
 
-4. Click Google Sheets from the Google Connectors and select the Google Sheet you created for this project
+4. Click Google Sheets from the Google Connectors and select the Google Sheet you created for this project.
 
-After these steps are done, you should have a copy of dashboard inside your Google Looker. 
+After these steps are done, you will have a copy of this dashboard inside your Google Looker. 
 
 ## Areas Of Improvement
 These are some features I plan to implement over time. 
