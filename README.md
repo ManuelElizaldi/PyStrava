@@ -207,7 +207,8 @@ These are some features I plan to implement over time.
 - Garmin has its own API infrastructure that I want to leverage in this project to improve the machine learning model. Some of the data available that I am intrested in implementing is: [VO2 Max](https://www.healthline.com/health/vo2-max) and Sleep data. 
 - Create a dashboard for individual workout statistics. For example, analyze cadence and other metrics that are currently not covered in this project.
 - Strava offers a premium membership that offers more workout statistics, I am also intrested in implementing some of that into this project. 
-- Improve the effort score model by creating ratios between variables, for example: calories burned every 10 minutes during a workout. 
+- Improve the effort score model by creating ratios between variables, for example: calories burned every 10 minutes during a workout. \
+- With these new metrics build a performance score, similar to the effort score. 
 - Find a way to track activities like bouldering or Soccer. 
 - Likewise, strenght output is not being tracked, this could add another dimension of information to the machine learning model.
 - I need to gather more data, so the more workouts I do, the better the model works.
