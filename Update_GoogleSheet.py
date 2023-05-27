@@ -70,6 +70,7 @@ missing_workouts_df = CreateScoreColumns(missing_workouts_df)
 all_workouts_df_updated = pd.concat([all_workouts_df, missing_workouts_df])
 
 # Sorting by date
+all_workouts_df_updated['start_date'] = pd.to_datetime(all_workouts_df_updated['start_date'])
 all_workouts_df_updated = all_workouts_df_updated.sort_values(by=['start_date'], ascending=False)
 
 # Creating additional tables
