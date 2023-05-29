@@ -190,6 +190,9 @@ Weight training secures the third position with 30 logged sessions. While weight
 
 Bike riding and swimming rank fourth and fifth, respectively. However, with my current objective of participating in a triathlon, I am determined to increase my activity count in these sports.
 
+### Descriptive Statistics
+Here are some of 
+
 ![ConfussionMatrix](/Images/ConfussionMatrix-white.png)
 ![WorkoutEffortCounter](/Images/WorkoutLevelOfEffortDistribution.png)
 
