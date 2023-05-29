@@ -178,12 +178,22 @@ If you already have data in your Google Sheet and you just want to add new worko
 ------------------------------------------------------------------
 
 ## Analysis 
-I first started recording workouts in May 20, 2020 and as of May 18, 2023 I have recorded 695 different activities. Here's a breakdown of my activities:
+I started recording my workouts on May 20, 2020, and as of May 18, 2023, I have logged 695 different activities, encompassing various sports. Here is a breakdown of my activities:
 
+![TypesOfSports](/Images/SportCount.png)
+
+As we can see, the activity I have performed the most is Functional-Cardio Workout, with 512 sessions. This activity includes kettlebell training, dynamic stretching, calisthenics, and weight lifting. The reason I have prioritized this activity is because I have a home gym, which makes it more convenient. 
+Running is the second most frequently performed activity with 73 workouts. However, I plan on giving more attention to running in the future, due to upcoming races.
+Weight Training, comes in tird place with 30 logged sessions. This type of sports used to be one of my main sports but now I am more focused on [aerobic](https://www.healthline.com/health/fitness-exercise/aerobic-exercise-examples#:~:text=It%20can%20include%20activities%20like,lungs%2C%20and%20circulatory%20system%20healthy) excercises.
+Bike riding and swimming rank fourth and fifth, respectively. However, considering my current objective of participating in a triathlon, I intend to increase my activity log in these sports.
 
 ![ConfussionMatrix](/Images/ConfussionMatrix-white.png)
 ![WorkoutEffortCounter](/Images/WorkoutLevelOfEffortDistribution.png)
-![TypesOfSports](/Images/SportCount.png)
+
+### Level of Effort 
+#### How it works: 
+
+
 ![TypesOfSportsByEffort](/Images/WorkoutLevelOfEffortBySportType.png)
 
 ## Dashboard
