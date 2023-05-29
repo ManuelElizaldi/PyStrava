@@ -232,13 +232,12 @@ After these steps are done, you will have a copy of this dashboard inside your G
 
 ## Areas Of Improvement
 These are some features I plan to implement over time. 
-- Implement real time reporting so that we don't have to run the Update_GoogleSheet.py file everytime we want to update our database in Google Sheet. 
-- Create a feature that runs the Update_GoogleSheet.py file every week.
-- Garmin has its own API infrastructure that I want to leverage in this project to improve the machine learning model. Some of the data available that I am intrested in implementing is: [VO2 Max](https://www.healthline.com/health/vo2-max) and Sleep data. 
-- Create a dashboard for individual workout statistics. For example, analyze cadence and other metrics that are currently not covered in this project.
-- Strava offers a premium membership that offers more workout statistics, I am also intrested in implementing some of that into this project. 
-- Improve the effort score model by creating ratios between variables, for example: calories burned every 10 minutes during a workout. \
-- With these new metrics build a performance score, similar to the effort score. 
-- Find a way to track activities like bouldering or Soccer. 
-- Likewise, strenght output is not being tracked, this could add another dimension of information to the machine learning model.
-- I need to gather more data, so the more workouts I do, the better the model works.
+- To streamline the database updating process, it is essential to implement real-time reporting, eliminating the need to run the Update_GoogleSheet.py file manually every time we want to update our Google Sheet database. 
+- In order to ensure regular updates, a feature should be created to automatically execute the Update_GoogleSheet.py file on a weekly basis.
+- To enhance the machine learning model, I plan to leverage Garmin's API infrastructure, which provides valuable data such as [VO2 Max](https://www.healthline.com/health/vo2-max) and Sleep data.
+- A key addition to this project would be the creation of a dashboard specifically designed for individual workout statistics. This would involve analyzing metrics like cadence and other aspects that are not currently covered.
+- Considering the additional workout statistics available through Strava's premium membership, it would be beneficial to implement some of these features into the project. 
+- The effort score model can be further improved by creating ratios between variables, such as calories burned per 10 minutes during a workout. This can contribute to the development of a performance score, similar to the effort score.
+- Exploring ways to track activities like bouldering, rugby or soccer is crucial to expand the scope of the project.
+- Furthermore, the inclusion of tracking strength output would provide an additional dimension of information for the machine learning model.
+- To enhance the model's effectiveness, gathering more data is essential. Therefore, increasing the number of workouts performed will greatly improve the model's performance.
