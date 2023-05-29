@@ -212,6 +212,9 @@ Please note that biking includes road biking and mountain biking.
 #### Overall:
 ![General Stats](/Images/GeneralStats.png)
 
+#### Relationship Between Average Heart Rate and Distance
+![](/Images/Running-DistanceAvgHeartRate.png)
+
 ### Level of Effort 
 #### How it works: 
 
