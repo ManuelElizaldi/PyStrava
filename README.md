@@ -22,6 +22,10 @@
 - [Goals](#goals)
 - [Technologies Used](#technologies-used)
 - [Project Setup](#project-setup)
+    - [Strava API Access](#strava---api-access)
+    - [Google API Access](#google-sheets-api)
+    - [How to Use](#how-to-use)
+    - [Updating Your Data](#updating-your-existing-data) 
 - [Analysis](#analysis)
     - test  
 - [Areas of Improvement](#areas-of-improvement)
