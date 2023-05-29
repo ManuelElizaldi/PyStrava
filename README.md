@@ -199,24 +199,26 @@ Bike riding and swimming rank fourth and fifth, respectively. However, with my c
 As mentioned earlier, my primary focus revolves around functional training, running, swimming, and biking. Therefore, I would like to provide some descriptive statistics for these activities. However, please note that I need to log more swimming activities before I can create a comprehensive dashboard for it.
 
 #### Functional Workouts:
-![](/Images/FunctionalStats.png)
+![Functional Stats](/Images/FunctionalStats.png)
 
 #### Running:
 Please note that running includes running and trail running activities. 
-![](/Images/RunningStats.png)
+![Running Stats](/Images/RunningStats.png)
 
 #### Biking:
 Please note that biking includes road biking and mountain biking.
-![](/Images/BikingStats.png)
+![Biking Stats](/Images/BikingStats.png)
 
 #### Overall:
-![](/Images/GeneralStats.png)
-
-![ConfussionMatrix](/Images/ConfussionMatrix-white.png)
-![WorkoutEffortCounter](/Images/WorkoutLevelOfEffortDistribution.png)
+![General Stats](/Images/GeneralStats.png)
 
 ### Level of Effort 
 #### How it works: 
+
+
+
+![ConfussionMatrix](/Images/ConfussionMatrix-white.png)
+![WorkoutEffortCounter](/Images/WorkoutLevelOfEffortDistribution.png)
 
 
 ![TypesOfSportsByEffort](/Images/WorkoutLevelOfEffortBySportType.png)
