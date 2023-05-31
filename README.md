@@ -187,13 +187,13 @@ If you already have data in your Google Sheet and you just want to add new worko
 The graphs and statistics you will see in this section were created in the [Google Looker Dashboard](https://lookerstudio.google.com/reporting/c8efd23d-4f39-42d1-a336-26aebac76fa5). Feel free to explore my data.
 
 ## Sports Type Breakdown
-I started recording my workouts on May 20, 2020, and as of May 18, 2023, I have logged 695 different activities, encompassing various sports. Here is a breakdown of my activities:
+I started recording my workouts on May 20, 2020, and as of May 26, 2023, I have logged 703 different activities, encompassing various sports. Here is a breakdown of my activities:
 
 ![TypesOfSports](/Images/SportCount.png)
 
-Among my recorded activities, Functional-Cardio Workout stands out as the most frequently performed, with 512 sessions. This activity involves kettlebell training, dynamic stretching, calisthenics, and weight lifting. The reason behind my prioritization of this activity is the convenience of having a home gym.
+Among my recorded activities, Functional-Cardio Workout stands out as the most frequently performed, with 516 sessions. This activity involves kettlebell training, dynamic stretching, calisthenics, and weight lifting. The reason behind my prioritization of this activity is the convenience of having a home gym.
 
-Following Functional-Cardio Workout, running takes second place with 73 workouts. Looking ahead, I plan to dedicate more attention to running and trail running due to upcoming races on my schedule.
+Following Functional-Cardio Workout, running takes second place with 76 workouts. Looking ahead, I plan to dedicate more attention to running and trail running due to upcoming races on my schedule.
 
 Weight training secures the third position with 30 logged sessions. While weight training used to be one of my primary focuses, I have now shifted my focus towards [aerobic exercises](https://www.healthline.com/health/fitness-exercise/aerobic-exercise-examples#:~:text=It%20can%20include%20activities%20like,lungs%2C%20and%20circulatory%20system%20healthy).
 
