@@ -193,9 +193,13 @@ If you want to use this dashboard as a template for your own analysis, follow th
 
 ![Copy This Report Window](/Images/CopyThisReport.png)
 
-4. Click Google Sheets from the Google Connectors and select the Google Sheet you created for this project.
+3. Click on "Google Sheets" in the Google Connectors menu and select the Google Sheet you created for this project. Then, connect it to the dashboard.
+4. If you are going to use the start_lat, start_long, end_lat and end_long columns, make sure you change their data type to Longitude, Latitude
 
-After these steps are done, you will have a copy of this dashboard inside your Google Looker. 
+![longitude-latitude](/Images/lat_long.png)
+
+
+After these steps are done, click "Add to Report" on the top right corner and you will have a copy of this dashboard inside your Google Looker. 
 
 ## Sports Type Breakdown
 I started recording my workouts on May 20, 2020, and as of May 18, 2023, I have logged 695 different activities, encompassing various sports. Here is a breakdown of my activities:
