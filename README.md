@@ -187,13 +187,13 @@ If you already have data in your Google Sheet and you just want to add new worko
 The graphs and statistics you will see in this section were created in the [Google Looker Dashboard](https://lookerstudio.google.com/reporting/c8efd23d-4f39-42d1-a336-26aebac76fa5). Feel free to explore my data.
 
 ## Sports Type Breakdown
-I started recording my workouts on May 20, 2020, and as of May 18, 2023, I have logged 695 different activities, encompassing various sports. Here is a breakdown of my activities:
+I started recording my workouts on May 20, 2020, and as of May 26, 2023, I have logged 703 different activities, encompassing various sports. Here is a breakdown of my activities:
 
 ![TypesOfSports](/Images/SportCount.png)
 
-Among my recorded activities, Functional-Cardio Workout stands out as the most frequently performed, with 512 sessions. This activity involves kettlebell training, dynamic stretching, calisthenics, and weight lifting. The reason behind my prioritization of this activity is the convenience of having a home gym.
+Among my recorded activities, Functional-Cardio Workout stands out as the most frequently performed, with 516 sessions. This activity involves kettlebell training, dynamic stretching, calisthenics, and weight lifting. The reason behind my prioritization of this activity is the convenience of having a home gym.
 
-Following Functional-Cardio Workout, running takes second place with 73 workouts. Looking ahead, I plan to dedicate more attention to running and trail running due to upcoming races on my schedule.
+Following Functional-Cardio Workout, running takes second place with 76 workouts. Looking ahead, I plan to dedicate more attention to running and trail running due to upcoming races on my schedule.
 
 Weight training secures the third position with 30 logged sessions. While weight training used to be one of my primary focuses, I have now shifted my focus towards [aerobic exercises](https://www.healthline.com/health/fitness-exercise/aerobic-exercise-examples#:~:text=It%20can%20include%20activities%20like,lungs%2C%20and%20circulatory%20system%20healthy).
 
@@ -216,6 +216,12 @@ Please note that biking includes road biking and mountain biking.
 ### Overall:
 These statistics cover all the sports types referenced in the [Sports Type Subsection](#sport-type-breakdown)
 ![General Stats](/Images/GeneralStats.png)
+
+### Some of the important conclusions from these statistics are:
+- Running is the activity where I burn the most calories and have the highest average heart rate.
+- Functional workouts and running result in the highest maximum heart rate.
+- Biking workouts account for a greater average time spent.
+- Currently, my running pace is 8.7 km/h, knowing this, I will aim to increase it to 9 km/h.
 
 ### Relationship Between Average Heart Rate and Distance
 For my running workouts, I adhere to the philosophy of "run slow to run fast." Essentially, this approach entails running at a slow pace for 80% of the time and incorporating fast runs for the remaining 20%. How does this translate into specific numbers? Well, during my runs, I ensure that my heart rate does not exceed 155 beats per minute. This helps me stay within the aerobic zone, allowing my body to efficiently utilize oxygen. By following this technique, I am able to avoid the accumulation of hydrogen ions (commonly referred to as lactic acid) and can comfortably sustain my runs for a longer duration.
