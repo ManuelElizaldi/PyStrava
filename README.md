@@ -32,7 +32,7 @@
     - [Descriptive Statistics](#descriptive-statistics) 
 - [Areas of Improvement](#areas-of-improvement)
 
-## Introduction & Project Desription
+# Introduction & Project Desription
 
 Back in 2020, during the pandemic, I promised myself to prioritize my physical health. To achieve this, I wanted to use technology. By maintaining a digital record of all my workouts, I compelled myself to stay disciplined and on track. I have been using my Garmin smartwatch and the Strava app to log all my activities. Since embarking on this journey, I have witnessed progress in my physical health, abilities, and mental well-being. I have accomplished goals that once seemed impossible, and I have gained self-belief, realizing that I am far more capable than I thought. Initially, running 10km was a struggle, but now I have completed Austin's Half Marathon, a 10km Spartan Race, and I have plans to participate in an Ultra Marathon (50km) in July 2023. Additionally, I am registered for Austin's 2024 Marathon.
 
@@ -40,7 +40,7 @@ Leveraging my programming and data analysis skills, I aim to explore other ways 
 
 Regarding the Machine Learning aspect of the project, I will utilize my workout data to train a Multi Label Classification Model that categorizes the level of effort for each activity.
 
-## Goals
+# Goals
 1. Build a python script that extracts all my workout data from Strava.
 2. Clean and prepare data to be uploaded to Google Drive.
 3. Build a dashboard containing workout metrics in Google Looker.
@@ -191,7 +191,7 @@ If you want to use this dashboard as a template for your own analysis, follow th
 1. Open the [Dashboard](https://lookerstudio.google.com/reporting/c8efd23d-4f39-42d1-a336-26aebac76fa5), and on the  ⋮  button, click "Make a copy".
 2. Click on Create a Data Source
 
-### Sport Type Breakdown
+### Sports Type Breakdown
 I started recording my workouts on May 20, 2020, and as of May 18, 2023, I have logged 695 different activities, encompassing various sports. Here is a breakdown of my activities:
 
 ![TypesOfSports](/Images/SportCount.png)
