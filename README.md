@@ -217,6 +217,12 @@ Please note that biking includes road biking and mountain biking.
 These statistics cover all the sports types referenced in the [Sports Type Subsection](#sport-type-breakdown)
 ![General Stats](/Images/GeneralStats.png)
 
+### Some of the important conclusions from these statistics are:
+Running is the activity where I burn the most calories and have the highest average heart rate.
+Functional workouts and running result in the highest maximum heart rate.
+Biking workouts account for a greater average time spent.
+Currently, my running pace is 8.7 km/h, knowing this, I will aim to increase it to 9 km/h.
+
 ### Relationship Between Average Heart Rate and Distance
 For my running workouts, I adhere to the philosophy of "run slow to run fast." Essentially, this approach entails running at a slow pace for 80% of the time and incorporating fast runs for the remaining 20%. How does this translate into specific numbers? Well, during my runs, I ensure that my heart rate does not exceed 155 beats per minute. This helps me stay within the aerobic zone, allowing my body to efficiently utilize oxygen. By following this technique, I am able to avoid the accumulation of hydrogen ions (commonly referred to as lactic acid) and can comfortably sustain my runs for a longer duration.
 
