@@ -186,21 +186,6 @@ If you already have data in your Google Sheet and you just want to add new worko
 # Analysis & Dashboard
 The graphs and statistics you will see in this section were created in the [Google Looker Dashboard](https://lookerstudio.google.com/reporting/c8efd23d-4f39-42d1-a336-26aebac76fa5). Feel free to explore my data.
 
-## Copy This Dashboard Template 
-If you want to use this dashboard as a template for your own analysis, follow these steps. 
-1. Open the [Dashboard](https://lookerstudio.google.com/reporting/c8efd23d-4f39-42d1-a336-26aebac76fa5), and on the  ⋮  button in the top right corner, then click "Make a copy".
-2. In the New Data Source section, click on "Create a Data Source".
-
-![Copy This Report Window](/Images/CopyThisReport.png)
-
-3. Click on "Google Sheets" in the Google Connectors menu and select the Google Sheet you created for this project. Then, connect it to the dashboard.
-4. If you are going to use the start_lat, start_long, end_lat and end_long columns, make sure you change their data type to Longitude, Latitude
-
-![longitude-latitude](/Images/lat_long.png)
-
-
-After these steps are done, click "Add to Report" on the top right corner and you will have a copy of this dashboard inside your Google Looker. 
-
 ## Sports Type Breakdown
 I started recording my workouts on May 20, 2020, and as of May 18, 2023, I have logged 695 different activities, encompassing various sports. Here is a breakdown of my activities:
 
@@ -217,23 +202,41 @@ Bike riding and swimming rank fourth and fifth, respectively. However, with my c
 ## Descriptive Statistics
 As mentioned earlier, my primary focus revolves around functional training, running, swimming, and biking. Therefore, I would like to provide some descriptive statistics for these activities. However, please note that I need to log more swimming activities before I can create a comprehensive dashboard for it. 
 
-#### Functional Workouts:
+### Functional Workouts:
 ![Functional Stats](/Images/FunctionalStats.png)
 
-#### Running:
+### Running:
 Please note that running includes running and trail running activities. 
 ![Running Stats](/Images/RunningStats.png)
 
-#### Biking:
+### Biking:
 Please note that biking includes road biking and mountain biking.
 ![Biking Stats](/Images/BikingStats.png)
 
-#### Overall:
+### Overall:
 These statistics cover all the sports types referenced in the [Sports Type Subsection](#sport-type-breakdown)
 ![General Stats](/Images/GeneralStats.png)
 
-#### Relationship Between Average Heart Rate and Distance
-![](/Images/Running-DistanceAvgHeartRate.png)
+### Relationship Between Average Heart Rate and Distance
+For my running workouts, I adhere to the philosophy of "run slow to run fast." Essentially, this approach entails running at a slow pace for 80% of the time and incorporating fast runs for the remaining 20%. How does this translate into specific numbers? Well, during my runs, I ensure that my heart rate does not exceed 155 beats per minute. This helps me stay within the aerobic zone, allowing my body to efficiently utilize oxygen. By following this technique, I am able to avoid the accumulation of hydrogen ions (commonly referred to as lactic acid) and can comfortably sustain my runs for a longer duration.
+
+![Running_HeartRate_Distance_Relationship](/Images/Running-DistanceAvgHeartRate.png)
+
+In this graph, we can observe that the majority of my running workouts fall within the average heart rate range of 145 to 160, this range is good, although I have to be careful not to go over 155 beats per minute. 
+
+## Copy This Dashboard Template 
+If you want to use this dashboard as a template for your own analysis, follow these steps. 
+1. Open the [Dashboard](https://lookerstudio.google.com/reporting/c8efd23d-4f39-42d1-a336-26aebac76fa5), and on the  ⋮  button in the top right corner, then click "Make a copy".
+2. In the New Data Source section, click on "Create a Data Source".
+
+![Copy This Report Window](/Images/CopyThisReport.png)
+
+3. Click on "Google Sheets" in the Google Connectors menu and select the Google Sheet you created for this project. Then, connect it to the dashboard.
+4. If you are going to use the start_lat, start_long, end_lat and end_long columns, make sure you change their data type to Longitude, Latitude
+
+![longitude-latitude](/Images/lat_long.png)
+
+After these steps are done, click "Add to Report" on the top right corner and you will have a copy of this dashboard inside your Google Looker. 
 
 ### Level of Effort 
 #### How it works: 
@@ -242,8 +245,6 @@ These statistics cover all the sports types referenced in the [Sports Type Subse
 
 ![ConfussionMatrix](/Images/ConfussionMatrix-white.png)
 ![WorkoutEffortCounter](/Images/WorkoutLevelOfEffortDistribution.png)
-
-
 ![TypesOfSportsByEffort](/Images/WorkoutLevelOfEffortBySportType.png)
  
 
