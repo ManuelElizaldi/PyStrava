@@ -26,7 +26,9 @@
     - [Google API Access](#google-sheets-api)
     - [How to Use](#how-to-use)
     - [Updating Your Data](#updating-your-existing-data) 
-- [Analysis & Dashboard](##analysis--dashboard)
+- [Analysis & Dashboard](#analysis--dashboard)
+    - [Sports Type Breakdown](#sport-type-breakdown)
+    - []() 
     - [Descriptive Statistics](#descriptive-statistics) 
 - [Areas of Improvement](#areas-of-improvement)
 
@@ -181,7 +183,7 @@ After running the script you should see all your data inside the file.
 ### Updating your existing data
 If you already have data in your Google Sheet and you just want to add new workouts, you can run the [Update Google Sheet](https://github.com/ManuelElizaldi/PyStrava/blob/main/Update_GoogleSheet.py). This will add any new workouts.
 
-## Analysis & Dashboard
+# Analysis & Dashboard
 The graphs and statistics you will see in this section were created in the [Google Looker Dashboard](https://lookerstudio.google.com/reporting/c8efd23d-4f39-42d1-a336-26aebac76fa5). Feel free to explore my data.
 
 ### Copy this dashboard template 
