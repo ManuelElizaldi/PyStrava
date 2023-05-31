@@ -26,7 +26,7 @@
     - [Google API Access](#google-sheets-api)
     - [How to Use](#how-to-use)
     - [Updating Your Data](#updating-your-existing-data) 
-- [Analysis](#analysis)
+- [Analysis & Dashboard](#analysis-)
     - [Descriptive Statistics](#descriptive-statistics) 
 - [Areas of Improvement](#areas-of-improvement)
 
@@ -183,7 +183,7 @@ If you already have data in your Google Sheet and you just want to add new worko
 
 ------------------------------------------------------------------
 
-## Analysis 
+## Analysis & Dashboard
 I started recording my workouts on May 20, 2020, and as of May 18, 2023, I have logged 695 different activities, encompassing various sports. Here is a breakdown of my activities:
 
 ![TypesOfSports](/Images/SportCount.png)
@@ -197,7 +197,7 @@ Weight training secures the third position with 30 logged sessions. While weight
 Bike riding and swimming rank fourth and fifth, respectively. However, with my current objective of participating in a triathlon, I am determined to increase my activity count in these sports.
 
 ### Descriptive Statistics
-As mentioned earlier, my primary focus revolves around functional training, running, swimming, and biking. Therefore, I would like to provide some descriptive statistics for these activities. However, please note that I need to log more swimming activities before I can create a comprehensive dashboard for it.
+As mentioned earlier, my primary focus revolves around functional training, running, swimming, and biking. Therefore, I would like to provide some descriptive statistics for these activities. However, please note that I need to log more swimming activities before I can create a comprehensive dashboard for it. 
 
 #### Functional Workouts:
 ![Functional Stats](/Images/FunctionalStats.png)
@@ -226,9 +226,6 @@ Please note that biking includes road biking and mountain biking.
 
 
 ![TypesOfSportsByEffort](/Images/WorkoutLevelOfEffortBySportType.png)
-
-## Dashboard
-[Looker Dashboard](https://lookerstudio.google.com/reporting/c8efd23d-4f39-42d1-a336-26aebac76fa5)
 
 ### Copy this dashboard template 
 If you want to use this dashboard as a template for your own analysis, follow these steps. 
