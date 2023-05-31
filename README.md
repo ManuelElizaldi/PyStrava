@@ -26,7 +26,7 @@
     - [Google API Access](#google-sheets-api)
     - [How to Use](#how-to-use)
     - [Updating Your Data](#updating-your-existing-data) 
-- [Analysis & Dashboard](#analysis-)
+- [Analysis & Dashboard](##analysis--dashboard)
     - [Descriptive Statistics](#descriptive-statistics) 
 - [Areas of Improvement](#areas-of-improvement)
 
@@ -181,14 +181,20 @@ After running the script you should see all your data inside the file.
 ### Updating your existing data
 If you already have data in your Google Sheet and you just want to add new workouts, you can run the [Update Google Sheet](https://github.com/ManuelElizaldi/PyStrava/blob/main/Update_GoogleSheet.py). This will add any new workouts.
 
-------------------------------------------------------------------
-
 ## Analysis & Dashboard
+The graphs and statistics you will see in this section were created in the [Google Looker Dashboard](https://lookerstudio.google.com/reporting/c8efd23d-4f39-42d1-a336-26aebac76fa5). Feel free to explore my data.
+
+### Copy this dashboard template 
+If you want to use this dashboard as a template for your own analysis, follow these steps. 
+1. Open the [Dashboard](https://lookerstudio.google.com/reporting/c8efd23d-4f39-42d1-a336-26aebac76fa5), and on the  ⋮  button, click "Make a copy".
+2. Click on Create a Data Source
+
+### Sport Type Breakdown
 I started recording my workouts on May 20, 2020, and as of May 18, 2023, I have logged 695 different activities, encompassing various sports. Here is a breakdown of my activities:
 
 ![TypesOfSports](/Images/SportCount.png)
 
-Among my recorded activities, Functional-Cardio Workout stands out as the most frequently performed, with 512 sessions. This comprehensive activity involves kettlebell training, dynamic stretching, calisthenics, and weight lifting. The reason behind my prioritization of this activity is the convenience of having a home gym.
+Among my recorded activities, Functional-Cardio Workout stands out as the most frequently performed, with 512 sessions. This activity involves kettlebell training, dynamic stretching, calisthenics, and weight lifting. The reason behind my prioritization of this activity is the convenience of having a home gym.
 
 Following Functional-Cardio Workout, running takes second place with 73 workouts. Looking ahead, I plan to dedicate more attention to running and trail running due to upcoming races on my schedule.
 
@@ -211,6 +217,7 @@ Please note that biking includes road biking and mountain biking.
 ![Biking Stats](/Images/BikingStats.png)
 
 #### Overall:
+These statistics cover all the sports types referenced in the [Sports Type Subsection](#sport-type-breakdown)
 ![General Stats](/Images/GeneralStats.png)
 
 #### Relationship Between Average Heart Rate and Distance
@@ -226,11 +233,7 @@ Please note that biking includes road biking and mountain biking.
 
 
 ![TypesOfSportsByEffort](/Images/WorkoutLevelOfEffortBySportType.png)
-
-### Copy this dashboard template 
-If you want to use this dashboard as a template for your own analysis, follow these steps. 
-1. Open the [Dashboard](https://lookerstudio.google.com/reporting/c8efd23d-4f39-42d1-a336-26aebac76fa5), and on the  ⋮  button, click "Make a copy".
-2. Click on Create a Data Source 
+ 
 
 ![Copy This Report Window](/Images/CopyThisReport.png)
 
