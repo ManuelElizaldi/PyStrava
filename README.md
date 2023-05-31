@@ -28,7 +28,7 @@
     - [Updating Your Data](#updating-your-existing-data) 
 - [Analysis & Dashboard](#analysis--dashboard)
     - [Sports Type Breakdown](#sport-type-breakdown)
-    - []() 
+    - [Copy This Dashboard Template](#copy-this-dashboard-template) 
     - [Descriptive Statistics](#descriptive-statistics) 
 - [Areas of Improvement](#areas-of-improvement)
 
@@ -53,12 +53,12 @@ Regarding the Machine Learning aspect of the project, I will utilize my workout 
 The data pipeline for this project looks like this:
 ![DataPipeline](/Images/DataPipeline.png)
 
-## Technologies Used
-### Programming Language
+# Technologies Used
+## Programming Language
 - Python 3.8.5
-### Dashboard
+## Dashboard
 - Google Looker Studio
-### Packages
+## Packages
 - Pandas 1.1.3
 - numpy 1.22.4
 - matplotlib 3.3.2
@@ -67,16 +67,16 @@ The data pipeline for this project looks like this:
 - Scikit-Learn 1.2.2
 - Gspread 5.7.2
 - Webbrowser
-### Relevant Documentation
+## Relevant Documentation
 - [Strava's API documentation](https://developers.strava.com/)
 - [Pygsheets](https://pygsheets.readthedocs.io/en/stable/)
 - [Requests](https://requests.readthedocs.io/en/latest/)
 - [Gspread Authentication](https://docs.gspread.org/en/latest/oauth2.html#enable-api-access)
 
-## Project Setup
+# Project Setup
 Before you can use the [PyStrava Notebook](https://github.com/ManuelElizaldi/PyStrava/blob/main/PyStrava_Notebook.ipynb) or the [PyStrava Script](https://github.com/ManuelElizaldi/PyStrava/blob/main/PyStrava.py) you need to follow these instructions: 
 
-### Strava - API access
+## Strava - API Access
 Before we can start using Strava's API we first need to complete a couple of steps to gain access:
 
 1. If you haven't already, create an account in [Strava](https://www.strava.com/)
@@ -121,7 +121,7 @@ This dictionary holds the required credentials to run any Strava API.
 If these instructions were not clear I suggest you read through this page: 
 - [Strava's API documentation](https://developers.strava.com/)
 
-### Google Sheets API 
+## Google Sheets API 
 In order to use the package Pygsheets to uplaod data to Google Drive and Gspread to download it from our python script, we first need to create a project in the [Google Developers Console](https://console.cloud.google.com/projectselector2/apis/dashboard?pli=1&supportedpurview=project&authuser=1). In the box labeled “Search for APIs and Services”, search for “Google Drive API” and enable it, then in the box labeled “Search for APIs and Services”, search for “Google Sheets API” and enable it. 
 
 After the API is enabled, we have to get a Google service account, which is an account intended for non-human users, i.e. our python script. These are the steps to getting a service account:
@@ -170,7 +170,7 @@ After all this steps are done, now you can run the [PyStrava Notebook](https://g
 If these instructions were not clear I suggest you read through this article: 
 - [Gspread Authentication](https://docs.gspread.org/en/latest/oauth2.html#enable-api-access)
 
-### How to use
+## How to Use
 In order for the [PyStrava Script](https://github.com/ManuelElizaldi/PyStrava/blob/main/PyStrava.py) to work, we need to make sure we create 3 tabs inside the Google Sheet file that will hold our data. If you don't want to modify the script, make sure you create the following tabs with the same syntax:
 
 - All_Workouts_Table
@@ -180,18 +180,18 @@ In order for the [PyStrava Script](https://github.com/ManuelElizaldi/PyStrava/bl
 If these tabs don't exist or are misspelled you will get an error.
 After running the script you should see all your data inside the file.
 
-### Updating your existing data
+## Updating Your Existing Data
 If you already have data in your Google Sheet and you just want to add new workouts, you can run the [Update Google Sheet](https://github.com/ManuelElizaldi/PyStrava/blob/main/Update_GoogleSheet.py). This will add any new workouts.
 
 # Analysis & Dashboard
 The graphs and statistics you will see in this section were created in the [Google Looker Dashboard](https://lookerstudio.google.com/reporting/c8efd23d-4f39-42d1-a336-26aebac76fa5). Feel free to explore my data.
 
-### Copy this dashboard template 
+## Copy This Dashboard Template 
 If you want to use this dashboard as a template for your own analysis, follow these steps. 
 1. Open the [Dashboard](https://lookerstudio.google.com/reporting/c8efd23d-4f39-42d1-a336-26aebac76fa5), and on the  ⋮  button, click "Make a copy".
 2. Click on Create a Data Source
 
-### Sports Type Breakdown
+## Sports Type Breakdown
 I started recording my workouts on May 20, 2020, and as of May 18, 2023, I have logged 695 different activities, encompassing various sports. Here is a breakdown of my activities:
 
 ![TypesOfSports](/Images/SportCount.png)
@@ -204,7 +204,7 @@ Weight training secures the third position with 30 logged sessions. While weight
 
 Bike riding and swimming rank fourth and fifth, respectively. However, with my current objective of participating in a triathlon, I am determined to increase my activity count in these sports.
 
-### Descriptive Statistics
+## Descriptive Statistics
 As mentioned earlier, my primary focus revolves around functional training, running, swimming, and biking. Therefore, I would like to provide some descriptive statistics for these activities. However, please note that I need to log more swimming activities before I can create a comprehensive dashboard for it. 
 
 #### Functional Workouts:
