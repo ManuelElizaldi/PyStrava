@@ -222,7 +222,7 @@ For my running workouts, I adhere to the philosophy of "run slow to run fast." E
 
 ![Running_HeartRate_Distance_Relationship](/Images/Running-DistanceAvgHeartRate.png)
 
-In this graph, we can observe that the majority of my running workouts fall within the average heart rate range of 145 to 160, this range is good, although I have to be careful not to go over 155 beats per minute. 
+In this graph, we can observe that the majority of my running workouts fall within the average heart rate range of 145 to 160, this range is good, although I have to be careful not to go over 155 beats per minute. If you are intrested in reading more about the "run slow to run fast" philosophy, you can read this [article](https://marathonhandbook.com/run-slow-to-run-fast/)
 
 ## Copy This Dashboard Template 
 If you want to use this dashboard as a template for your own analysis, follow these steps. 
