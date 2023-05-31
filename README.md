@@ -27,6 +27,7 @@
     - [How to Use](#how-to-use)
     - [Updating Your Data](#updating-your-existing-data) 
 - [Analysis](#analysis)
+    - [Descriptive Statistics](#descriptive-statistics) 
 - [Areas of Improvement](#areas-of-improvement)
 
 ## Introduction & Project Desription
