@@ -253,21 +253,20 @@ If you want to use this dashboard as a template for your own analysis, follow th
 After these steps are done, click "Add to Report" on the top right corner and you will have a copy of this dashboard inside your Google Looker. 
 
 ## Level of Effort Score
-#### How it works: 
+#### How its calculated: 
 The effort score is calculated based on the minimum, maximum, and quartiles of each variable. We assign points based on the range in which a value falls. For instance, let's consider the average heart rate variable. We assume that higher average heart rates indicate greater effort in the workout, so we establish the following point ranges:
 
-1 - 100: 5 points
-100 - 130: 10 points
-130 - 145: 15 points
-145 - 155: 20 points
-155 - 165: 30 points
-165 - 170: 35 points
-Above 170: 40 points
-
+- 1 - 100: 5 points
+- 100 - 130: 10 points
+- 130 - 145: 15 points
+- 145 - 155: 20 points
+- 155 - 165: 30 points
+- 165 - 170: 35 points
+- Above 170: 40 points
 
 ![Average Heart Rate Box Plot](/Images/AverageHeartRateBoxPlot.png)
 
-
+The Level of Effort is calculated based on my data, meaning, I assign values based on the percieved effort of each variable and my personal experience. For example, I know that runs above 12 km start to requeire more effort. Here's how the distance effort variable is calculated. Note, that distance in a bike does not requiere as much effort as running, so we also account for that in the model.
 
 
 ## Machine Learning Model
