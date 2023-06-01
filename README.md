@@ -228,15 +228,15 @@ For my running workouts, I adhere to the philosophy of "run slow to run fast." E
 
 ![Running_HeartRate_Distance_Relationship](/Images/Running-DistanceAvgHeartRate.png)
 
+In this graph, we can observe that the majority of my running workouts fall within the average heart rate range of 145 to 160, this range is good, although I have to be careful not to go over 155 beats per minute. If you are intrested in reading more about the "run slow to run fast" philosophy, you can read this [article](https://marathonhandbook.com/run-slow-to-run-fast/).
+
 ### Monthly Average Laps for Functional Training
-For my Functional Training, basically I am doing a circuit composed of 4-6 exercises with a minimum of 3 rounds per session. These rounds need to be completed in the least amount of time. This way we ensure that we reach the [anaerobic zone](https://www.physio-pedia.com/Anaerobic_Exercise#:~:text=Anaerobic%20exercise%20is%20any%20activity,short%20length%20with%20high%20intensity.), meaning short but intense workouts. these could be kettle bell swings, squats, pull ups, overhear press, jumping, sprinting, rope jumping or my favorite, burpees. 
+For my Functional Training, I follow a specific approach. I design a circuit comprising 4-6 exercises in each round and aim to complete a minimum of 3 rounds in each session. The primary focus is on finishing the rounds in the shortest amount of time possible. This training methodology is geared towards pushing myself into the [anaerobic zone](https://www.physio-pedia.com/Anaerobic_Exercise#:~:text=Anaerobic%20exercise%20is%20any%20activity,short%20length%20with%20high%20intensity.), where the workouts are short but intense. The exercises included in the circuit can vary, encompassing movements such as kettlebell swings, kettle bell snatches, squats, pull-ups, overhead presses, jumping exercises, sprints, rope jumping, weighted stretches and one of my personal favorites, burpees. By incorporating these dynamic exercises into my Functional Training, I can challenge my body and achieve optimal results.
 
 ![Average Monthly Laps for Functional Training](/Images/FunctionalTrainingLaps.png)
 
+This graph displays the average number of rounds per month. 
 The average time per lap is 8.08 minutes.
-
-
-In this graph, we can observe that the majority of my running workouts fall within the average heart rate range of 145 to 160, this range is good, although I have to be careful not to go over 155 beats per minute. If you are intrested in reading more about the "run slow to run fast" philosophy, you can read this [article](https://marathonhandbook.com/run-slow-to-run-fast/).
 
 ## Copy This Dashboard Template 
 If you want to use this dashboard as a template for your own analysis, follow these steps. 
