@@ -30,6 +30,7 @@
     - [Sports Type Breakdown](#sports-type-breakdown)
     - [Copy This Dashboard Template](#copy-this-dashboard-template) 
     - [Descriptive Statistics](#descriptive-statistics) 
+    - [Level of Effort Score](#level-of-effort-score)
 - [Areas of Improvement](#areas-of-improvement)
 
 # Introduction & Project Desription
@@ -235,8 +236,7 @@ For my Functional Training, I follow a specific approach. I design a circuit com
 
 ![Average Monthly Laps for Functional Training](/Images/FunctionalTrainingLaps.png)
 
-This graph displays the average number of rounds per month. 
-The average time per lap is 8.08 minutes.
+This graph illustrates the average number of rounds completed per month. Notably, October 2021 stands out as the month with the highest average number of laps, reaching 8.8. One significant observation is the upward trend in rounds per month, indicating an improvement in my fitness over time. Starting from September 2021, I have consistently surpassed the minimum threshold that I set for myself. Although there was a temporary decline in September 2022, my performance swiftly rebounded. This data highlights the progress I have made and underscores my dedication to maintaining a consistent level of physical activity.
 
 ## Copy This Dashboard Template 
 If you want to use this dashboard as a template for your own analysis, follow these steps. 
@@ -252,11 +252,24 @@ If you want to use this dashboard as a template for your own analysis, follow th
 
 After these steps are done, click "Add to Report" on the top right corner and you will have a copy of this dashboard inside your Google Looker. 
 
-### Level of Effort 
-#### How it works: 
+## Level of Effort Score
+#### How its calculated: 
+The effort score is calculated based on the minimum, maximum, and quartiles of each variable. We assign points based on the range in which a value falls. For instance, let's consider the average heart rate variable. We assume that higher average heart rates indicate greater effort in the workout, so we establish the following point ranges:
+
+- 1 - 100: 5 points
+- 100 - 130: 10 points
+- 130 - 145: 15 points
+- 145 - 155: 20 points
+- 155 - 165: 30 points
+- 165 - 170: 35 points
+- Above 170: 40 points
+
+![Average Heart Rate Box Plot](/Images/AverageHeartRateBoxPlot.png)
+
+The Level of Effort is calculated based on my data, meaning, I assign values based on the percieved effort of each variable and my personal experience. For example, I know that runs above 12 km start to requeire more effort. Here's how the distance effort variable is calculated. Note, that distance in a bike does not requiere as much effort as running, so we also account for that in the model.
 
 
-
+## Machine Learning Model
 ![ConfussionMatrix](/Images/ConfussionMatrix-white.png)
 ![WorkoutEffortCounter](/Images/WorkoutLevelOfEffortDistribution.png)
 ![TypesOfSportsByEffort](/Images/WorkoutLevelOfEffortBySportType.png)
@@ -271,7 +284,7 @@ These are some features I plan to implement over time.
 - To enhance the machine learning model, I plan to leverage Garmin's API infrastructure, which provides valuable data such as [VO2 Max](https://www.healthline.com/health/vo2-max) and Sleep data.
 - A key addition to this project would be the creation of a dashboard specifically designed for individual workout statistics. This would involve analyzing metrics like cadence and other aspects that are not currently covered.
 - Considering the additional workout statistics available through Strava's premium membership, it would be beneficial to implement some of these features into the project. 
-- The effort score model can be further improved by creating ratios between variables, such as calories burned per 10 minutes during a workout. This can contribute to the development of a performance score, similar to the effort score.
+- model can be further improved by creating ratios between variables, such as calories burned per 10 minutes during a workout. This can contribute to the development of a performance score, similar to the effort score.
 - Exploring ways to track activities like bouldering, rugby or soccer is crucial to expand the scope of the project.
 - Furthermore, the inclusion of tracking strength output would provide an additional dimension of information for the machine learning model.
 - To enhance the model's effectiveness, gathering more data is essential. Therefore, increasing the number of workouts performed will greatly improve the model's performance.
