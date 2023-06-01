@@ -229,8 +229,12 @@ For my running workouts, I adhere to the philosophy of "run slow to run fast." E
 ![Running_HeartRate_Distance_Relationship](/Images/Running-DistanceAvgHeartRate.png)
 
 ### Monthly Average Laps for Functional Training
+For my Functional Training, basically I am doing a circuit composed of 4-6 exercises with a minimum of 3 rounds per session. These rounds need to be completed in the least amount of time. This way we ensure that we reach the [anaerobic zone](https://www.physio-pedia.com/Anaerobic_Exercise#:~:text=Anaerobic%20exercise%20is%20any%20activity,short%20length%20with%20high%20intensity.), meaning short but intense workouts. these could be kettle bell swings, squats, pull ups, overhear press, jumping, sprinting, rope jumping or my favorite, burpees. 
 
 ![Average Monthly Laps for Functional Training](/Images/FunctionalTrainingLaps.png)
+
+The average time per lap is 8.08 minutes.
+
 
 In this graph, we can observe that the majority of my running workouts fall within the average heart rate range of 145 to 160, this range is good, although I have to be careful not to go over 155 beats per minute. If you are intrested in reading more about the "run slow to run fast" philosophy, you can read this [article](https://marathonhandbook.com/run-slow-to-run-fast/).
 
