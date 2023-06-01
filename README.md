@@ -8,7 +8,7 @@
 
 <h3 align="center">
   <br>
-  :star: Star this project on GitHub — it motivates me a lot and you will stay up to date on the project!
+  :star: Star this project on GitHub — I plan on incorporating new features overtime! 
   <br>
   <br>
   <img src="https://img.shields.io/github/repo-size/ManuelElizaldi/PyStrava"/>
