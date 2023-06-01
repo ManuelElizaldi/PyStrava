@@ -254,7 +254,11 @@ After these steps are done, click "Add to Report" on the top right corner and yo
 
 ## Level of Effort Score
 #### How its calculated: 
-The effort score is calculated based on the minimum, maximum, and quartiles of each variable. We assign points based on the range in which a value falls. For instance, let's consider the average heart rate variable. We assume that higher average heart rates indicate greater effort in the workout, so we establish the following point ranges:
+The effort score is calculated based on the minimum, maximum, and quartiles of each variable. We assign points based on the range in which a value falls. These points are determined based on perceived effort and drawing from my personal experience. For instance, I am aware that runs exceeding 12 km begin to require more effort, so those will rank higher in the effort score. It is important to note that the model also considers the distinction between biking and running distances, as the effort required for biking is generally lower compared to running. By incorporating these factors into the model, we can accurately assess the level of effort associated with different activities and provide a deeper understanding of the effort level. 
+
+ For instance, let's consider the average heart rate variable. We know that higher average heart rates indicate greater effort in the workout, so we establish the following point ranges:
+
+![Average Heart Rate Box Plot](/Images/AverageHeartRateBoxPlot.png)
 
 - 1 - 100: 5 points
 - 100 - 130: 10 points
@@ -264,10 +268,9 @@ The effort score is calculated based on the minimum, maximum, and quartiles of e
 - 165 - 170: 35 points
 - Above 170: 40 points
 
-![Average Heart Rate Box Plot](/Images/AverageHeartRateBoxPlot.png)
+Here is another example for the distance variable considering the differences between running and biking.
 
-The Level of Effort is calculated based on my data, meaning, I assign values based on the percieved effort of each variable and my personal experience. For example, I know that runs above 12 km start to requeire more effort. Here's how the distance effort variable is calculated. Note, that distance in a bike does not requiere as much effort as running, so we also account for that in the model.
-
+![Distance Box Plot](/Images/RunningBikingBoxPlot.png)
 
 ## Machine Learning Model
 ![ConfussionMatrix](/Images/ConfussionMatrix-white.png)
@@ -279,6 +282,7 @@ The Level of Effort is calculated based on my data, meaning, I assign values bas
 
 ## Areas Of Improvement
 These are some features I plan to implement over time. 
+- Develop an Effort model that enables individuals to calculate their level of effort for each workout. It will be applicable to anyone, providing a tool for assessing effort and facilitating personal improvement.
 - To streamline the database updating process, it is essential to implement real-time reporting, eliminating the need to run the Update_GoogleSheet.py file manually every time we want to update our Google Sheet database. 
 - In order to ensure regular updates, a feature should be created to automatically execute the Update_GoogleSheet.py file on a weekly basis.
 - To enhance the machine learning model, I plan to leverage Garmin's API infrastructure, which provides valuable data such as [VO2 Max](https://www.healthline.com/health/vo2-max) and Sleep data.
