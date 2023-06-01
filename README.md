@@ -235,8 +235,7 @@ For my Functional Training, I follow a specific approach. I design a circuit com
 
 ![Average Monthly Laps for Functional Training](/Images/FunctionalTrainingLaps.png)
 
-This graph displays the average number of rounds per month. 
-The average time per lap is 8.08 minutes.
+This graph illustrates the average number of rounds completed per month. Notably, October 2021 stands out as the month with the highest average number of laps, reaching 8.8. One significant observation is the upward trend in rounds per month, indicating an improvement in my fitness over time. Starting from September 2021, I have consistently surpassed the minimum threshold that I set for myself. Although there was a temporary decline in September 2022, my performance swiftly rebounded. This data highlights the progress I have made and underscores my dedication to maintaining a consistent level of physical activity.
 
 ## Copy This Dashboard Template 
 If you want to use this dashboard as a template for your own analysis, follow these steps. 
