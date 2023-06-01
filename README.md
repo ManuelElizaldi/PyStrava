@@ -275,7 +275,7 @@ Here is another example for the distance variable considering the differences be
 ## Machine Learning Model
 ![ConfussionMatrix](/Images/ConfussionMatrix-white.png)
 ![WorkoutEffortCounter](/Images/WorkoutLevelOfEffortDistribution.png)
-![TypesOfSportsByEffort](/Images/WorkoutLevelOfEffortBySportType.png)
+![TypesOfSportsByEffort](/Images/WorkoutLevelOfEffortBySportType-.png)
  
 
 
