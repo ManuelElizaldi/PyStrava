@@ -254,7 +254,7 @@ After these steps are done, click "Add to Report" on the top right corner and yo
 
 ## Level of Effort Score
 #### How its calculated: 
-The effort score is calculated based on the minimum, maximum, and quartiles of each variable. We assign points based on the range in which a value falls. These points are determined based on perceived effort and drawing from my personal experience. For instance, I am aware that runs exceeding 12 km begin to require more effort, so those will rank higher in the effort score. It is important to note that the model also considers the distinction between biking and running distances, as the effort required for biking is generally lower compared to running. By incorporating these factors into the model, we can accurately assess the level of effort associated with different activities and provide a deeper understanding of the effort level. 
+To calculate the effort score, we first create bins where the ranges are determined by the minimum, maximum, and quartiles of each variable. We then assign points based on the range in which a values fall. These points are determined based on perceived effort and drawing from my personal experience. 
 
  For instance, let's consider the average heart rate variable. We know that higher average heart rates indicate greater effort in the workout, so we establish the following point ranges:
 
@@ -268,7 +268,9 @@ The effort score is calculated based on the minimum, maximum, and quartiles of e
 - 165 - 170: 35 points
 - Above 170: 40 points
 
-Here is another example for the distance variable considering the differences between running and biking.
+So, if my average heart rate during a workout was 155, 30 points will be assigned for this variable. 
+
+In the case of the distance variable, it is important to make a distinction between sports. For instance, biking generally requires less effort compared to running. Therefore, we have trained the model to effectively differentiate between different sports. By incorporating these considerations into the model, we can accurately assess the effort level associated with various activities, resulting in a deeper understanding of the overall effort required. Taking into account the specific demands and characteristics of each sport we can get a better picture of the overall effort involved.
 
 ![Distance Box Plot](/Images/RunningBikingBoxPlot.png)
 
