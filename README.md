@@ -289,10 +289,6 @@ After assigning each workout with its corresponding level of effort, we can anal
 
 ![TypesOfSportsByEffort](/Images/WorkoutLevelOfEffortBySportType-.png)
 
-![WorkoutEffortCounter](/Images/WorkoutLevelOfEffortDistribution.png)
-
-
-
 ## Effort Classification: Categorizing Workouts with K-Nearest Neighbor Algorithm
 ![ConfussionMatrix](/Images/ConfussionMatrix-white.png)
 
