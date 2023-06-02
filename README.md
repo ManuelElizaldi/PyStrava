@@ -30,7 +30,7 @@
     - [Sports Type Breakdown](#sports-type-breakdown)
     - [Copy This Dashboard Template](#copy-this-dashboard-template) 
     - [Descriptive Statistics](#descriptive-statistics) 
-    - [Level of Effort Score](#level-of-effort-score)
+    - [Level of Effort Score & Machine Learning Model](#level-of-effort-score)
 - [Areas of Improvement](#areas-of-improvement)
 
 # Introduction & Project Desription
@@ -252,7 +252,7 @@ If you want to use this dashboard as a template for your own analysis, follow th
 
 After these steps are done, click "Add to Report" on the top right corner and you will have a copy of this dashboard inside your Google Looker. 
 
-## Level of Effort Score
+## Level of Effort Score & Machine Learning Model
 #### How its calculated: 
 To calculate the effort score, we first create bins where the ranges are determined by the minimum, maximum, and quartiles of each variable. We then assign points based on the range in which a values fall. These points are determined based on perceived effort and drawing from my personal experience. 
 
