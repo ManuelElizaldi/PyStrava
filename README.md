@@ -33,6 +33,7 @@
 - [Level of Effort Score & Machine Learning Model](#level-of-effort-score--machine-learning-model)
     - [How its Calculated](#how-its-calculated)
     - [Effort Analysis](#effort-analysis)
+    - [](Effort Classification: Categorizing Workouts with K-Nearest Neighbor Algorithm)
 - [Areas of Improvement](#areas-of-improvement)
 
 # Introduction & Project Desription
@@ -254,7 +255,7 @@ If you want to use this dashboard as a template for your own analysis, follow th
 
 After these steps are done, click "Add to Report" on the top right corner and you will have a copy of this dashboard inside your Google Looker. 
 
-## Level of Effort Score & Machine Learning Model
+## Level of Effort Score & Categorizing Workouts with K-Nearest Neighbor Algorithm
 ## How Its Calculated: 
 To calculate the effort score, we first create bins where the ranges are determined by the minimum, maximum, and quartiles of each variable. We then assign points based on the range in which a values fall. These points are determined based on perceived effort and drawing from my personal experience. 
 
@@ -292,7 +293,7 @@ After assigning each workout with its corresponding level of effort, we can anal
 
 
 
-## Effort Classification: Categorizing Workouts using K-Nearest Neighbor Algorithm
+## Effort Classification: Categorizing Workouts with K-Nearest Neighbor Algorithm
 ![ConfussionMatrix](/Images/ConfussionMatrix-white.png)
 
  
