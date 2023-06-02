@@ -32,6 +32,7 @@
     - [Descriptive Statistics](#descriptive-statistics) 
 - [Level of Effort Score & Machine Learning Model](#level-of-effort-score--machine-learning-model)
     - [How its Calculated](#how-its-calculated)
+    - [Effort Analysis](#effort-analysis)
 - [Areas of Improvement](#areas-of-improvement)
 
 # Introduction & Project Desription
