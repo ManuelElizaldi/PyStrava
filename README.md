@@ -276,8 +276,17 @@ In the case of the distance variable, it is important to make a distinction betw
 ![Distance Box Plot](/Images/RunningBikingBoxPlot.png)
 
 ## Effort Analysis
-![WorkoutEffortCounter](/Images/WorkoutLevelOfEffortDistribution.png)
+After assigning each workout with its corresponding level of effort, we can analyze the breakdown count for each sport type. Based on this analysis, I have made several observations:
+- Functional training, contrary to my initial assumption, appears to be a medium effort workout rather than high effort.
+- The majority of my runs are categorized as high effort.
+- Biking shows a relatively balanced distribution across high, medium, and low effort levels.
+- Surprisingly, hiking turned out to be a high effort activity, which makes sense considering factors such as elevation gain, time spent, distance covered, and calories burned. It turns out that walking can be an effective way to burn calories.
+- Yoga, despite being categorized as requiring no effort in the current model, is an area of opportunity. From personal experience, I find yoga to be an activity that demands considerable effort. In the future, I would like to find a way to incorporate this insight into the model.
+- Mountain biking is as a highly effective activity for pushing myself, with the majority of workouts falling into the high or medium effort categories.
 ![TypesOfSportsByEffort](/Images/WorkoutLevelOfEffortBySportType-.png)
+
+![WorkoutEffortCounter](/Images/WorkoutLevelOfEffortDistribution.png)
+
 
 
 ## Model
