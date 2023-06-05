@@ -31,7 +31,7 @@
     - [Copy This Dashboard Template](#copy-this-dashboard-template) 
     - [Descriptive Statistics](#descriptive-statistics) 
 - [Level of Effort Score & Machine Learning Model](#level-of-effort-score--machine-learning-model)
-    - [How The Effort Score Is Calculated](#how-its-calculated)
+    - [How The Effort Score Is Calculated](#how-the-effort-score-is-calculated)
     - [Effort Analysis](#effort-analysis)
     - [Effort Classification: Categorizing Workouts with K-Nearest Neighbor Algorithm](#effort-classification-categorizing-workouts-with-k-nearest-neighbor-algorithm)
 - [Areas of Improvement](#areas-of-improvement)
