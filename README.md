@@ -257,7 +257,7 @@ After these steps are done, click "Add to Report" on the top right corner and yo
 
 # Level of Effort Score
 ## How The Effort Score Is Calculated
-To calculate the effort score, we first create bins where the ranges are determined by the minimum, maximum, and quartiles of each variable. We then assign points based on the range in which a values fall. These points are determined based on perceived effort and drawing from my personal experience. 
+To calculate the effort score, we begin by creating bins based on the minimum, maximum, quartiles, and outliers of each variable. Within these bins, we assign points depending on the range in which a value falls. These points are determined subjectively, drawing from personal experience and perceived effort.
 
  For instance, let's consider the average heart rate variable. We know that higher average heart rates indicate greater effort in the workout, so we establish the following point ranges:
 
@@ -271,11 +271,18 @@ To calculate the effort score, we first create bins where the ranges are determi
 - 165 - 170: 35 points
 - Above 170: 40 points
 
-So, if my average heart rate during a workout was 155, 30 points will be assigned for this variable. 
+For instance, if my average heart rate during a workout was 155, I would assign 30 points for that activity in a separate column. Each variable has its own column dedicated to storing the score for each workout in that particular variable.
 
-In the case of the distance variable, it is important to make a distinction between sports. For instance, biking generally requires less effort compared to running. Therefore, we have trained the model to effectively differentiate between different sports. By incorporating these considerations into the model, we can accurately assess the effort level associated with various activities, resulting in a deeper understanding of the overall effort required. Taking into account the specific demands and characteristics of each sport we can get a better picture of the overall effort involved.
+In the case of the distance variable, it is important to make a distinction between sports. For instance, biking generally requires less effort compared to running. Therefore, we have programmed the model to effectively differentiate between different sports. By incorporating these considerations into the model, we can accurately assess the effort level associated with various activities, resulting in a deeper understanding of the overall effort required. Taking into account the specific demands and characteristics of each sport we can get a better picture of the overall effort involved.
 
 ![Distance Box Plot](/Images/RunningBikingBoxPlot.png)
+
+After assigning a scoring system to each variable, we calculate the sum of each column and store it in the column labeled 'effort_score'. Here are the ranges to determine the level of effort:
+
+0 - 100: No Effort
+100 - 125: Low Effort
+125 - 150: Medium Effort
+150 or above: High Effort
 
 ## Effort Analysis
 After assigning each workout with its corresponding level of effort, we can analyze the breakdown count for each sport type. Based on this analysis, I have made several observations:
