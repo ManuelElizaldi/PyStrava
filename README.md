@@ -308,3 +308,4 @@ These are some features I plan to implement over time.
 - Exploring ways to track activities like bouldering, rugby or soccer is crucial to expand the scope of the project.
 - Furthermore, the inclusion of tracking strength output would provide an additional dimension of information for the machine learning model.
 - To enhance the model's effectiveness, gathering more data is essential. Therefore, increasing the number of workouts performed will greatly improve the model's performance.
+- Add a desktop shortcut that when clicked, runs the PyStrava.py script.
