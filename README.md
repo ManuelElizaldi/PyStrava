@@ -279,10 +279,10 @@ In the case of the distance variable, it is important to make a distinction betw
 
 After assigning a scoring system to each variable, we calculate the sum of each column and store it in the column labeled 'effort_score'. Here are the ranges to determine the level of effort:
 
-0 - 100: No Effort
-100 - 125: Low Effort
-125 - 150: Medium Effort
-150 or above: High Effort
+- 0 - 100: No Effort
+- 100 - 125: Low Effort
+- 125 - 150: Medium Effort
+- 150 or above: High Effort
 
 ## Effort Analysis
 After assigning each workout with its corresponding level of effort, we can analyze the breakdown count for each sport type. Based on this analysis, I have made several observations:
@@ -296,12 +296,8 @@ After assigning each workout with its corresponding level of effort, we can anal
 
 ![TypesOfSportsByEffort](/Images/WorkoutLevelOfEffortBySportType-.png)
 
-## Effort Classification: Categorizing Workouts with K-Nearest Neighbor Algorithm - (& Categorizing Workouts with K-Nearest Neighbor Algorithm)
+# Machine Learning Model: Categorizing Workouts with K-Nearest Neighbor Algorithm)
 ![ConfussionMatrix](/Images/ConfussionMatrix-white.png)
-
- 
-
-
 
 ## Areas Of Improvement
 These are some features I plan to implement over time. 
