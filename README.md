@@ -296,7 +296,7 @@ After assigning each workout with its corresponding level of effort, we can anal
 
 ![TypesOfSportsByEffort](/Images/WorkoutLevelOfEffortBySportType-.png)
 
-# Machine Learning Model: Categorizing Workouts with K-Nearest Neighbor Algorithm)
+# Machine Learning Model: Categorizing Workout Level of Effort with K-Nearest Neighbor Algorithm
 ![ConfussionMatrix](/Images/ConfussionMatrix-white.png)
 
 ## Areas Of Improvement
