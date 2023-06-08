@@ -301,8 +301,8 @@ After assigning each workout with its corresponding level of effort, we can anal
 I have chosen to use the K Nearest Neighbor (KNN) algorithm for this project. Here's a couple of reasons behind my decision:
 Firstly, our dataset consists of a relatively small number of records (703). KNN is known to work well with smaller datasets, making it a suitable choice for our scenario. Additionally, I have identified the presence of a few outliers within our data. These outliers can potentially introduce noise and affect the overall performance of our model. However, KNN is robust against the influence of outliers as it makes predictions based on similarity. By considering the neighbors in proximity to a given data point, KNN can mitigate the impact of outliers and provide more reliable predictions. Moreover, the nature of KNN allows it to identify groups or clusters within the data. If there happens to be a group of outliers that share similar characteristics or patterns, KNN is more likely to recognize and assign them to the appropriate label.
 
-
-![ConfussionMatrix](/Images/)
+## Model
+![ConfussionMatrix](/Images/Effort_Score_Variables_Model.png)
 
 ## Areas Of Improvement
 These are some features I plan to implement over time. 
