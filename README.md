@@ -298,6 +298,9 @@ After assigning each workout with its corresponding level of effort, we can anal
 
 ![TypesOfSportsByEffort](/Images/WorkoutLevelOfEffortBySportType-.png)
 
+The following graph shows the relationship between calories and average heart rate. As we can see 
+![Relationship between calories and average heart rate](/Images/RelationshipBetweenAvgHeartRateCalories.png)
+
 # Machine Learning Model: Categorizing Workout Level of Effort with K-Nearest Neighbor Algorithm
 ## Why K Nearest Neighbor
 I have chosen to use the K Nearest Neighbor (KNN) algorithm for this project. Here's a couple of reasons behind my decision:
@@ -314,20 +317,33 @@ This K Nearest Neighbors (KNN) model is designed for multi-label classification 
 - The precision score of 0.861 indicates the model's ability to correctly predict positive instances out of all instances predicted as positive.
 - The recall score of 0.858 reflects the model's ability to identify and capture positive instances accurately.
 
-### Consideration of data characteristics:
+### Consideration of data characteristics
 - This KNN model is robust to outliers present in the data. Outliers with the same label tend to be clustered together, making the model effective in capturing and classifying high effort and no effort workouts, which are the most common outlier instances.
-- Total amount of records: 703
-- 20% of the dataset was used for testing, while the remaining 80% was used for training
+- Total amount of records: 703.
+- 20% of the dataset was used for testing, while the remaining 80% was used for training.
 
 ### Confusion Matrix
 ![ConfussionMatrix](/Images/Effort_Score_Variables_Model.png)
 
+
+### Classification Report
+![Classification Report](/Images/ClassificationReport.png)
+
 ### Model strengths and weaknesses
-- 
+**Strenghts:**
+- The model demonstrates high accuracy in accurately labeling High and Medium effort workouts.
+- Overall, the model achieves an impressive accuracy rate of 86%, indicating its effectiveness in correctly classifying workout intensity levels.
 
-### Practical implications: 
-This model could be applied to a workout program, where you can let the model classify the level of intensity 
+**Weaknesses:**
+- The model may not be as accurate in labeling low and no effort workouts compared to medium and high intensity ones, as there are fewer instances of the former in the dataset.
+- As the dataset expands, it may be necessary to update or modify the model to maintain its effectiveness.
+- It is worth considering investing time in exploring alternative distance metrics, as they may yield improvements in the model's performance.
+- There is correlation between the Max Heart Rate and Average Heart Rate variables, as well as between the Max Speed and Average Speed variables. It might be necessary to evaluate and potentially drop some variables to avoid redundancy or multicollinearity in the dataset.
 
+### Practical applications
+- With this model you can build a workout program, where you can use it to classify the intensity level and determine the number of high, medium, low, and no effort workouts within a specific time period.
+- It helps you track your progress and ensures that you stay on track with your program. The model will provide insights on whether you are pushing yourself adequately.
+- Additionally, this model can be used to identify signs of overtraining, helping you maintain a balanced and healthy training regimen.
 
 ## Areas Of Improvement
 These are some features I plan to implement over time. 
