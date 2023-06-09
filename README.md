@@ -301,7 +301,22 @@ After assigning each workout with its corresponding level of effort, we can anal
 I have chosen to use the K Nearest Neighbor (KNN) algorithm for this project. Here's a couple of reasons behind my decision:
 Firstly, our dataset consists of a relatively small number of records (703). KNN is known to work well with smaller datasets, making it a suitable choice for our scenario. Additionally, I have identified the presence of a few outliers within our data. These outliers can potentially introduce noise and affect the overall performance of our model. However, KNN is robust against the influence of outliers as it makes predictions based on similarity. By considering the neighbors in proximity to a given data point, KNN can mitigate the impact of outliers and provide more reliable predictions. Moreover, the nature of KNN allows it to identify groups or clusters within the data. If there happens to be a group of outliers that share similar characteristics or patterns, KNN is more likely to recognize and assign them to the appropriate label.
 
-## Model
+##Model
+###  Model performance
+:Provide an overview of the model's performance and its accuracy in predicting the target variable. Include evaluation metrics such as accuracy, precision, recall, F1 score, or any other appropriate metrics used to assess the model's effectiveness.
+
+### Optimal value of K: 
+Discuss the process you followed to determine the optimal value of K. Describe the experiments or techniques used, such as cross-validation or grid search. Highlight the chosen value of K and explain why it was deemed the most suitable for your specific dataset and problem.
+
+### Consideration of data characteristics:
+Explain how you considered the characteristics of your dataset when selecting the K value. Discuss how the dataset size, feature space, presence of noise or outliers, or the nature of the problem influenced your decision.
+
+### Model strengths and weaknesses:
+Outline the strengths of the KNN model in your specific context. Discuss how it handled non-linear relationships, dealt with noisy data, or captured local patterns. Additionally, mention the limitations of KNN, such as its sensitivity to the choice of K and the computational cost as the dataset grows larger.
+
+### Practical implications: 
+Discuss the potential real-world applications of your KNN model and how it could be used to solve similar problems or make predictions in relevant domains. Highlight any insights or patterns discovered during the analysis that could be valuable for decision-making.
+
 ![ConfussionMatrix](/Images/Effort_Score_Variables_Model.png)
 
 ## Areas Of Improvement
