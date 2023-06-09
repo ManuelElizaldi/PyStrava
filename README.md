@@ -302,11 +302,19 @@ I have chosen to use the K Nearest Neighbor (KNN) algorithm for this project. He
 Firstly, our dataset consists of a relatively small number of records (703). KNN is known to work well with smaller datasets, making it a suitable choice for our scenario. Additionally, I have identified the presence of a few outliers within our data. These outliers can potentially introduce noise and affect the overall performance of our model. However, KNN is robust against the influence of outliers as it makes predictions based on similarity. By considering the neighbors in proximity to a given data point, KNN can mitigate the impact of outliers and provide more reliable predictions. Moreover, the nature of KNN allows it to identify groups or clusters within the data. If there happens to be a group of outliers that share similar characteristics or patterns, KNN is more likely to recognize and assign them to the appropriate label.
 
 ##Model
+This K Nearest Neighbors (KNN) model is designed for multi-label classification tasks. The labels in this model represent different effort levels: No Effort, Low Effort, Medium Effort, and High Effort. The model aims to predict the effort level of workouts based on the score columns we created for each variable/workotu metric.
+
 ###  Model performance
-:Provide an overview of the model's performance and its accuracy in predicting the target variable. Include evaluation metrics such as accuracy, precision, recall, F1 score, or any other appropriate metrics used to assess the model's effectiveness.
+- This KNN model is designed for multi-label classification, where the labels include "No effort," "Medium effort," "Low effort," and "High effort."
+- During the cross-validation test, the model's performance scores were found to be more consistent when using a K value of 7 compared to 5 or 23. This suggests that a K value of 7 provides more stable and reliable predictions across different subsets of the data.
+- Grid search, which systematically explored different hyperparameter settings, ranked K = 7 as the best choice for the model. This configuration achieved an impressive score of 0.96, outperforming K = 5 and K = 23.
+The model demonstrated a high level of accuracy, achieving 86% correctness in classifying instances.
+The F1 score, a combined measure of precision and recall, was calculated to be 0.858, indicating a good balance between precision and recall.
+- The precision score of 0.861 indicates the model's ability to correctly predict positive instances out of all instances predicted as positive.
+- The recall score of 0.858 reflects the model's ability to identify and capture positive instances accurately.
 
 ### Optimal value of K: 
-Discuss the process you followed to determine the optimal value of K. Describe the experiments or techniques used, such as cross-validation or grid search. Highlight the chosen value of K and explain why it was deemed the most suitable for your specific dataset and problem.
+During cross-validation testing, it was observed that the model's performance scores were more consistent when using a K value of 7 compared to 3, 5 or 23. This indicates that a lower K value of 7 provided more stable and reliable predictions across different subsets of the data.
 
 ### Consideration of data characteristics:
 Explain how you considered the characteristics of your dataset when selecting the K value. Discuss how the dataset size, feature space, presence of noise or outliers, or the nature of the problem influenced your decision.
