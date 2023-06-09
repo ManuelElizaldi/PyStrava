@@ -33,7 +33,9 @@
 - [Level of Effort Score](#level-of-effort-score)
     - [How The Effort Score Is Calculated](#how-the-effort-score-is-calculated)
     - [Effort Analysis](#effort-analysis)
-- [Machine Learning Model: Categorizing Workouts With K-Nearest Neighbor Algorithm](#machine-learning-model-categorizing-workouts-with-k-nearest-neighbor-algorithm) 
+- [Machine Learning Model: Categorizing Workouts With K-Nearest Neighbor Algorithm](#machine-learning-model-categorizing-workouts-with-k-nearest-neighbor-algorithm)
+    - [Why K Nearest Neighbor](#why-k-nearest-neighbor)
+    - [Model](#model) 
 - [Areas of Improvement](#areas-of-improvement)
 
 # Introduction & Project Desription
@@ -301,31 +303,31 @@ After assigning each workout with its corresponding level of effort, we can anal
 I have chosen to use the K Nearest Neighbor (KNN) algorithm for this project. Here's a couple of reasons behind my decision:
 Firstly, our dataset consists of a relatively small number of records (703). KNN is known to work well with smaller datasets, making it a suitable choice for our scenario. Additionally, I have identified the presence of a few outliers within our data. These outliers can potentially introduce noise and affect the overall performance of our model. However, KNN is robust against the influence of outliers as it makes predictions based on similarity. By considering the neighbors in proximity to a given data point, KNN can mitigate the impact of outliers and provide more reliable predictions. Moreover, the nature of KNN allows it to identify groups or clusters within the data. If there happens to be a group of outliers that share similar characteristics or patterns, KNN is more likely to recognize and assign them to the appropriate label.
 
-##Model
+## Model
 This K Nearest Neighbors (KNN) model is designed for multi-label classification tasks. The labels in this model represent different effort levels: No Effort, Low Effort, Medium Effort, and High Effort. The model aims to predict the effort level of workouts based on the score columns we created for each variable/workotu metric.
 
-###  Model performance
-- This KNN model is designed for multi-label classification, where the labels include "No effort," "Medium effort," "Low effort," and "High effort."
+###  Model performance and Optimal value of K
 - During the cross-validation test, the model's performance scores were found to be more consistent when using a K value of 7 compared to 5 or 23. This suggests that a K value of 7 provides more stable and reliable predictions across different subsets of the data.
-- Grid search, which systematically explored different hyperparameter settings, ranked K = 7 as the best choice for the model. This configuration achieved an impressive score of 0.96, outperforming K = 5 and K = 23.
-The model demonstrated a high level of accuracy, achieving 86% correctness in classifying instances.
-The F1 score, a combined measure of precision and recall, was calculated to be 0.858, indicating a good balance between precision and recall.
+- Grid search, which systematically explored different hyperparameter settings, ranked K = 7 as the best choice for the model. This configuration achieved a score of 0.96, outperforming K = 5 and K = 23.
+- The model demonstrated a good level of accuracy, achieving 86% correctness in classifying instances.
+- The F1 score, a combined measure of precision and recall, was calculated to be 0.858, indicating a good balance between precision and recall.
 - The precision score of 0.861 indicates the model's ability to correctly predict positive instances out of all instances predicted as positive.
 - The recall score of 0.858 reflects the model's ability to identify and capture positive instances accurately.
 
-### Optimal value of K: 
-During cross-validation testing, it was observed that the model's performance scores were more consistent when using a K value of 7 compared to 3, 5 or 23. This indicates that a lower K value of 7 provided more stable and reliable predictions across different subsets of the data.
-
 ### Consideration of data characteristics:
-Explain how you considered the characteristics of your dataset when selecting the K value. Discuss how the dataset size, feature space, presence of noise or outliers, or the nature of the problem influenced your decision.
+- This KNN model is robust to outliers present in the data. Outliers with the same label tend to be clustered together, making the model effective in capturing and classifying high effort and no effort workouts, which are the most common outlier instances.
+- Total amount of records: 703
+- 20% of the dataset was used for testing, while the remaining 80% was used for training
 
-### Model strengths and weaknesses:
-Outline the strengths of the KNN model in your specific context. Discuss how it handled non-linear relationships, dealt with noisy data, or captured local patterns. Additionally, mention the limitations of KNN, such as its sensitivity to the choice of K and the computational cost as the dataset grows larger.
+### Confusion Matrix
+![ConfussionMatrix](/Images/Effort_Score_Variables_Model.png)
+
+### Model strengths and weaknesses
+- 
 
 ### Practical implications: 
-Discuss the potential real-world applications of your KNN model and how it could be used to solve similar problems or make predictions in relevant domains. Highlight any insights or patterns discovered during the analysis that could be valuable for decision-making.
+This model could be applied to a workout program, where you can let the model classify the level of intensity 
 
-![ConfussionMatrix](/Images/Effort_Score_Variables_Model.png)
 
 ## Areas Of Improvement
 These are some features I plan to implement over time. 
