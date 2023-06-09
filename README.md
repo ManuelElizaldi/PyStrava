@@ -323,11 +323,11 @@ This K Nearest Neighbors (KNN) model is designed for multi-label classification 
 ![ConfussionMatrix](/Images/Effort_Score_Variables_Model.png)
 
 ### Model strengths and weaknesses
-Strenghts:
+**Strenghts:**
 - The model demonstrates high accuracy in accurately labeling High and Medium effort workouts.
 - Overall, the model achieves an impressive accuracy rate of 86%, indicating its effectiveness in correctly classifying workout intensity levels.
 
-Weaknesses:
+**Weaknesses:**
 - The model may not be as accurate in labeling low and no effort workouts compared to medium and high intensity ones, as there are fewer instances of the former in the dataset.
 - As the dataset expands, it may be necessary to update or modify the model to maintain its effectiveness.
 - It is worth considering investing time in exploring alternative distance metrics, as they may yield improvements in the model's performance.
