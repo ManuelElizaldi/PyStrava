@@ -298,6 +298,9 @@ After assigning each workout with its corresponding level of effort, we can anal
 
 ![TypesOfSportsByEffort](/Images/WorkoutLevelOfEffortBySportType-.png)
 
+The following graph shows the relationship between calories and average heart rate. As we can see 
+![Relationship between calories and average heart rate](/Images/RelationshipBetweenAvgHeartRateCalories.png)
+
 # Machine Learning Model: Categorizing Workout Level of Effort with K-Nearest Neighbor Algorithm
 ## Why K Nearest Neighbor
 I have chosen to use the K Nearest Neighbor (KNN) algorithm for this project. Here's a couple of reasons behind my decision:
@@ -321,6 +324,10 @@ This K Nearest Neighbors (KNN) model is designed for multi-label classification 
 
 ### Confusion Matrix
 ![ConfussionMatrix](/Images/Effort_Score_Variables_Model.png)
+
+
+### Classification Report
+![Classification Report](/Images/ClassificationReport.png)
 
 ### Model strengths and weaknesses
 **Strenghts:**
