@@ -334,7 +334,7 @@ This K Nearest Neighbors (KNN) model is designed for multi-label classification 
 - There is correlation between the Max Heart Rate and Average Heart Rate variables, as well as between the Max Speed and Average Speed variables. It might be necessary to evaluate and potentially drop some variables to avoid redundancy or multicollinearity in the dataset.
 
 ### Practical applications
-- This model can be applied to a workout program, where you can use it to classify the intensity level and determine the number of high, medium, low, and no effort workouts within a specific time period.
+- With this model you can build a workout program, where you can use it to classify the intensity level and determine the number of high, medium, low, and no effort workouts within a specific time period.
 - It helps you track your progress and ensures that you stay on track with your program. The model will provide insights on whether you are pushing yourself adequately.
 - Additionally, this model can be used to identify signs of overtraining, helping you maintain a balanced and healthy training regimen.
 
