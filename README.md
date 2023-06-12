@@ -79,7 +79,7 @@ The data pipeline for this project looks like this:
 - [Requests](https://requests.readthedocs.io/en/latest/)
 - [Gspread Authentication](https://docs.gspread.org/en/latest/oauth2.html#enable-api-access)
 
-# Project Setup
+# How To Use This Project
 Before you can use the [PyStrava Notebook](https://github.com/ManuelElizaldi/PyStrava/blob/main/PyStrava_Notebook.ipynb) or the [PyStrava Script](https://github.com/ManuelElizaldi/PyStrava/blob/main/PyStrava.py) you need to follow these instructions: 
 
 ## Strava - API Access
