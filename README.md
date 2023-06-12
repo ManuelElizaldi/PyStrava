@@ -21,7 +21,7 @@
 - [Introduction & Project Desription](#introduction--project-desription)
 - [Goals](#goals)
 - [Technologies Used](#technologies-used)
-- [Project Setup](#project-setup)
+- [How To Use This Project](#how-to-use-this-project)
     - [Strava API Access](#strava---api-access)
     - [Google API Access](#google-sheets-api)
     - [How to Use](#how-to-use)
