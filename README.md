@@ -21,11 +21,6 @@
 - [Introduction & Project Desription](#introduction--project-desription)
 - [Goals](#goals)
 - [Technologies Used](#technologies-used)
-- [How To Use This Project](#how-to-use-this-project)
-    - [Strava API Access](#strava---api-access)
-    - [Google API Access](#google-sheets-api)
-    - [How to Use](#how-to-use)
-    - [Updating Your Data](#updating-your-existing-data) 
 - [Analysis & Dashboard](#analysis--dashboard)
     - [Sports Type Breakdown](#sports-type-breakdown)
     - [Copy This Dashboard Template](#copy-this-dashboard-template) 
@@ -36,6 +31,11 @@
 - [Machine Learning Model: Categorizing Workouts With K-Nearest Neighbor Algorithm](#machine-learning-model-categorizing-workouts-with-k-nearest-neighbor-algorithm)
     - [Why K Nearest Neighbor](#why-k-nearest-neighbor)
     - [Model](#model) 
+- [How To Use This Project](#how-to-use-this-project)
+    - [Strava API Access](#strava---api-access)
+    - [Google API Access](#google-sheets-api)
+    - [How to Use](#how-to-use)
+    - [Updating Your Data](#updating-your-existing-data) 
 - [Areas of Improvement](#areas-of-improvement)
 
 # Introduction & Project Desription
@@ -78,6 +78,162 @@ The data pipeline for this project looks like this:
 - [Pygsheets](https://pygsheets.readthedocs.io/en/stable/)
 - [Requests](https://requests.readthedocs.io/en/latest/)
 - [Gspread Authentication](https://docs.gspread.org/en/latest/oauth2.html#enable-api-access)
+
+# Analysis & Dashboard
+The graphs and statistics you will see in this section were created in the [Google Looker Dashboard](https://lookerstudio.google.com/reporting/c8efd23d-4f39-42d1-a336-26aebac76fa5). Feel free to explore my data.
+
+## Sports Type Breakdown
+I started recording my workouts on May 20, 2020, and as of May 26, 2023, I have logged 703 different activities, encompassing various sports. Here is a breakdown of my activities:
+
+![TypesOfSports](/Images/SportCount.png)
+
+Among my recorded activities, Functional-Cardio Workout stands out as the most frequently performed, with 516 sessions. This activity involves kettlebell training, dynamic stretching, calisthenics, and weight lifting. The reason behind my prioritization of this activity is the convenience of having a home gym.
+
+Following Functional-Cardio Workout, running takes second place with 76 workouts. Looking ahead, I plan to dedicate more attention to running and trail running due to upcoming races on my schedule.
+
+Weight training secures the third position with 30 logged sessions. While weight training used to be one of my primary focuses, I have now shifted my focus towards [aerobic exercises](https://www.healthline.com/health/fitness-exercise/aerobic-exercise-examples#:~:text=It%20can%20include%20activities%20like,lungs%2C%20and%20circulatory%20system%20healthy).
+
+Bike riding and swimming rank fourth and fifth, respectively. However, with my current objective of participating in a triathlon, I am determined to increase my activity count in these sports.
+
+## Descriptive Statistics
+As mentioned earlier, my primary focus revolves around functional training, running, swimming, and biking. Therefore, I would like to provide some descriptive statistics for these activities. However, please note that I need to log more swimming activities before I can create a comprehensive dashboard for it. 
+
+### Functional Workouts:
+![Functional Stats](/Images/FunctionalStats.png)
+
+### Running:
+Please note that running includes running and trail running activities. 
+![Running Stats](/Images/RunningStats.png)
+
+### Biking:
+Please note that biking includes road biking and mountain biking.
+![Biking Stats](/Images/BikingStats.png)
+
+### Overall:
+These statistics cover all the sports types referenced in the [Sports Type Subsection](#sport-type-breakdown)
+![General Stats](/Images/GeneralStats.png)
+
+### Some of the important conclusions from these statistics are:
+- Running is the activity where I burn the most calories and have the highest average heart rate.
+- Functional workouts and running result in the highest maximum heart rate.
+- Biking workouts account for a greater average time spent.
+- Currently, my running pace is 8.7 km/h, knowing this, I will aim to increase it to 9 km/h.
+
+### Relationship Between Average Heart Rate and Distance
+For my running workouts, I adhere to the philosophy of "run slow to run fast." Essentially, this approach entails running at a slow pace for 80% of the time and incorporating fast runs for the remaining 20%. How does this translate into specific numbers? Well, during my runs, I ensure that my heart rate does not exceed 155 beats per minute. This helps me stay within the aerobic zone, allowing my body to efficiently utilize oxygen. By following this technique, I am able to avoid the accumulation of hydrogen ions (commonly referred to as lactic acid) and can comfortably sustain my runs for a longer duration.
+
+![Running_HeartRate_Distance_Relationship](/Images/Running-DistanceAvgHeartRate.png)
+
+In this graph, we can observe that the majority of my running workouts fall within the average heart rate range of 145 to 160, this range is good, although I have to be careful not to go over 155 beats per minute. If you are intrested in reading more about the "run slow to run fast" philosophy, you can read this [article](https://marathonhandbook.com/run-slow-to-run-fast/).
+
+### Monthly Average Laps for Functional Training
+For my Functional Training, I follow a specific approach. I design a circuit comprising 4-6 exercises in each round and aim to complete a minimum of 3 rounds in each session. The primary focus is on finishing the rounds in the shortest amount of time possible. This training methodology is geared towards pushing myself into the [anaerobic zone](https://www.physio-pedia.com/Anaerobic_Exercise#:~:text=Anaerobic%20exercise%20is%20any%20activity,short%20length%20with%20high%20intensity.), where the workouts are short but intense. The exercises included in the circuit can vary, encompassing movements such as kettlebell swings, kettle bell snatches, squats, pull-ups, overhead presses, jumping exercises, sprints, rope jumping, weighted stretches and one of my personal favorites, burpees. By incorporating these dynamic exercises into my Functional Training, I can challenge my body and achieve optimal results.
+
+![Average Monthly Laps for Functional Training](/Images/FunctionalTrainingLaps.png)
+
+This graph illustrates the average number of rounds completed per month. Notably, October 2021 stands out as the month with the highest average number of laps, reaching 8.8. One significant observation is the upward trend in rounds per month, indicating an improvement in my fitness over time. Starting from September 2021, I have consistently surpassed the minimum threshold that I set for myself. Although there was a temporary decline in September 2022, my performance swiftly rebounded. This data highlights the progress I have made and underscores my dedication to maintaining a consistent level of physical activity.
+
+## Copy This Dashboard Template 
+If you want to use this dashboard as a template for your own analysis, follow these steps. 
+1. Open the [Dashboard](https://lookerstudio.google.com/reporting/c8efd23d-4f39-42d1-a336-26aebac76fa5), and on the  ⋮  button in the top right corner, then click "Make a copy".
+2. In the New Data Source section, click on "Create a Data Source".
+
+![Copy This Report Window](/Images/CopyThisReport.png)
+
+3. Click on "Google Sheets" in the Google Connectors menu and select the Google Sheet you created for this project. Then, connect it to the dashboard.
+4. If you are going to use the start_lat, start_long, end_lat and end_long columns, make sure you change their data type to Longitude, Latitude
+
+![longitude-latitude](/Images/lat_long.png)
+
+After these steps are done, click "Add to Report" on the top right corner and you will have a copy of this dashboard inside your Google Looker. 
+
+# Level of Effort Score
+## How The Effort Score Is Calculated
+To calculate the effort score, we begin by creating bins based on the minimum, maximum, quartiles, and outliers of each variable. Within these bins, we assign points depending on the range in which a value falls. These points are determined subjectively, drawing from personal experience and perceived effort.
+
+ For instance, let's consider the average heart rate variable. We know that higher average heart rates indicate greater effort in the workout, so we establish the following point ranges:
+
+![Average Heart Rate Box Plot](/Images/AverageHeartRateBoxPlot.png)
+
+- 1 - 100: 5 points
+- 100 - 130: 10 points
+- 130 - 145: 15 points
+- 145 - 155: 20 points
+- 155 - 165: 30 points
+- 165 - 170: 35 points
+- Above 170: 40 points
+
+For instance, if my average heart rate during a workout was 155, I would assign 30 points for that activity in a separate column. Each variable has its own column dedicated to storing the score for each workout in that particular variable.
+
+In the case of the distance variable, it is important to make a distinction between sports. For instance, biking generally requires less effort compared to running. Therefore, we have programmed the model to effectively differentiate between different sports. By incorporating these considerations into the model, we can accurately assess the effort level associated with various activities, resulting in a deeper understanding of the overall effort required. Taking into account the specific demands and characteristics of each sport we can get a better picture of the overall effort involved.
+
+![Distance Box Plot](/Images/RunningBikingBoxPlot.png)
+
+After assigning a scoring system to each variable, we calculate the sum of each column and store it in the column labeled 'effort_score'. Here are the ranges to determine the level of effort:
+
+- 0 - 100: No Effort
+- 100 - 125: Low Effort
+- 125 - 150: Medium Effort
+- 150 or above: High Effort
+
+## Effort Analysis
+After assigning each workout with its corresponding level of effort, we can analyze the breakdown count for each sport type. Based on this analysis, I have made several observations:
+- Functional training, contrary to my initial assumption, appears to be a medium effort workout rather than high effort.
+- The majority of my runs are categorized as high effort.
+- Biking shows a relatively balanced distribution across high, medium, and low effort levels.
+- Surprisingly, hiking turned out to be a high effort activity, which makes sense considering factors such as elevation gain, time spent, distance covered, and calories burned. It turns out that walking can be an effective way to burn calories.
+- Yoga, despite being categorized as requiring no effort in the current model, is an area of opportunity. From personal experience, I find yoga to be an activity that demands considerable effort. In the future, I would like to find a way to incorporate this insight into the model.
+- Mountain biking is as a highly effective activity for pushing myself, with the majority of workouts falling into the high or medium effort categories.
+- Most of my workouts fall in the high and medium effort levels.
+
+![TypesOfSportsByEffort](/Images/WorkoutLevelOfEffortBySportType-.png)
+
+The following graph shows the relationship between calories and average heart rate and classifies each workout with its corresponding label.
+![Relationship between calories and average heart rate](/Images/RelationshipBetweenAvgHeartRateCalories.png)
+
+# Machine Learning Model: Categorizing Workout Level of Effort with K-Nearest Neighbor Algorithm
+## Why K Nearest Neighbor
+I have chosen to use the K Nearest Neighbor (KNN) algorithm for this project. Here's a couple of reasons behind my decision:
+Firstly, our dataset consists of a relatively small number of records (703). KNN is known to work well with smaller datasets, making it a suitable choice for our scenario. Additionally, I have identified the presence of a few outliers within our data. These outliers can potentially introduce noise and affect the overall performance of our model. However, KNN is robust against the influence of outliers as it makes predictions based on similarity. By considering the neighbors in proximity to a given data point, KNN can mitigate the impact of outliers and provide more reliable predictions. Moreover, the nature of KNN allows it to identify groups or clusters within the data. If there happens to be a group of outliers that share similar characteristics or patterns, KNN is more likely to recognize and assign them to the appropriate label.
+
+## Model
+This K Nearest Neighbors (KNN) model is designed for multi-label classification tasks. The labels in this model represent different effort levels: No Effort, Low Effort, Medium Effort, and High Effort. The model aims to predict the effort level of workouts based on the score columns we created for each variable/workotu metric.
+
+###  Model performance and Optimal value of K
+- During the cross-validation test, the model's performance scores were found to be more consistent when using a K value of 7 compared to 5 or 23. This suggests that a K value of 7 provides more stable and reliable predictions across different subsets of the data.
+- Grid search, which systematically explored different hyperparameter settings, ranked K = 7 as the best choice for the model. This configuration achieved a score of 0.96, outperforming K = 5 and K = 23.
+- The model demonstrated a good level of accuracy, achieving 86% correctness in classifying instances.
+- The F1 score, a combined measure of precision and recall, was calculated to be 0.858, indicating a good balance between precision and recall.
+- The precision score of 0.861 indicates the model's ability to correctly predict positive instances out of all instances predicted as positive.
+- The recall score of 0.858 reflects the model's ability to identify and capture positive instances accurately.
+
+### Consideration of data characteristics
+- This KNN model is robust to outliers present in the data. Outliers with the same label tend to be clustered together, making the model effective in capturing and classifying high effort and no effort workouts, which are the most common outlier instances.
+- Total amount of records: 703.
+- 20% of the dataset was used for testing, while the remaining 80% was used for training.
+
+### Confusion Matrix
+![ConfussionMatrix](/Images/Effort_Score_Variables_Model.png)
+
+
+### Classification Report
+![Classification Report](/Images/ClassificationReport.png)
+
+### Model strengths and weaknesses
+**Strenghts:**
+- The model demonstrates high accuracy in accurately labeling High and Medium effort workouts.
+- Overall, the model achieves an impressive accuracy rate of 86%, indicating its effectiveness in correctly classifying workout intensity levels.
+
+**Weaknesses:**
+- The model may not be as accurate in labeling low and no effort workouts compared to medium and high intensity ones, as there are fewer instances of the former in the dataset.
+- As the dataset expands, it may be necessary to update or modify the model to maintain its effectiveness.
+- It is worth considering investing time in exploring alternative distance metrics, as they may yield improvements in the model's performance.
+- There is correlation between the Max Heart Rate and Average Heart Rate variables, as well as between the Max Speed and Average Speed variables. It might be necessary to evaluate and potentially drop some variables to avoid redundancy or multicollinearity in the dataset.
+
+### Practical applications
+- With this model you can build a workout program, where you can use it to classify the intensity level and determine the number of high, medium, low, and no effort workouts within a specific time period.
+- It helps you track your progress and ensures that you stay on track with your program. The model will provide insights on whether you are pushing yourself adequately.
+- Additionally, this model can be used to identify signs of overtraining, helping you maintain a balanced and healthy training regimen.
 
 # How To Use This Project
 Before you can use the [PyStrava Notebook](https://github.com/ManuelElizaldi/PyStrava/blob/main/PyStrava_Notebook.ipynb) or the [PyStrava Script](https://github.com/ManuelElizaldi/PyStrava/blob/main/PyStrava.py) you need to follow these instructions: 
@@ -189,163 +345,7 @@ After running the script you should see all your data inside the file.
 ## Updating Your Existing Data
 If you already have data in your Google Sheet and you just want to add new workouts, you can run the [Update Google Sheet](https://github.com/ManuelElizaldi/PyStrava/blob/main/Update_GoogleSheet.py). This will add any new workouts.
 
-# Analysis & Dashboard
-The graphs and statistics you will see in this section were created in the [Google Looker Dashboard](https://lookerstudio.google.com/reporting/c8efd23d-4f39-42d1-a336-26aebac76fa5). Feel free to explore my data.
-
-## Sports Type Breakdown
-I started recording my workouts on May 20, 2020, and as of May 26, 2023, I have logged 703 different activities, encompassing various sports. Here is a breakdown of my activities:
-
-![TypesOfSports](/Images/SportCount.png)
-
-Among my recorded activities, Functional-Cardio Workout stands out as the most frequently performed, with 516 sessions. This activity involves kettlebell training, dynamic stretching, calisthenics, and weight lifting. The reason behind my prioritization of this activity is the convenience of having a home gym.
-
-Following Functional-Cardio Workout, running takes second place with 76 workouts. Looking ahead, I plan to dedicate more attention to running and trail running due to upcoming races on my schedule.
-
-Weight training secures the third position with 30 logged sessions. While weight training used to be one of my primary focuses, I have now shifted my focus towards [aerobic exercises](https://www.healthline.com/health/fitness-exercise/aerobic-exercise-examples#:~:text=It%20can%20include%20activities%20like,lungs%2C%20and%20circulatory%20system%20healthy).
-
-Bike riding and swimming rank fourth and fifth, respectively. However, with my current objective of participating in a triathlon, I am determined to increase my activity count in these sports.
-
-## Descriptive Statistics
-As mentioned earlier, my primary focus revolves around functional training, running, swimming, and biking. Therefore, I would like to provide some descriptive statistics for these activities. However, please note that I need to log more swimming activities before I can create a comprehensive dashboard for it. 
-
-### Functional Workouts:
-![Functional Stats](/Images/FunctionalStats.png)
-
-### Running:
-Please note that running includes running and trail running activities. 
-![Running Stats](/Images/RunningStats.png)
-
-### Biking:
-Please note that biking includes road biking and mountain biking.
-![Biking Stats](/Images/BikingStats.png)
-
-### Overall:
-These statistics cover all the sports types referenced in the [Sports Type Subsection](#sport-type-breakdown)
-![General Stats](/Images/GeneralStats.png)
-
-### Some of the important conclusions from these statistics are:
-- Running is the activity where I burn the most calories and have the highest average heart rate.
-- Functional workouts and running result in the highest maximum heart rate.
-- Biking workouts account for a greater average time spent.
-- Currently, my running pace is 8.7 km/h, knowing this, I will aim to increase it to 9 km/h.
-
-### Relationship Between Average Heart Rate and Distance
-For my running workouts, I adhere to the philosophy of "run slow to run fast." Essentially, this approach entails running at a slow pace for 80% of the time and incorporating fast runs for the remaining 20%. How does this translate into specific numbers? Well, during my runs, I ensure that my heart rate does not exceed 155 beats per minute. This helps me stay within the aerobic zone, allowing my body to efficiently utilize oxygen. By following this technique, I am able to avoid the accumulation of hydrogen ions (commonly referred to as lactic acid) and can comfortably sustain my runs for a longer duration.
-
-![Running_HeartRate_Distance_Relationship](/Images/Running-DistanceAvgHeartRate.png)
-
-In this graph, we can observe that the majority of my running workouts fall within the average heart rate range of 145 to 160, this range is good, although I have to be careful not to go over 155 beats per minute. If you are intrested in reading more about the "run slow to run fast" philosophy, you can read this [article](https://marathonhandbook.com/run-slow-to-run-fast/).
-
-### Monthly Average Laps for Functional Training
-For my Functional Training, I follow a specific approach. I design a circuit comprising 4-6 exercises in each round and aim to complete a minimum of 3 rounds in each session. The primary focus is on finishing the rounds in the shortest amount of time possible. This training methodology is geared towards pushing myself into the [anaerobic zone](https://www.physio-pedia.com/Anaerobic_Exercise#:~:text=Anaerobic%20exercise%20is%20any%20activity,short%20length%20with%20high%20intensity.), where the workouts are short but intense. The exercises included in the circuit can vary, encompassing movements such as kettlebell swings, kettle bell snatches, squats, pull-ups, overhead presses, jumping exercises, sprints, rope jumping, weighted stretches and one of my personal favorites, burpees. By incorporating these dynamic exercises into my Functional Training, I can challenge my body and achieve optimal results.
-
-![Average Monthly Laps for Functional Training](/Images/FunctionalTrainingLaps.png)
-
-This graph illustrates the average number of rounds completed per month. Notably, October 2021 stands out as the month with the highest average number of laps, reaching 8.8. One significant observation is the upward trend in rounds per month, indicating an improvement in my fitness over time. Starting from September 2021, I have consistently surpassed the minimum threshold that I set for myself. Although there was a temporary decline in September 2022, my performance swiftly rebounded. This data highlights the progress I have made and underscores my dedication to maintaining a consistent level of physical activity.
-
-## Copy This Dashboard Template 
-If you want to use this dashboard as a template for your own analysis, follow these steps. 
-1. Open the [Dashboard](https://lookerstudio.google.com/reporting/c8efd23d-4f39-42d1-a336-26aebac76fa5), and on the  ⋮  button in the top right corner, then click "Make a copy".
-2. In the New Data Source section, click on "Create a Data Source".
-
-![Copy This Report Window](/Images/CopyThisReport.png)
-
-3. Click on "Google Sheets" in the Google Connectors menu and select the Google Sheet you created for this project. Then, connect it to the dashboard.
-4. If you are going to use the start_lat, start_long, end_lat and end_long columns, make sure you change their data type to Longitude, Latitude
-
-![longitude-latitude](/Images/lat_long.png)
-
-After these steps are done, click "Add to Report" on the top right corner and you will have a copy of this dashboard inside your Google Looker. 
-
-# Level of Effort Score
-## How The Effort Score Is Calculated
-To calculate the effort score, we begin by creating bins based on the minimum, maximum, quartiles, and outliers of each variable. Within these bins, we assign points depending on the range in which a value falls. These points are determined subjectively, drawing from personal experience and perceived effort.
-
- For instance, let's consider the average heart rate variable. We know that higher average heart rates indicate greater effort in the workout, so we establish the following point ranges:
-
-![Average Heart Rate Box Plot](/Images/AverageHeartRateBoxPlot.png)
-
-- 1 - 100: 5 points
-- 100 - 130: 10 points
-- 130 - 145: 15 points
-- 145 - 155: 20 points
-- 155 - 165: 30 points
-- 165 - 170: 35 points
-- Above 170: 40 points
-
-For instance, if my average heart rate during a workout was 155, I would assign 30 points for that activity in a separate column. Each variable has its own column dedicated to storing the score for each workout in that particular variable.
-
-In the case of the distance variable, it is important to make a distinction between sports. For instance, biking generally requires less effort compared to running. Therefore, we have programmed the model to effectively differentiate between different sports. By incorporating these considerations into the model, we can accurately assess the effort level associated with various activities, resulting in a deeper understanding of the overall effort required. Taking into account the specific demands and characteristics of each sport we can get a better picture of the overall effort involved.
-
-![Distance Box Plot](/Images/RunningBikingBoxPlot.png)
-
-After assigning a scoring system to each variable, we calculate the sum of each column and store it in the column labeled 'effort_score'. Here are the ranges to determine the level of effort:
-
-- 0 - 100: No Effort
-- 100 - 125: Low Effort
-- 125 - 150: Medium Effort
-- 150 or above: High Effort
-
-## Effort Analysis
-After assigning each workout with its corresponding level of effort, we can analyze the breakdown count for each sport type. Based on this analysis, I have made several observations:
-- Functional training, contrary to my initial assumption, appears to be a medium effort workout rather than high effort.
-- The majority of my runs are categorized as high effort.
-- Biking shows a relatively balanced distribution across high, medium, and low effort levels.
-- Surprisingly, hiking turned out to be a high effort activity, which makes sense considering factors such as elevation gain, time spent, distance covered, and calories burned. It turns out that walking can be an effective way to burn calories.
-- Yoga, despite being categorized as requiring no effort in the current model, is an area of opportunity. From personal experience, I find yoga to be an activity that demands considerable effort. In the future, I would like to find a way to incorporate this insight into the model.
-- Mountain biking is as a highly effective activity for pushing myself, with the majority of workouts falling into the high or medium effort categories.
-- Most of my workouts fall in the high and medium effort levels.
-
-![TypesOfSportsByEffort](/Images/WorkoutLevelOfEffortBySportType-.png)
-
-The following graph shows the relationship between calories and average heart rate. As we can see 
-![Relationship between calories and average heart rate](/Images/RelationshipBetweenAvgHeartRateCalories.png)
-
-# Machine Learning Model: Categorizing Workout Level of Effort with K-Nearest Neighbor Algorithm
-## Why K Nearest Neighbor
-I have chosen to use the K Nearest Neighbor (KNN) algorithm for this project. Here's a couple of reasons behind my decision:
-Firstly, our dataset consists of a relatively small number of records (703). KNN is known to work well with smaller datasets, making it a suitable choice for our scenario. Additionally, I have identified the presence of a few outliers within our data. These outliers can potentially introduce noise and affect the overall performance of our model. However, KNN is robust against the influence of outliers as it makes predictions based on similarity. By considering the neighbors in proximity to a given data point, KNN can mitigate the impact of outliers and provide more reliable predictions. Moreover, the nature of KNN allows it to identify groups or clusters within the data. If there happens to be a group of outliers that share similar characteristics or patterns, KNN is more likely to recognize and assign them to the appropriate label.
-
-## Model
-This K Nearest Neighbors (KNN) model is designed for multi-label classification tasks. The labels in this model represent different effort levels: No Effort, Low Effort, Medium Effort, and High Effort. The model aims to predict the effort level of workouts based on the score columns we created for each variable/workotu metric.
-
-###  Model performance and Optimal value of K
-- During the cross-validation test, the model's performance scores were found to be more consistent when using a K value of 7 compared to 5 or 23. This suggests that a K value of 7 provides more stable and reliable predictions across different subsets of the data.
-- Grid search, which systematically explored different hyperparameter settings, ranked K = 7 as the best choice for the model. This configuration achieved a score of 0.96, outperforming K = 5 and K = 23.
-- The model demonstrated a good level of accuracy, achieving 86% correctness in classifying instances.
-- The F1 score, a combined measure of precision and recall, was calculated to be 0.858, indicating a good balance between precision and recall.
-- The precision score of 0.861 indicates the model's ability to correctly predict positive instances out of all instances predicted as positive.
-- The recall score of 0.858 reflects the model's ability to identify and capture positive instances accurately.
-
-### Consideration of data characteristics
-- This KNN model is robust to outliers present in the data. Outliers with the same label tend to be clustered together, making the model effective in capturing and classifying high effort and no effort workouts, which are the most common outlier instances.
-- Total amount of records: 703.
-- 20% of the dataset was used for testing, while the remaining 80% was used for training.
-
-### Confusion Matrix
-![ConfussionMatrix](/Images/Effort_Score_Variables_Model.png)
-
-
-### Classification Report
-![Classification Report](/Images/ClassificationReport.png)
-
-### Model strengths and weaknesses
-**Strenghts:**
-- The model demonstrates high accuracy in accurately labeling High and Medium effort workouts.
-- Overall, the model achieves an impressive accuracy rate of 86%, indicating its effectiveness in correctly classifying workout intensity levels.
-
-**Weaknesses:**
-- The model may not be as accurate in labeling low and no effort workouts compared to medium and high intensity ones, as there are fewer instances of the former in the dataset.
-- As the dataset expands, it may be necessary to update or modify the model to maintain its effectiveness.
-- It is worth considering investing time in exploring alternative distance metrics, as they may yield improvements in the model's performance.
-- There is correlation between the Max Heart Rate and Average Heart Rate variables, as well as between the Max Speed and Average Speed variables. It might be necessary to evaluate and potentially drop some variables to avoid redundancy or multicollinearity in the dataset.
-
-### Practical applications
-- With this model you can build a workout program, where you can use it to classify the intensity level and determine the number of high, medium, low, and no effort workouts within a specific time period.
-- It helps you track your progress and ensures that you stay on track with your program. The model will provide insights on whether you are pushing yourself adequately.
-- Additionally, this model can be used to identify signs of overtraining, helping you maintain a balanced and healthy training regimen.
-
-## Areas Of Improvement
+#Areas Of Improvement
 These are some features I plan to implement over time. 
 - Develop an Effort model that enables individuals to calculate their level of effort for each workout. It will be applicable to anyone, providing a tool for assessing effort and facilitating personal improvement.
 - To streamline the database updating process, it is essential to implement real-time reporting, eliminating the need to run the Update_GoogleSheet.py file manually every time we want to update our Google Sheet database. 
