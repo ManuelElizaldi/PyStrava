@@ -345,7 +345,7 @@ After running the script you should see all your data inside the file.
 ## Updating Your Existing Data
 If you already have data in your Google Sheet and you just want to add new workouts, you can run the [Update Google Sheet](https://github.com/ManuelElizaldi/PyStrava/blob/main/Update_GoogleSheet.py). This will add any new workouts.
 
-#Areas Of Improvement
+# Areas Of Improvement
 These are some features I plan to implement over time. 
 - Develop an Effort model that enables individuals to calculate their level of effort for each workout. It will be applicable to anyone, providing a tool for assessing effort and facilitating personal improvement.
 - To streamline the database updating process, it is essential to implement real-time reporting, eliminating the need to run the Update_GoogleSheet.py file manually every time we want to update our Google Sheet database. 
