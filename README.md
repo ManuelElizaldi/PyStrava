@@ -151,7 +151,7 @@ After these steps are done, click "Add to Report" on the top right corner and yo
 ## How The Effort Score Is Calculated
 To calculate the effort score, we begin by creating bins based on the minimum, maximum, quartiles, and outliers of each variable. Within these bins, we assign points depending on the range in which a value falls. These points are determined subjectively, drawing from personal experience and perceived effort.
 
- For instance, let's consider the average heart rate variable. We know that higher average heart rates indicate greater effort in the workout, so we establish the following point ranges:
+For instance, let's consider the average heart rate variable. We know that higher average heart rates indicate greater effort in the workout, so we establish the following point ranges:
 
 ![Average Heart Rate Box Plot](/Images/AverageHeartRateBoxPlot.png)
 
@@ -199,7 +199,7 @@ Firstly, our dataset consists of a relatively small number of records (703). KNN
 ## Model
 This K Nearest Neighbors (KNN) model is designed for multi-label classification tasks. The labels in this model represent different effort levels: No Effort, Low Effort, Medium Effort, and High Effort. The model aims to predict the effort level of workouts based on the score columns we created for each variable/workotu metric.
 
-###  Model performance and Optimal value of K
+###  Model Performance and Optimal Value of K
 - During the cross-validation test, the model's performance scores were found to be more consistent when using a K value of 7 compared to 5 or 23. This suggests that a K value of 7 provides more stable and reliable predictions across different subsets of the data.
 - Grid search, which systematically explored different hyperparameter settings, ranked K = 7 as the best choice for the model. This configuration achieved a score of 0.96, outperforming K = 5 and K = 23.
 - The model demonstrated a good level of accuracy, achieving 86% correctness in classifying instances.
@@ -207,7 +207,7 @@ This K Nearest Neighbors (KNN) model is designed for multi-label classification 
 - The precision score of 0.861 indicates the model's ability to correctly predict positive instances out of all instances predicted as positive.
 - The recall score of 0.858 reflects the model's ability to identify and capture positive instances accurately.
 
-### Consideration of data characteristics
+### Consideration of Data Characteristics
 - This KNN model is robust to outliers present in the data. Outliers with the same label tend to be clustered together, making the model effective in capturing and classifying high effort and no effort workouts, which are the most common outlier instances.
 - Total amount of records: 703.
 - 20% of the dataset was used for testing, while the remaining 80% was used for training.
@@ -219,7 +219,7 @@ This K Nearest Neighbors (KNN) model is designed for multi-label classification 
 ### Classification Report
 ![Classification Report](/Images/ClassificationReport.png)
 
-### Model strengths and weaknesses
+### Model Strengths and Weaknesses
 **Strenghts:**
 - The model demonstrates high accuracy in accurately labeling High and Medium effort workouts.
 - Overall, the model achieves an impressive accuracy rate of 86%, indicating its effectiveness in correctly classifying workout intensity levels.
@@ -230,7 +230,7 @@ This K Nearest Neighbors (KNN) model is designed for multi-label classification 
 - It is worth considering investing time in exploring alternative distance metrics, as they may yield improvements in the model's performance.
 - There is correlation between the Max Heart Rate and Average Heart Rate variables, as well as between the Max Speed and Average Speed variables. It might be necessary to evaluate and potentially drop some variables to avoid redundancy or multicollinearity in the dataset.
 
-### Practical applications
+### Practical Applications
 - With this model you can build a workout program, where you can use it to classify the intensity level and determine the number of high, medium, low, and no effort workouts within a specific time period.
 - It helps you track your progress and ensures that you stay on track with your program. The model will provide insights on whether you are pushing yourself adequately.
 - Additionally, this model can be used to identify signs of overtraining, helping you maintain a balanced and healthy training regimen.
