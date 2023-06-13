@@ -30,7 +30,7 @@
 - [Machine Learning Model: Categorizing Workouts With K-Nearest Neighbor Algorithm](#machine-learning-model-categorizing-workouts-with-k-nearest-neighbor-algorithm)
     - [Why K Nearest Neighbor](#why-k-nearest-neighbor)
     - [Model](#model) 
-- [How To Use This Project](#how-to-use-this-project)
+- [How To Setup This Project](#how-to-setup-this-project)
     - [Strava API Access](#strava---api-access)
     - [Google API Access](#google-sheets-api)
     - [How to Use](#how-to-use)
@@ -225,7 +225,7 @@ This K Nearest Neighbors (KNN) model is designed for multi-label classification 
 - It helps you track your progress and ensures that you stay on track with your program. The model will provide insights on whether you are pushing yourself adequately.
 - Additionally, this model can be used to identify signs of overtraining, helping you maintain a balanced and healthy training regimen.
 
-# How To Use This Project
+# How To Setup This Project
 Before you can use the [PyStrava Notebook](https://github.com/ManuelElizaldi/PyStrava/blob/main/PyStrava_Notebook.ipynb) or the [PyStrava Script](https://github.com/ManuelElizaldi/PyStrava/blob/main/PyStrava.py) you need to follow these instructions: 
 
 ## Strava - API Access
