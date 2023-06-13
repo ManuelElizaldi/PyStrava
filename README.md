@@ -170,7 +170,7 @@ After assigning each workout with its corresponding level of effort, we can anal
 - Biking shows a relatively balanced distribution across high, medium, and low effort levels.
 - Surprisingly, hiking turned out to be a high effort activity, which makes sense considering factors such as elevation gain, time spent, distance covered, and calories burned. It turns out that walking can be an effective way to burn calories.
 - Yoga, despite being categorized as requiring no effort in the current model, is an area of opportunity. From personal experience, I find yoga to be an activity that demands considerable effort. In the future, I would like to find a way to incorporate this insight into the model.
-- Mountain biking is as a highly effective activity for pushing myself, with the majority of workouts falling into the high or medium effort categories.
+- Mountain biking is as a highly effective activity for pushing myself, with the majority of workouts falling into the high effort category.
 - Most of my workouts fall in the high and medium effort levels.
 
 ![TypesOfSportsByEffort](/Images/WorkoutLevelOfEffortBySportType-.png)
