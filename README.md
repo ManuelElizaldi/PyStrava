@@ -121,7 +121,7 @@ These statistics cover all the sports types referenced in the [Sports Type Subse
 - Currently, my running pace is 8.7 km/h, knowing this, I will aim to increase it to 9 km/h.
 
 ### Relationship Between Average Heart Rate and Distance
-For my running workouts, I adhere to the philosophy of "run slow to run fast." Essentially, this approach entails running at a slow pace for 80% of the time and incorporating fast runs for the remaining 20%. How does this translate into specific numbers? Well, during my runs, I ensure that my heart rate does not exceed 155 beats per minute. This helps me stay within the aerobic zone, allowing my body to efficiently utilize oxygen. By following this technique, I am able to avoid the accumulation of hydrogen ions (commonly referred to as lactic acid) and can comfortably sustain my runs for a longer duration.
+For my running workouts, I adhere to the philosophy of "run slow to run fast." Essentially, this approach entails running at a slow pace for 80% of the time and incorporating fast runs for the remaining 20%. How does this translate into specific numbers? Well, during my runs, I ensure that my heart rate does not exceed 155 beats per minute. This helps me stay within the [aerobic zone](https://www.whoop.com/thelocker/aerobic-heart-rate-zone/#:~:text=The%20aerobic%20heart%20rate%20zone%20is%20a%20heart%20rate%20between,person%20running%20next%20to%20you.), allowing my body to efficiently utilize oxygen. By following this technique, I am able to avoid the accumulation of hydrogen ions (commonly referred to as lactic acid) and can comfortably sustain my runs for a longer duration.
 
 ![Running_HeartRate_Distance_Relationship](/Images/Running-DistanceAvgHeartRate.png)
 
