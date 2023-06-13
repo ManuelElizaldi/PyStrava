@@ -241,6 +241,8 @@ Before we can start using Strava's API we first need to complete a couple of ste
 
 ![Strava Application Fields](Images/StravaApplicationFields.png)
 
+5. Write down your client id and client secret. 
+
 After those steps are done, before you use any of the API calls to pull data, we need to get our authorization code, which we get by opening the following link:
 
 ``` python
