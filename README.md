@@ -175,8 +175,11 @@ After assigning each workout with its corresponding level of effort, we can anal
 
 ![TypesOfSportsByEffort](/Images/WorkoutLevelOfEffortBySportType-.png)
 
-The following graph shows the relationship between calories and average heart rate and classifies each workout with its corresponding label.
+The graph displayed below illustrates the correlation between calories and average heart rate, categorizing each workout with its corresponding label. This data strongly supports my initial hypothesis, which suggests that as heart rate increases, the body requires more energy (calories), indicating a higher level of effort.
+
 ![Relationship between calories and average heart rate](/Images/RelationshipBetweenAvgHeartRateCalories.png)
+
+By analyzing this graph, it becomes evident that tracking heart rate can serve as a reliable indicator of the intensity and effectiveness of a workout in terms of caloric expenditure. This insight can be particularly valuable in designing personalized fitness programs and optimizing training routines to align with specific fitness goals.
 
 # Machine Learning Model: Categorizing Workout Level of Effort with K-Nearest Neighbor Algorithm
 ## Why K Nearest Neighbor
