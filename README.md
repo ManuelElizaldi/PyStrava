@@ -23,7 +23,6 @@
 - [Technologies Used](#technologies-used)
 - [Analysis & Dashboard](#analysis--dashboard)
     - [Sports Type Breakdown](#sports-type-breakdown)
-    - [Copy This Dashboard Template](#copy-this-dashboard-template) 
     - [Descriptive Statistics](#descriptive-statistics) 
 - [Level of Effort Score](#level-of-effort-score)
     - [How The Effort Score Is Calculated](#how-the-effort-score-is-calculated)
@@ -36,6 +35,7 @@
     - [Google API Access](#google-sheets-api)
     - [How to Use](#how-to-use)
     - [Updating Your Data](#updating-your-existing-data) 
+    - [Copy This Dashboard Template](#copy-this-dashboard-template)
 - [Areas of Improvement](#areas-of-improvement)
 
 # Introduction & Project Desription
@@ -133,20 +133,6 @@ For my Functional Training, I follow a specific approach. I design a circuit com
 ![Average Monthly Laps for Functional Training](/Images/FunctionalTrainingLaps.png)
 
 This graph illustrates the average number of rounds completed per month. Notably, October 2021 stands out as the month with the highest average number of laps, reaching 8.8. One significant observation is the upward trend in rounds per month, indicating an improvement in my fitness over time. Starting from September 2021, I have consistently surpassed the minimum threshold that I set for myself. Although there was a temporary decline in September 2022, my performance swiftly rebounded. This data highlights the progress I have made and underscores my dedication to maintaining a consistent level of physical activity.
-
-## Copy This Dashboard Template 
-If you want to use this dashboard as a template for your own analysis, follow these steps. 
-1. Open the [Dashboard](https://lookerstudio.google.com/reporting/c8efd23d-4f39-42d1-a336-26aebac76fa5), and on the  ⋮  button in the top right corner, then click "Make a copy".
-2. In the New Data Source section, click on "Create a Data Source".
-
-![Copy This Report Window](/Images/CopyThisReport.png)
-
-3. Click on "Google Sheets" in the Google Connectors menu and select the Google Sheet you created for this project. Then, connect it to the dashboard.
-4. If you are going to use the start_lat, start_long, end_lat and end_long columns, make sure you change their data type to Longitude, Latitude
-
-![longitude-latitude](/Images/lat_long.png)
-
-After these steps are done, click "Add to Report" on the top right corner and you will have a copy of this dashboard inside your Google Looker. 
 
 # Level of Effort Score
 ## How The Effort Score Is Calculated
@@ -345,6 +331,21 @@ After running the script you should see all your data inside the file.
 
 ## Updating Your Existing Data
 If you already have data in your Google Sheet and you just want to add new workouts, you can run the [Update Google Sheet](https://github.com/ManuelElizaldi/PyStrava/blob/main/Update_GoogleSheet.py). This will add any new workouts.
+
+## Copy The Google Looker Dashboard Template 
+If you want to use this dashboard as a template for your own analysis, follow these steps. 
+1. Open the [Dashboard](https://lookerstudio.google.com/reporting/c8efd23d-4f39-42d1-a336-26aebac76fa5), and on the  ⋮  button in the top right corner, then click "Make a copy".
+2. In the New Data Source section, click on "Create a Data Source".
+
+![Copy This Report Window](/Images/CopyThisReport.png)
+
+3. Click on "Google Sheets" in the Google Connectors menu and select the Google Sheet you created for this project. Then, connect it to the dashboard.
+4. If you are going to use the start_lat, start_long, end_lat and end_long columns, make sure you change their data type to Longitude, Latitude
+
+![longitude-latitude](/Images/lat_long.png)
+
+After these steps are done, click "Add to Report" on the top right corner and you will have a copy of this dashboard inside your Google Looker. 
+
 
 # Areas Of Improvement
 These are some features I plan to implement over time. 
