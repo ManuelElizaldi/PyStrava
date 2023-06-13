@@ -355,6 +355,7 @@ After these steps are done, click "Add to Report" on the top right corner and yo
 # Areas Of Improvement
 These are some features I plan to implement over time. 
 - Develop an Effort model that enables individuals to calculate their level of effort for each workout. It will be applicable to anyone, providing a tool for assessing effort and facilitating personal improvement.
+- Add a pace metric for running workouts.
 - To streamline the database updating process, it is essential to implement real-time reporting, eliminating the need to run the Update_GoogleSheet.py file manually every time we want to update our Google Sheet database. 
 - In order to ensure regular updates, a feature should be created to automatically execute the Update_GoogleSheet.py file on a weekly basis.
 - To enhance the machine learning model, I plan to leverage Garmin's API infrastructure, which provides valuable data such as [VO2 Max](https://www.healthline.com/health/vo2-max) and Sleep data.
