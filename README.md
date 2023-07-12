@@ -27,7 +27,7 @@
 - [Level of Effort Score](#level-of-effort-score)
     - [How The Effort Score Is Calculated](#how-the-effort-score-is-calculated)
     - [Effort Analysis](#effort-analysis)
-- [Machine Learning Model: Categorizing Workouts With K-Nearest Neighbor Algorithm](#machine-learning-model-categorizing-workouts-with-k-nearest-neighbor-algorithm)
+- [Machine Learning Model: Categorizing Workouts With K-Nearest Neighbor Algorithm](#machine-learning-model-categorizing-workout-level-of-effort-with-k-nearest-neighbor-algorithm)
     - [Why K Nearest Neighbor](#why-k-nearest-neighbor)
     - [Model](#model) 
 - [How To Setup This Project](#how-to-setup-this-project)
