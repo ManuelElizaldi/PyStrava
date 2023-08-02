@@ -37,7 +37,7 @@
     - [Updating Your Data](#updating-your-existing-data) 
     - [Copy This Dashboard Template](#copy-this-dashboard-template)
 - [Areas of Improvement](#areas-of-improvement)
-- [New Features List](#new-feature-list)
+- [New Features List](#new-features-list)
 
 # Introduction & Project Desription
 
