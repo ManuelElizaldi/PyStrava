@@ -37,7 +37,7 @@
     - [Updating Your Data](#updating-your-existing-data) 
     - [Copy This Dashboard Template](#copy-this-dashboard-template)
 - [Areas of Improvement](#areas-of-improvement)
-- [Recently Added Features](#recently-added-features)
+- [New Features List](#new-feature-list)
 
 # Introduction & Project Desription
 
@@ -368,5 +368,5 @@ These are some features I plan to implement over time.
 - To enhance the model's effectiveness, gathering more data is essential. Therefore, increasing the number of workouts performed will greatly improve the model's performance.
 - Add a desktop shortcut that when clicked, runs the PyStrava.py script.
 
-# Recently Added Features:
+# New Features List
 - Inside the Google Looker dashboard, for the biking and running pages, I added a score card that displays the total distance traveled for the selected date range. 08/02/2023
