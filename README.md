@@ -366,3 +366,6 @@ These are some features I plan to implement over time.
 - Furthermore, the inclusion of tracking strength output would provide an additional dimension of information for the machine learning model.
 - To enhance the model's effectiveness, gathering more data is essential. Therefore, increasing the number of workouts performed will greatly improve the model's performance.
 - Add a desktop shortcut that when clicked, runs the PyStrava.py script.
+
+# Recently Added Features:
+- Inside the Google Looker dashboard, for the biking and running pages, I added a score card that displays the total distance traveled for the selected date range. 08/02/2023
