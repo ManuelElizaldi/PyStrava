@@ -76,13 +76,13 @@ def CleanGeneral_Table(general_table):
     general_table['aprox_calories_burned'] = round((general_table['workout_time_sec']/60) * ((0.6309*general_table['average_heartrate']) + (0.1988*80) + (0.2017*26 - 55.0969)) / 4.184,0)
 
     # from meters to kilometers
-    general_table[['distance']] = round(general_table['distance']/1000,2)
+    general_table['distance'] = round(general_table['distance']/1000,2)
 
     # from seconds to minutes
     general_table['workout_time_min'] = round(general_table['workout_time_sec']/60,2)
 
     # Fix start_date column into the correct format
-    general_table[["start_date"]] = pd.to_datetime(general_table['start_date']).dt.date
+    general_table["start_date"] = pd.to_datetime(general_table['start_date']).dt.date
 
     # Changing name of workout type => Workout
     general_table['sport_type'] = general_table['sport_type'].replace({'Workout':'Functional-Cardio Workout'})
