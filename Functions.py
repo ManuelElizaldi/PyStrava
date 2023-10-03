@@ -183,9 +183,17 @@ def GetAllWorkouts(workout_list, access_token):
     workout_num = 1
     rate_limit = 100
     time_interval = 900  # 15 minutes = 900 seconds
-    wait_time = ((len(workout_list)/100) * 900)/60
-
-    print(f'Extracting all workouts, this will take {wait_time} minutes to run.')
+    
+    # Getting time that it will take to finish extraction
+    wait_time = ((len(workout_list)/100) * 900)/60 
+    hours = wait_time/60
+    
+    # Separating the whole and fractional part of hours
+    whole_hours = int(hours)
+    fractional_hours = (hours - whole_hours) * 60
+    
+    # Perform iterations while respecting the rate limit
+    print(f'Extracting all workouts, due to the API rate limit, this will take {whole_hours:02}:{int(fractional_hours):02} hours or {wait_time} minutes.')
     for i in workout_list:
         print('Extracting workout:', workout_num)
         req = requests.get(url=f'https://www.strava.com/api/v3/activities/{i}?access_token='+access_token)
