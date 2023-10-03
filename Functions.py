@@ -218,12 +218,12 @@ def GetAllWorkouts(workout_list, access_token):
 
 # This function will parse the workout json, grab the relevant columns, clean the units and create a lap counter for the final dataframe
 def CleanWorkoutJson(workout_json):
-    df = pd.json_normalize(workout_json)
-    df[['distance']] = round(df['distance']/1000,2)
-    df['workout_time_min'] = round(df['elapsed_time']/60,2)
-    df[["start_date"]] = pd.to_datetime(df['start_date']).dt.date
-    df[['average_speed']] = df['average_speed'] * 3.6
-    df[['max_speed']] = df['max_speed'] * 3.6
+    df = pd.json_normlize(workout_json)
+    df['distance'] = round(df['distance']/1000,2)
+    df['workout_time_min'] = round((df['moving_time']/60) - ((df['moving_time']/60)%1) + ((df['moving_time']/60)%1),2)
+    df["start_date"] = pd.to_datetime(df['start_date']).dt.date
+    df['average_speed'] = df['average_speed'] * 3.6
+    df['max_speed'] = df['max_speed'] * 3.6
     df = df.rename(columns={'id':'activity_id','average_speed':'average_speed_km/h','max_speed':'max_speed_km/h'})
     df['sport_type'] = df['sport_type'].replace({'Workout':'Functional-Cardio Workout'})
     # Creating the start and end latitude and longitude
@@ -231,22 +231,22 @@ def CleanWorkoutJson(workout_json):
     df[['end_lat', 'end_long']] = df['end_latlng'].apply(lambda x: pd.Series(str(x).strip('[]').split(',')))
 
     df = df[['activity_id',
-               'name',
-               'start_date',
-               'sport_type',
-               'distance',
-               'workout_time_min',
-               'calories',
-               'total_elevation_gain',
-               'start_lat',
-               'start_long',
-               'end_lat',
-               'end_long',
-               'average_speed_km/h',
-               'max_speed_km/h',
-               'average_temp',
-               'average_heartrate',
-               'max_heartrate']]
+    'name',
+    'start_date',
+    'sport_type',
+    'distance',
+    'workout_time_min',
+    'calories',
+    'total_elevation_gain',
+    'start_lat',
+    'start_long',
+    'end_lat',
+    'end_long',
+    'average_speed_km/h',
+    'max_speed_km/h',
+    'average_temp',
+    'average_heartrate',
+    'max_heartrate']]
     
 
     
