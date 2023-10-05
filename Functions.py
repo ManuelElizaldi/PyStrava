@@ -216,12 +216,19 @@ def GetAllWorkouts(workout_list, access_token):
 
     return workout_info
 
-# This function will parse the workout json, grab the relevant columns, clean the units and create a lap counter for the final dataframe
+
+    # This function will parse the workout json, grab the relevant columns, clean the units and create a lap counter for the final dataframe
 def CleanWorkoutJson(workout_json):
-    df = pd.json_normlize(workout_json)
+    # parsing json
+    df = pd.json_normalize(workout_json)
+    # Formatting distance to km 
     df['distance'] = round(df['distance']/1000,2)
-    df['workout_time_min'] = round((df['moving_time']/60) - ((df['moving_time']/60)%1) + ((df['moving_time']/60)%1),2)
+    # Formatting workout time to actual minutes
+    df['workout_time_min'] = round(df['moving_time']/60,2)
+    df['workout_time_min'] = round(df['workout_time_min'] - (df['workout_time_min']%1) + (((df['workout_time_min']%1) * 60)/100),2)
+    # Date in the right format
     df["start_date"] = pd.to_datetime(df['start_date']).dt.date
+    # Formatting speed to km/h
     df['average_speed'] = df['average_speed'] * 3.6
     df['max_speed'] = df['max_speed'] * 3.6
     df = df.rename(columns={'id':'activity_id','average_speed':'average_speed_km/h','max_speed':'max_speed_km/h'})
@@ -229,51 +236,53 @@ def CleanWorkoutJson(workout_json):
     # Creating the start and end latitude and longitude
     df[['start_lat', 'start_long']] = df['start_latlng'].apply(lambda x: pd.Series(str(x).strip('[]').split(',')))
     df[['end_lat', 'end_long']] = df['end_latlng'].apply(lambda x: pd.Series(str(x).strip('[]').split(',')))
-
+    #Getting the columns we want
     df = df[['activity_id',
-    'name',
-    'start_date',
-    'sport_type',
-    'distance',
-    'workout_time_min',
-    'calories',
-    'total_elevation_gain',
-    'start_lat',
-    'start_long',
-    'end_lat',
-    'end_long',
-    'average_speed_km/h',
-    'max_speed_km/h',
-    'average_temp',
-    'average_heartrate',
-    'max_heartrate']]
-    
+                'name',
+                'start_date',
+                'sport_type',
+                'distance',
+                'workout_time_min',
+                'calories',
+                'total_elevation_gain',
+                'start_lat',
+                'start_long',
+                'end_lat',
+                'end_long',
+                'average_speed_km/h',
+                'max_speed_km/h',
+                'average_temp',
+                'average_heartrate',
+                'max_heartrate']]
 
-    
+    # Now working on laps data frame, we create 2, 1 for lap avg time and lap counter
     workout_laps = pd.json_normalize(workout_json,'laps')
-    workout_laps = workout_laps[['activity.id','name','elapsed_time','distance','average_heartrate','max_heartrate','average_speed','max_speed']]
+    workout_laps = workout_laps[['activity.id','name','moving_time','distance','average_heartrate','max_heartrate','average_speed','max_speed']]
     workout_laps = workout_laps.rename(columns={'activity.id':'activity_id',
-                                                'name':'lap',
-                                                'elapsed_time':'lap_elapsed_time_min',
-                                                'distance':'lap_distance',
-                                                'average_heartrate':'lap_average_heartrate',
-                                                'max_heartrate':'lap_max_heartrate_km/h',
-                                                'average_speed':'lap_average_speed_km/h',
-                                                'max_speed':'lap_max_speed'})
-    workout_laps['lap_elapsed_time_min'] = round(workout_laps['lap_elapsed_time_min']/60,2)
+                                                    'name':'lap',
+                                                    'moving_time':'lap_time_min',
+                                                    'distance':'lap_distance',
+                                                    'average_heartrate':'lap_average_heartrate',
+                                                    'max_heartrate':'lap_max_heartrate_km/h',
+                                                    'average_speed':'lap_average_speed_km/h',
+                                                    'max_speed':'lap_max_speed'})
+    # Formatting lap time to actual minutes
+    workout_laps['lap_time_min'] = round(workout_laps['lap_time_min']/60,2)
     workout_laps['lap_time_min'] = round(workout_laps['lap_time_min'] - (workout_laps['lap_time_min']%1) + (((workout_laps['lap_time_min']%1) * 60)/100),2)
+    # Distance to km
     workout_laps['lap_distance'] = round(workout_laps['lap_distance']/1000,2)
-
-    avg_time_per_lap = workout_laps.groupby('activity_id').mean()
-    avg_time_per_lap = avg_time_per_lap.reset_index()
-    avg_time_per_lap = avg_time_per_lap[['activity_id','lap_elapsed_time_min']]
-    avg_time_per_lap = avg_time_per_lap.rename(columns={'lap_elapsed_time_min':'avg_time_per_lap'})    
-    
+    # Getting the average lap time for each workout
+    avg_lap_time = workout_laps.pivot_table(index=['activity_id'],values = 'lap_time_min',aggfunc='mean')
+    avg_lap_time = avg_lap_time.reset_index()
+    # renaming columns
+    avg_lap_time = avg_lap_time.rename(columns={'lap_time_min':'avg_lap_time'})
+    # Gettting lap counter from the workout_laps dataframe
     lap_counter = workout_laps['activity_id'].value_counts().rename_axis('activity_id').reset_index(name='lap_count')
-    
-    lap_stats = avg_time_per_lap.merge(lap_counter,on='activity_id')
-    
+    # mergin avg_lap_time and lap_counter dataframes
+    lap_stats = avg_lap_time.merge(lap_counter,on='activity_id')
+    # merging lap stats(avg time and counter) to workout dataframe
     merged = df.merge(lap_stats, on = 'activity_id')
+    # setting lap counter column to numeric - don't know exactly why 
     merged['lap_count'] = pd.to_numeric(merged['lap_count'])
     return merged
 
