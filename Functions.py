@@ -261,6 +261,7 @@ def CleanWorkoutJson(workout_json):
                                                 'average_speed':'lap_average_speed_km/h',
                                                 'max_speed':'lap_max_speed'})
     workout_laps['lap_elapsed_time_min'] = round(workout_laps['lap_elapsed_time_min']/60,2)
+    workout_laps['lap_time_min'] = round(workout_laps['lap_time_min'] - (workout_laps['lap_time_min']%1) + (((workout_laps['lap_time_min']%1) * 60)/100),2)
     workout_laps['lap_distance'] = round(workout_laps['lap_distance']/1000,2)
 
     avg_time_per_lap = workout_laps.groupby('activity_id').mean()
