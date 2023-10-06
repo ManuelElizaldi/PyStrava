@@ -8,7 +8,7 @@ import datetime
 from datetime import date
 
 # Setting up parameters for write_to_gsheet function
-service_file_path = r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\Workout-Analysis-API\Credentials\pacific-castle-303123-909a5ddcda92.json'
+service_file_path = r'C:\Users\USER\Desktop\Learning\PyStrava\Credentials\pacific-castle-303123-909a5ddcda92.json'
 spreadsheet_id = '1pomkAzlndHBl_czERrwKkoZFUkJRGFjyhRTeoWA6CS4'
 
 # Creating function that returns the access token that is used in the other api calls
@@ -19,17 +19,17 @@ def GetToken(data):
     return access_token
 
     
-# define a function to retrieve activities from Strava API
+# Define a function to retrieve activities from Strava API
 def retrieve_activities(access_token):
     url = "https://www.strava.com/api/v3/activities"
     activities = pd.DataFrame()
     page = 1
     while True:
-        # get page of activities from Strava
+        # Get page of activities from Strava
         print('Getting page number:', page)
         r = requests.get(url + '?access_token=' + access_token + '&per_page=200' + '&page=' + str(page))
         
-        # check for rate limit exceeded error
+        # Check for rate limit exceeded error
         if r.status_code != 200:
             print('Error:',r.status_code, 'stopping extraction')
             break
@@ -42,11 +42,12 @@ def retrieve_activities(access_token):
                 print('Extraction done')
                 break
             r = pd.json_normalize(r)
-            activities = activities.append(r) # type: ignore
+            # Adding the new table to the data frame that is storing all the data
+            activities = pd.concat([activities, r])
             page += 1
 
     try:
-        # clean up the dataframe
+        # Clean up the dataframe
         clean_activities = activities[['id',
             'name',
             'distance',
@@ -70,6 +71,8 @@ def retrieve_activities(access_token):
     except:
         ('Error occurred during extraction')
 
+
+
 # Function that cleans the output from the function GetWorkouts()
 def CleanGeneral_Table(general_table):
     print('Cleaning General Table')
@@ -88,11 +91,12 @@ def CleanGeneral_Table(general_table):
     general_table['sport_type'] = general_table['sport_type'].replace({'Workout':'Functional-Cardio Workout'})
     
     # Chaning from m/s to km/h
-    general_table[['max_speed']] = general_table['max_speed'] * 3.6
-    general_table[['average_speed']] = general_table['average_speed'] * 3.6
+    general_table['max_speed'] = general_table['max_speed'] * 3.6
+    general_table['average_speed'] = general_table['average_speed'] * 3.6
     return general_table
 
 # This function will create a dataframe/pivot table with the count of every sport type
+# Function is not gonna work, we need to fix line 110, append becomes concat now -> activities_breakdown.append(pd.Series(new.....
 def CreateActivitiesBreakdown(general_table):
     print('Creating Activities Breakdown table')
     today = date.today().strftime('%B/%d/%Y')
@@ -414,19 +418,19 @@ def CreateScoreColumns(df):
 
 
     # avg time per lap conditions and values
-    avg_time_per_lap_conditions = [
-                                (df['avg_time_per_lap'] >= 0) & (df['avg_time_per_lap'] < 5),
-                                (df['avg_time_per_lap'] >= 5) & (df['avg_time_per_lap'] < 10),
-                                (df['avg_time_per_lap'] >= 10) & (df['avg_time_per_lap'] < 20),
-                                (df['avg_time_per_lap'] >= 20) & (df['avg_time_per_lap'] < 30),
-                                (df['avg_time_per_lap'] >= 30)
+    avg_lap_time_conditions = [
+                                (df['avg_lap_time'] >= 0) & (df['avg_lap_time'] < 5),
+                                (df['avg_lap_time'] >= 5) & (df['avg_lap_time'] < 10),
+                                (df['avg_lap_time'] >= 10) & (df['avg_lap_time'] < 20),
+                                (df['avg_lap_time'] >= 20) & (df['avg_lap_time'] < 30),
+                                (df['avg_lap_time'] >= 30)
                                 ]
 
 
-    avg_time_per_lap_values = [1, 5, 10, 15, 20]
+    avg_lap_time_values = [1, 5, 10, 15, 20]
 
 
-    df['avg_time_per_lap_score'] = np.select(avg_time_per_lap_conditions, avg_time_per_lap_values)
+    df['avg_lap_time_score'] = np.select(avg_lap_time_conditions, avg_lap_time_values)
 
 
     # lap count conditions and values
@@ -485,7 +489,7 @@ def CreateScoreColumns(df):
 
 
     # Getting effort score for each workout
-    df['effort_score'] = df['distance_score'] + df['workout_time_score'] + df['calorie_score'] + df['total_elevation_gain_score'] + df['average_heartrate_score'] + df['max_heartrate_score'] + df['avg_time_per_lap_score'] +df['lap_count_score'] + df['avg_speed_score'] +df['max_speed_score']
+    df['effort_score'] = df['distance_score'] + df['workout_time_score'] + df['calorie_score'] + df['total_elevation_gain_score'] + df['average_heartrate_score'] + df['max_heartrate_score'] + df['avg_lap_time_score'] +df['lap_count_score'] + df['avg_speed_score'] +df['max_speed_score']
 
 
     # creating low, medium and high effort scores column depending on the total amount of points
