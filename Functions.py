@@ -286,6 +286,8 @@ def CleanWorkoutJson(workout_json):
     lap_stats = avg_lap_time.merge(lap_counter,on='activity_id')
     # merging lap stats(avg time and counter) to workout dataframe
     merged = df.merge(lap_stats, on = 'activity_id')
+    # Rounding the avg lap time column
+    merged[['avg_lap_time']] = round(merged[['avg_lap_time']],2)
     # setting lap counter column to numeric - don't know exactly why 
     merged['lap_count'] = pd.to_numeric(merged['lap_count'])
     return merged
