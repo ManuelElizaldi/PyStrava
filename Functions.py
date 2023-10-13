@@ -292,6 +292,8 @@ def CleanWorkoutJson(workout_json):
     merged['lap_count'] = pd.to_numeric(merged['lap_count'])
     # Getting the pace column
     merged['pace'] = round((merged['workout_time_min']/merged['distance']) - ((merged['workout_time_min']/merged['distance'])%1) + ((((merged['workout_time_min']/merged['distance'])%1)*60)/100),2)
+    # When getting the pace, some workouts wont have pace, so we replace Nans with 0. 
+    merged[['pace']] = merged[['pace']].fillna(0)
     return merged
 
 # This function creates the score columns used to build the k nearest neighbors model 

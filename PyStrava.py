@@ -10,7 +10,7 @@ from Credentials import StravaCredentials
 import Functions
 
 # Setting up parameters for write_to_gsheet function
-service_file_path = r'C:\Users\USER\Desktop\Learning\PyStrava\Credentials\pacific-castle-303123-909a5ddcda92.json'
+service_file_path = r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\PyStrava\Credentials\pacific-castle-303123-909a5ddcda92.json'
 # spreadsheet_id = '1IyEEDEPNtLTigZGgQP0Rhq5_di1Bzit1ZBERn8zNsvE' # Currently setup for testing
 # use this spreadsheet id to find google sheets file 
 spreadsheet_id = '1pomkAzlndHBl_czERrwKkoZFUkJRGFjyhRTeoWA6CS4' # spreadsheet connected to dashboard in looker 
@@ -72,15 +72,12 @@ all_workouts_json = GetAllWorkouts(all_workouts_list,access_token)
 # Cleaning the json and converting it into a dataframe. Also we create the workout's round details
 all_workouts_df = CleanWorkoutJson(all_workouts_json)
 
-#Check point
-all_workouts_df.to_csv(r'C:\Users\USER\Desktop\Learning\PyStrava\Outputs\all_workouts_df.csv')
-
 # Creating effort score columns
 print('Calculating level of effort columns.')
 all_workouts_df = CreateScoreColumns(all_workouts_df)
 
 # saving dataframe
-all_workouts_df.to_csv(r'C:\Users\USER\Desktop\Learning\PyStrava\Outputs\all_workouts_df.csv')
+all_workouts_df.to_csv(r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\PyStrava\Outputs\all_workouts_df.csv')
 
 # Creating a dataframe with general statistics for all sports/workout types
 print('Creating description of workouts.')
