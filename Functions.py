@@ -585,7 +585,7 @@ def WriteToGsheet(service_file_path, spreadsheet_id, sheet_name, data_df):
     wks_write.frozen_rows = 1
     
 
-def UpdateGoogleSheet(access_token, service_file_path, all_workouts_df, clean_activities):
+def UpdateGoogleSheet(access_token, service_file_path,  clean_activities, all_workouts_df,):
     # Setting up gspread authentications
     mycred = ServiceAccountCredentials.from_json_keyfile_name(service_file_path,myscope) # type: ignore
     client = gspread.authorize(mycred)

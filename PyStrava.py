@@ -57,9 +57,9 @@ print('General Table created successfully.')
 general_table = CleanGeneral_Table(general_table)
 
 # Creating the list of workout ids
-# all_workouts_list = list(general_table['id'])
+all_workouts_list = list(general_table['id'])
 # Testing:
-all_workouts_list = list(general_table['id'][0:10])
+# all_workouts_list = list(general_table['id'][0:10])
 
 # Testing:
 #all_workouts_list = all_workouts_list[0:20]

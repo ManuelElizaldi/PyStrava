@@ -22,12 +22,11 @@ data = StravaCredentials.data
 # Getting Strava acccess token
 access_token = GetToken(data)
 
-
 # Getting an updated list of activities
-activities = retrieve_activities(access_token)
+clean_activities = retrieve_activities(access_token)
 
 # Creating list to compare against not updated list
-updated_workouts = list(activities['id'])
+updated_workouts = list(clean_activities['id'])
 
 # Setting up parameters for gspread - updating google sheet
 service_file_path = r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\PyStrava\Credentials\pacific-castle-303123-909a5ddcda92.json'
@@ -76,9 +75,3 @@ all_workouts_df_updated = all_workouts_df_updated.sort_values(by=['start_date'],
 # Uploading to Google Sheet
 sheet_name = 'All_Workouts_Table'
 WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,all_workouts_df_updated)
-
-sheet_name = 'Activities_Breakdown'
-WriteToGsheet(service_file_path, spreadsheet_id,sheet_name,activities_breakdown)
-
-sheet_name = 'All_Workouts_Desc_Table'
-WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,all_workouts_desc)
