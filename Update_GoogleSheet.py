@@ -73,11 +73,6 @@ all_workouts_df_updated = pd.concat([all_workouts_df, missing_workouts_df])
 all_workouts_df_updated['start_date'] = pd.to_datetime(all_workouts_df_updated['start_date'])
 all_workouts_df_updated = all_workouts_df_updated.sort_values(by=['start_date'], ascending=False)
 
-# Creating additional tables
-all_workouts_effort_table = EffortLevelBreakdown(all_workouts_df_updated)
-activities_breakdown = CreateActivitiesBreakdown(all_workouts_df_updated)
-all_workouts_desc = DescribeWorkoutdf(all_workouts_df_updated)
-
 # Uploading to Google Sheet
 sheet_name = 'All_Workouts_Table'
 WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,all_workouts_df_updated)
@@ -87,7 +82,3 @@ WriteToGsheet(service_file_path, spreadsheet_id,sheet_name,activities_breakdown)
 
 sheet_name = 'All_Workouts_Desc_Table'
 WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,all_workouts_desc)
-
-
-
-

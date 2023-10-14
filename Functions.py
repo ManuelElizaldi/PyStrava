@@ -6,6 +6,7 @@ import time
 from time import sleep 
 import datetime
 from datetime import date
+import gspread
 
 # Setting up parameters for write_to_gsheet function
 service_file_path = r'C:\Users\USER\Desktop\Learning\PyStrava\Credentials\pacific-castle-303123-909a5ddcda92.json'
@@ -582,3 +583,36 @@ def WriteToGsheet(service_file_path, spreadsheet_id, sheet_name, data_df):
     wks_write.clear('A1',None,'*')
     wks_write.set_dataframe(data_df, (0,0), encoding='utf-8', fit=True)
     wks_write.frozen_rows = 1
+    
+
+def UpdateGoogleSheet(access_token, service_file_path, all_workouts_df, clean_activities):
+    # Setting up gspread authentications
+    mycred = ServiceAccountCredentials.from_json_keyfile_name(service_file_path,myscope) # type: ignore
+    client = gspread.authorize(mycred)
+    
+    # Extracting data 
+    mysheet = client.open('workout-data').sheet1
+    list_of_row = mysheet.get_all_records()
+    
+    # Making dataframe from data we extracted
+    all_workouts_df = pd.DataFrame(list_of_row)
+    
+    # From the general table extract ids to be updated
+    updated_ids = list(clean_activities['id'])
+    # Getting the current ids, not updated 
+    not_updated_workouts = list(all_workouts_df['activity_id'])
+    print('Adding',len(updated_ids) - len(not_updated_workouts),'new workouts.')
+    # Comparing both id lists and getting a subset of the ones that are missing
+    missing_workouts = list(set(updated_ids).difference(not_updated_workouts))
+    
+    # Extracting missing workouts and formatting json
+    missing_workouts_json = GetAllWorkouts(missing_workouts,access_token)
+    missing_workouts_df = CleanWorkoutJson(missing_workouts_json)
+    
+    # Applying model values
+    missing_workouts_df = CreateScoreColumns(missing_workouts_df)
+    
+    # concat results
+    all_workouts_df = pd.concat([all_workouts_df, missing_workouts_df])
+    
+    return all_workouts_df
