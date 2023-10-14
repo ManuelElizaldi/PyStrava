@@ -42,7 +42,8 @@
 
 # New Features ⚛️
 - 08/02/2023 - Inside the Google Looker dashboard, for the biking and running pages, I added a score card that displays the total distance traveled for the selected date range. 
-- 10/12/2023 - Added a pace column to the dataset. 
+- 10/12/2023 - Added a pace column to the dataset.
+- 10/12/2023 - Deployed an update Google Sheet database script. 
 
 # Introduction & Project Desription
 
