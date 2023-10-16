@@ -23,10 +23,9 @@ data = StravaCredentials.data
 access_token = GetToken(data)
 
 # Getting an updated list of activities
-clean_activities = retrieve_activities(access_token)
-
+activities = retrieve_activities(access_token)
 # Creating list to compare against not updated list
-updated_workouts = list(clean_activities['id'])
+updated_workouts = list(activities['id'])
 
 # Setting up parameters for gspread - updating google sheet
 service_file_path = r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\PyStrava\Credentials\pacific-castle-303123-909a5ddcda92.json'
