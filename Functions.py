@@ -152,7 +152,7 @@ def CreateGeneralStatsdf(general_table):
 # This function will get the data for each workout, if it reaches the API request limit it will stop the process
 # The API rate limit allows us to do 100 requests for each 15 mintues. To prvent passing this limit we only grab -
 # - the most recent 100 workouts from each list.
-def GetWorkoutData(workout_list):
+def GetWorkoutData(workout_list,access_token):
     workout_info = []
     workout_num = 1
     if len(workout_list)>100:
@@ -299,7 +299,56 @@ def CleanWorkoutJson(workout_json):
 
 # This function creates the score columns used to build the k nearest neighbors model 
 # points are marked with comments
-def CreateScoreColumns(df):    
+def CreateScoreColumns(df):
+    pace_conditions = [
+    (df['pace'] == 0), # 0 
+    (df['sport_type'].isin(['Run'])) & (df['pace'] <= 2), # 30
+    (df['sport_type'].isin(['Run'])) & (df['pace'] >= 5) & (df['pace'] < 6), #25
+    (df['sport_type'].isin(['Run'])) & (df['pace'] >= 6) & (df['pace'] < 7), #20
+    (df['sport_type'].isin(['Run'])) & (df['pace'] >= 7) & (df['pace'] < 10), #10
+    (df['sport_type'].isin(['Run'])) & (df['pace'] > 10), #5
+    (df['sport_type'].isin(['TrailRun'])) & (df['pace'] <= 5), #35
+    (df['sport_type'].isin(['TrailRun'])) & (df['pace'] >= 5) & (df['pace'] < 6), #30
+    (df['sport_type'].isin(['TrailRun'])) & (df['pace'] >= 6) & (df['pace'] < 7.3), #25
+    (df['sport_type'].isin(['TrailRun'])) & (df['pace'] >= 7.3) & (df['pace'] < 10), #20
+    (df['sport_type'].isin(['TrailRun'])) & (df['pace'] >= 10) & (df['pace'] < 13),#15
+    (df['sport_type'].isin(['TrailRun'])) & (df['pace'] > 13), #5
+    (df['sport_type'].isin(['Hike'])) & (df['pace'] <= 12.3), #5
+    (df['sport_type'].isin(['Hike'])) & (df['pace'] >= 12.3) & (df['pace'] < 13), #4
+    (df['sport_type'].isin(['Hike'])) & (df['pace'] >= 13) & (df['pace'] < 14), #3
+    (df['sport_type'].isin(['Hike'])) & (df['pace'] >= 14) & (df['pace'] < 15.5), #2
+    (df['sport_type'].isin(['Hike'])) & (df['pace'] > 15.5), #1
+    (df['sport_type'].isin(['Swim'])) & (df['pace'] <= 43), #25
+    (df['sport_type'].isin(['Swim'])) & (df['pace'] >= 43) & (df['pace'] < 49), #20
+    (df['sport_type'].isin(['Swim'])) & (df['pace'] >= 49) & (df['pace'] < 55), #15
+    (df['sport_type'].isin(['Swim'])) & (df['pace'] > 55), #10
+    (df['sport_type'].isin(['AlpineSki'])) & (df['pace'] >= 2) & (df['pace'] < 2.3), #20
+    (df['sport_type'].isin(['AlpineSki'])) & (df['pace'] >= 2.5) & (df['pace'] < 2.7), #15
+    (df['sport_type'].isin(['AlpineSki'])) & (df['pace'] >= 2.7) & (df['pace'] < 3), #10
+    (df['sport_type'].isin(['AlpineSki'])) & (df['pace'] > 3),#5
+    (df['sport_type'].isin(['Ride'])) & (df['pace'] <= 3), # 30
+    (df['sport_type'].isin(['Ride'])) & (df['pace'] >= 3) & (df['pace'] < 4), # 25
+    (df['sport_type'].isin(['Ride'])) & (df['pace'] >= 4) & (df['pace'] < 4.60), # 20
+    (df['sport_type'].isin(['Ride'])) & (df['pace'] >= 4.60) & (df['pace'] < 6.21), #15
+    (df['sport_type'].isin(['Ride'])) & (df['pace'] > 6.21), # 5
+    (df['sport_type'].isin(['MountainBikeRide'])) & (df['pace'] <= 4), #30
+    (df['sport_type'].isin(['MountainBikeRide'])) & (df['pace'] >= 4) & (df['pace'] < 4.3), #25
+    (df['sport_type'].isin(['MountainBikeRide'])) & (df['pace'] >= 4.3) & (df['pace'] < 4.5), #20
+    (df['sport_type'].isin(['MountainBikeRide'])) & (df['pace'] >= 4.5) & (df['pace'] < 6), #15
+    (df['sport_type'].isin(['MountainBikeRide'])) & (df['pace'] > 6) #10
+    ] 
+
+    pace_conditions_values = [0, 30, 25, 20, 10, 5, #Run 
+                          35, 30, 25, 20, 15, 5, # TrailRun
+                          5, 4, 3, 2, 1, #Hike
+                          25, 20, 15, 10, #Swim
+                          20, 15, 10, 5, #Ski
+                          30, 25, 20, 15, 5, #Ride
+                          30, 25, 20, 15, 10 #MountainBikeRide
+                          ] 
+
+    df['pace_score'] = np.select(pace_conditions, pace_conditions_values)
+        
     distance_conditions = [
         (df['distance']==0), # 1
         (df['sport_type'].isin(['Run', 'TrailRun'])) & (df['distance'] >= 0) & (df['distance'] < 5), # 5
