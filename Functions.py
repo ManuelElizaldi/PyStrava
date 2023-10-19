@@ -375,7 +375,7 @@ def CreateScoreColumns(df):
         (df['distance']> 4) # 5
         ]
 
-    distance_conditions_values = [1, 5, 10, 25, 30, # running
+    distance_conditions_values = [0, 5, 10, 25, 30, # running
                                 5, 10, 15, 20, 25, # biking
                                 10, 15, 20, # skiing
                                 10, 15, 20, 25, 30, # swimming
@@ -432,7 +432,7 @@ def CreateScoreColumns(df):
                             (df['total_elevation_gain'] >= 400) & (df['total_elevation_gain'] < 500),
                             (df['total_elevation_gain']> 500)]
 
-    elevation_values = [1,5,10,15,20,25,30]
+    elevation_values = [0,5,10,15,20,25,30]
 
 
     df['total_elevation_gain_score'] = np.select(elevation_conditions, elevation_values)
@@ -502,7 +502,8 @@ def CreateScoreColumns(df):
     df['lap_count_score'] = np.select(lap_count_conditions, lap_count_values)
 
     # average speed conditions and values
-    avg_speed_conditions = [(df['sport_type'].isin(['Ride', 'MountainBikeRide'])) & (df['average_speed_km/h'] >= 0) & (df['average_speed_km/h'] < 6), #5 
+    avg_speed_conditions = [
+                            (df['sport_type'].isin(['Ride', 'MountainBikeRide'])) & (df['average_speed_km/h'] >= 0) & (df['average_speed_km/h'] < 6), #5 
                             (df['sport_type'].isin(['Ride', 'MountainBikeRide'])) & (df['average_speed_km/h'] >= 6) & (df['average_speed_km/h'] < 12),#10
                             (df['sport_type'].isin(['Ride', 'MountainBikeRide'])) & (df['average_speed_km/h'] >= 12) & (df['average_speed_km/h'] < 14),#15
                             (df['sport_type'].isin(['Ride', 'MountainBikeRide'])) & (df['average_speed_km/h'] >= 14) & (df['average_speed_km/h'] < 18),#20
@@ -515,14 +516,14 @@ def CreateScoreColumns(df):
                             (df['average_speed_km/h'] >= 10) & (df['average_speed_km/h'] < 11), # 30
                             (df['average_speed_km/h'] >= 11) , # 35
     ]
-    avg_speed_values = [5,10,15,20,25,1,5,10,15,25,30,35]
+    avg_speed_values = [5,10,15,20,25,0,5,10,15,25,30,35]
 
 
     df['avg_speed_score'] = np.select(avg_speed_conditions, avg_speed_values)
 
 
     # max speed conditions and values
-    max_speed_conditions = [(df['sport_type'].isin(['Ride', 'MountainBikeRide'])) & (df['max_speed_km/h'] >= 0) & (df['max_speed_km/h'] < 15), # 5
+    max_speed_conditions = [ (df['sport_type'].isin(['Ride', 'MountainBikeRide'])) & (df['max_speed_km/h'] >= 0) & (df['max_speed_km/h'] < 15), # 5
                             (df['sport_type'].isin(['Ride', 'MountainBikeRide'])) & (df['max_speed_km/h'] >= 15) & (df['max_speed_km/h'] < 20),# 10
                             (df['sport_type'].isin(['Ride', 'MountainBikeRide'])) & (df['max_speed_km/h'] >= 20) & (df['max_speed_km/h'] < 25),# 15
                             (df['sport_type'].isin(['Ride', 'MountainBikeRide'])) & (df['max_speed_km/h'] >= 25) & (df['max_speed_km/h'] < 30),# 20
@@ -538,14 +539,14 @@ def CreateScoreColumns(df):
                             (df['max_speed_km/h'] >= 35)# 35
                             ]
 
-    max_speed_values = [5, 10, 15, 20, 25, 30, 1, 5, 10, 15, 20, 25, 30, 35]
+    max_speed_values = [5, 10, 15, 20, 25, 30, 0, 5, 10, 15, 20, 25, 30, 35]
 
 
     df['max_speed_score'] = np.select(max_speed_conditions, max_speed_values)
 
 
     # Getting effort score for each workout
-    df['effort_score'] = df['distance_score'] + df['workout_time_score'] + df['calorie_score'] + df['total_elevation_gain_score'] + df['average_heartrate_score'] + df['max_heartrate_score'] + df['avg_lap_time_score'] +df['lap_count_score'] + df['avg_speed_score'] +df['max_speed_score']
+    df['effort_score'] = df['distance_score'] + df['workout_time_score'] + df['calorie_score'] + df['total_elevation_gain_score'] + df['average_heartrate_score'] + df['max_heartrate_score'] + df['avg_lap_time_score'] +df['lap_count_score'] + df['avg_speed_score'] +df['max_speed_score'] + df['pace_score']
 
 
     # creating low, medium and high effort scores column depending on the total amount of points
