@@ -42,7 +42,7 @@
 
 # New Features ⚛️
 - 08/02/2023 - Inside the Google Looker dashboard, for the biking and running pages, I added a score card that displays the total distance traveled for the selected date range. 
-- 10/12/2023 - Added a pace column to the dataset.
+- 10/12/2023 - Added a pace column to the dataset and corresponding looker dashboard score cards.
 - 10/12/2023 - Deployed an update Google Sheet database script.
 - 10/19/2023 - Average speed, max speed, total elevation gain and distance scores now give 0 points when their values are = 0.
 
