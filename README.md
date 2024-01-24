@@ -45,6 +45,7 @@
 - 10/12/2023 - Added a pace column to the dataset and corresponding looker dashboard score cards.
 - 10/12/2023 - Deployed an update Google Sheet database script.
 - 10/19/2023 - Average speed, max speed, total elevation gain and distance scores now give 0 points when their values are = 0.
+- 01/24/2024 - Added a file contaning the documentation for the functions used in the scripts. 
 
 # Introduction & Project Desription
 
