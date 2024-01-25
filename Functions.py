@@ -149,7 +149,9 @@ def CreateGeneralStatsdf(general_table):
     return general_stats_df
 
 
-# This function is very similar to the GetWorkoutData() but it has a built in timer that waits 15 minutes when it reaches the API limit 
+# This function uses the workouts ids from the general_table to extract a table with all the workouts info that was not present in the general table
+# The API limit is 100 calls per 15 minutes, this function is designed to waits 15 minutes when it reaches the API limit 
+# It will also tell you the time that it will take to finish the extraction
 def GetAllWorkouts(workout_list, access_token):
     workout_info = []
     workout_num = 1
