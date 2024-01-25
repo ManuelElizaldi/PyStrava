@@ -21,7 +21,7 @@ This function will output the table from which we can extract the workout IDs. T
    - In the PyStrava.py script this function is used to generate the dataframe 'general_table'
 
 # CleanGeneral_Table
-This function will clean the general_table, the following actions are taken:
+This function will clean the 'general_table', the following actions are taken:
    - Calculate the approximate calories burned.
    - Converts distance to kilometers.
    - Turns time from ms to minutes.
@@ -39,3 +39,10 @@ This function will create a pivot table containing the following information abo
   - Approximate average calories burned per workout.
   - Average distance ran.
   - Average distance biked.
+
+# GetWrokoutData
+This function uses the workout ids from the 'general_table' table
+
+
+The API rate limit allows us to do 100 requests for each 15 mintues. To prvent passing this limit we only grab -
+- the most recent 100 workouts from each list.
