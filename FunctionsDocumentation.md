@@ -1,5 +1,5 @@
 # GetToken
-This function will give you the access token requiered to use strava's API.
+This function retrieves the access token.
 
 The argument 'data' contains the following information:
 
@@ -16,14 +16,26 @@ The argument 'data' contains the following information:
    - grant_type is just the type of authorization.
 
 # retrieve_activities
-This function will give us the table from which we can extract the workout ids from. This table does not contain all the information we need.
+This function will output the table from which we can extract the workout IDs. The only argument requiered is the access token.
 
-   - In the PyStrava.py script this function is used to generate the 'general_table'
+   - In the PyStrava.py script this function is used to generate the dataframe 'general_table'
 
 # CleanGeneral_Table
-This function will clean the general_table, meaning:
+This function will clean the general_table, the following actions are taken:
    - Calculate the approximate calories burned.
    - Converts distance to kilometers.
    - Turns time from ms to minutes.
    - Formats dates.
    - In the sport_type, changes the value 'Workout' to 'Functional-Cardio Workout'
+
+# CreateActivitiesBreakdown
+This table provides a breakdown of workout counts for each sport, along with the total of workouts recorded up to the current date.
+
+# CreateGeneralStatsdf
+This function will create a pivot table containing the following information about the activities:
+  - Date of the first recorded workout.
+  - Date of the last recorded workout.
+  - Average workout duration in minutes.
+  - Approximate average calories burned per workout.
+  - Average distance ran.
+  - Average distance biked.
