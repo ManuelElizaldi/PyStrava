@@ -147,39 +147,6 @@ def CreateGeneralStatsdf(general_table):
     print(f'First recorded workout: {first_recorded_workout}')
     print(f'Most recent workout: {most_recent_workout}')
     return general_stats_df
-    
-# Get detailed view of workouts function:
-# This function will get the data for each workout, if it reaches the API request limit it will stop the process
-# The API rate limit allows us to do 100 requests for each 15 mintues. To prvent passing this limit we only grab -
-# - the most recent 100 workouts from each list.
-def GetWorkoutData(workout_list,access_token):
-    workout_info = []
-    workout_num = 1
-    if len(workout_list)>100:
-        print('This workout list is too large, reducing to the 100 most recent workouts.')
-        workout_list = workout_list[:100]
-        for i in workout_list:
-            print('Extracting workout:', workout_num)
-            req = requests.get(url = f'https://www.strava.com/api/v3/activities/{i}?access_token='+access_token)
-            if req.status_code == 200:
-                req = req.json()
-                workout_info.append(req)
-                workout_num += 1
-            else:
-                print('Error in authorization or API limit exceeded, stopping extraction')
-                break
-    else:
-        for i in workout_list:
-            print('Extracting workout:',workout_num)
-            req = requests.get(url = f'https://www.strava.com/api/v3/activities/{i}?access_token='+access_token)
-            if req.status_code == 200:
-                req = req.json()
-                workout_info.append(req)
-                workout_num += 1
-            else:
-                print('Error in authorization or API limit exceeded, stopping extraction')
-                break
-    return workout_info
 
 
 # This function is very similar to the GetWorkoutData() but it has a built in timer that waits 15 minutes when it reaches the API limit 
