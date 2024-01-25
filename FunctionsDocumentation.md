@@ -21,4 +21,9 @@ This function will give us the table from which we can extract the workout ids f
    - In the PyStrava.py script this function is used to generate the 'general_table'
 
 # CleanGeneral_Table
-This function will clean the 
+This function will clean the general_table, meaning:
+   - Calculate the approximate calories burned.
+   - Converts distance to kilometers.
+   - Turns time from ms to minutes.
+   - Formats dates.
+   - In the sport_type, changes the value 'Workout' to 'Functional-Cardio Workout'
