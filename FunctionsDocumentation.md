@@ -56,5 +56,19 @@ The argumetns requiered for this function are:
 This function will output a json with all the workouts and the details that are not present in the 'general_table' table. This information can be used to build dashboards and statistical models.
 
 # CleanWorkoutJson
-This function will clean the output from the function 'GetAllWorkouts'. The following actions will be performed:
-   - 
+This function will clean the json output from the function 'GetAllWorkouts'. The following actions will be performed:
+   - Convert distance to kilometers. 
+   - Change name of column moving_time to workout_time_min.
+   - Convert time from seconds to minutes. 
+   - Format date.
+   - Converts distance from meters to kilometers.
+   - Format longitude and latitude. 
+   - Filters out columns not being used in the script. 
+   - Extract the laps for each workout and performes formatting calculations. Laps then are added as a column to the output table. 
+
+# CreateScoreColumns
+This function takes the DataFrame ('df') table output from the 'CleanWorkoutJson' function as an argument. It calculates the effort scores based on each workout's metrics.
+
+# EffortLevelBreakdown
+This function takes the 'df' table as an argument and generates a detailed breakdown description of the workouts. It includes various pieces of information, such as:
+   - CHECKPOINT ! 
