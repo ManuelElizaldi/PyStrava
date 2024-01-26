@@ -191,7 +191,7 @@ def GetAllWorkouts(workout_list, access_token):
     return workout_info
 
 
-    # This function will parse the workout json, grab the relevant columns, clean the units and create a lap counter for the final dataframe
+# This function will parse the workout json, grab the relevant columns, clean the units and create a lap counter for the final dataframe
 def CleanWorkoutJson(workout_json):
     # parsing json
     df = pd.json_normalize(workout_json)
