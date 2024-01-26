@@ -32,6 +32,8 @@ This function will clean the 'general_table', the following actions are taken:
 This table provides a breakdown of workout counts for each sport, along with the total of workouts recorded up to the current date.
 
 # CreateGeneralStatsdf
+The argument requiered for this table is the 'general_table' generated from the function 'retrieve_activities'
+
 This function will create a pivot table containing the following information about the activities:
   - Date of the first recorded workout.
   - Date of the last recorded workout.
@@ -40,9 +42,10 @@ This function will create a pivot table containing the following information abo
   - Average distance ran.
   - Average distance biked.
 
-# GetWrokoutData
-This function uses the workout ids from the 'general_table' table
+# GetAllWorkouts
+The argumetns requiered for this function are:
+   - List of workout ids you want to extract
+      - Normally we use the entire list of workouts ids from the general table 
+   - Access token
 
-
-The API rate limit allows us to do 100 requests for each 15 mintues. To prvent passing this limit we only grab -
-- the most recent 100 workouts from each list.
+This function will 
