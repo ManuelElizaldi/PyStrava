@@ -53,4 +53,8 @@ The argumetns requiered for this function are:
       - Normally we use the entire list of workouts ids from the 'general_table' table.
    - Access token
 
-This function will output a table with all the workouts and its details. 
+This function will output a json with all the workouts and the details that are not present in the 'general_table' table. This information can be used to build dashboards and statistical models.
+
+# CleanWorkoutJson
+This function will clean the output from the function 'GetAllWorkouts'. The following actions will be performed:
+   - 
