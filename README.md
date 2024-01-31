@@ -30,11 +30,6 @@
 - [Areas of Improvement](#areas-of-improvement)
 
 <h3 align="center">
-  <br>
-  🚀 Current feature I am working on:
-  Migrating google drive database to PostgreSQL
-  <br>
-  <br>
   <img src="https://img.shields.io/github/repo-size/ManuelElizaldi/PyStrava"/>
   <a href="https://manuelelizaldi.github.io/index.html" target="_blank" class="button"><img src="https://img.shields.io/website?up_message=Portfolio%20Website&url=https%3A%2F%2Fmanuelelizaldi.github.io%2Findex.html"/></a>
   <br>
