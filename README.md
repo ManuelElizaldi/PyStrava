@@ -36,8 +36,7 @@
   <br>
 </h3>
 
-# Currently working on
-## 🚀
+# Currently working on:
 ### Migrating my google drive database to postgreSQL
 
 # New Features ⚛️
