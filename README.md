@@ -8,6 +8,7 @@
 
 # Workout-Analysis
 # Table of Contents:
+- [Currently working on](#currently-working-on)
 - [New Features List](#new-features)
 - [Introduction & Project Desription](#introduction--project-desription)
 - [Goals](#goals)
@@ -34,6 +35,9 @@
   <a href="https://manuelelizaldi.github.io/index.html" target="_blank" class="button"><img src="https://img.shields.io/website?up_message=Portfolio%20Website&url=https%3A%2F%2Fmanuelelizaldi.github.io%2Findex.html"/></a>
   <br>
 </h3>
+
+# Currently working on 🚀
+Migrating my google drive database to postgreSQL
 
 # New Features ⚛️
 - 08/02/2023 - Inside the Google Looker dashboard, for the biking and running pages, I added a score card that displays the total distance traveled for the selected date range. 
