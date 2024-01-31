@@ -8,7 +8,8 @@
 
 <h3 align="center">
   <br>
-  :star: Star this project on GitHub — I plan on incorporating new features overtime! 
+  🚀 Current feature I am working on:
+  Migrating google drive database to PostgreSQL
   <br>
   <br>
   <img src="https://img.shields.io/github/repo-size/ManuelElizaldi/PyStrava"/>
@@ -17,6 +18,11 @@
 </h3>
 
 # Workout-Analysis
+<h3 align="center">
+  <br>
+  :star: Star this project on GitHub — I plan on incorporating new features overtime! 
+  <br>
+</h3>
 # Table of Contents:
 - [New Features List](#new-features)
 - [Introduction & Project Desription](#introduction--project-desription)
