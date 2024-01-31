@@ -6,23 +6,7 @@
   <br>
 </h1>
 
-<h3 align="center">
-  <br>
-  🚀 Current feature I am working on:
-  Migrating google drive database to PostgreSQL
-  <br>
-  <br>
-  <img src="https://img.shields.io/github/repo-size/ManuelElizaldi/PyStrava"/>
-  <a href="https://manuelelizaldi.github.io/index.html" target="_blank" class="button"><img src="https://img.shields.io/website?up_message=Portfolio%20Website&url=https%3A%2F%2Fmanuelelizaldi.github.io%2Findex.html"/></a>
-  <br>
-</h3>
-
 # Workout-Analysis
-<h3 align="center">
-  <br>
-  :star: Star this project on GitHub — I plan on incorporating new features overtime! 
-  <br>
-</h3>
 # Table of Contents:
 - [New Features List](#new-features)
 - [Introduction & Project Desription](#introduction--project-desription)
@@ -45,6 +29,16 @@
     - [Copy This Dashboard Template](#copy-this-dashboard-template)
 - [Areas of Improvement](#areas-of-improvement)
 
+<h3 align="center">
+  <br>
+  🚀 Current feature I am working on:
+  Migrating google drive database to PostgreSQL
+  <br>
+  <br>
+  <img src="https://img.shields.io/github/repo-size/ManuelElizaldi/PyStrava"/>
+  <a href="https://manuelelizaldi.github.io/index.html" target="_blank" class="button"><img src="https://img.shields.io/website?up_message=Portfolio%20Website&url=https%3A%2F%2Fmanuelelizaldi.github.io%2Findex.html"/></a>
+  <br>
+</h3>
 
 # New Features ⚛️
 - 08/02/2023 - Inside the Google Looker dashboard, for the biking and running pages, I added a score card that displays the total distance traveled for the selected date range. 
