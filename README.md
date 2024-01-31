@@ -8,7 +8,7 @@
 
 # Workout-Analysis
 # Table of Contents:
-- [Currently working on](#currently-working-on-)
+- [Currently working on](#currently-working-on)
 - [New Features List](#new-features-)
 - [Introduction & Project Desription](#introduction--project-desription)
 - [Goals](#goals)
@@ -36,8 +36,9 @@
   <br>
 </h3>
 
-# Currently working on 🚀
-Migrating my google drive database to postgreSQL
+# Currently working on
+## 🚀
+### Migrating my google drive database to postgreSQL
 
 # New Features ⚛️
 - 08/02/2023 - Inside the Google Looker dashboard, for the biking and running pages, I added a score card that displays the total distance traveled for the selected date range. 
