@@ -8,8 +8,8 @@
 
 # Workout-Analysis
 # Table of Contents:
-- [Currently working on](#currently-working-on)
-- [New Features List](#new-features)
+- [Currently working on](#currently-working-on-)
+- [New Features List](#new-features-)
 - [Introduction & Project Desription](#introduction--project-desription)
 - [Goals](#goals)
 - [Technologies Used](#technologies-used)
