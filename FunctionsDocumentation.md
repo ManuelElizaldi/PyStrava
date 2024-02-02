@@ -71,4 +71,9 @@ This function takes the DataFrame ('df') table output from the 'CleanWorkoutJson
 
 # EffortLevelBreakdown
 This function takes the 'df' table as an argument and generates a detailed breakdown description of the workouts. It includes various pieces of information, such as:
-   - CHECKPOINT ! 
+   - First workout recorded
+   - Last workout recorded
+   - Average workout duration
+   - Average calories burned in each workout
+   - Average distance ran for each workout
+   = 
