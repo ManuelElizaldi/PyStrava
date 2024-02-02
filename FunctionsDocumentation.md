@@ -71,13 +71,24 @@ This function takes the DataFrame ('df') table output from the 'CleanWorkoutJson
 
 # EffortLevelBreakdown
 This function takes the 'df' table as an argument and generates a detailed breakdown description of the workouts. It includes various pieces of information, such as:
-   - First workout recorded
-   - Last workout recorded
-   - Average workout duration in minutes
-   - Average calories burned
-   - Average distance ran
-   - Average heartrate 
-   - Average speed
-   - Average max speed
-   - Count of total workouts recorded
-   - Average laps per workout
+   - First workout recorded.
+   - Last workout recorded.
+   - Average workout duration in minutes.
+   - Average calories burned.
+   - Average distance ran.
+   - Average heartrate.
+   - Average speed.
+   - Average max speed.
+   - Count of total workouts recorded.
+   - Average laps per workout.
+
+# WriteToGsheet
+This function uses gspread and pygsheets modules to upload data to google sheets. You must have a service account with google and the corresponding login credentials to use this function.
+
+The arguments requiered for this function are:
+   - Path to where your Google API credentials live.
+   - The id of the spreadsheet where you want to upload the data. 
+   - The name of the spreadsheet.
+   - The dataframe you are going to upload. 
+
+# UpdateGoogleSheet
