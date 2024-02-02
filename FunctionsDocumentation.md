@@ -92,3 +92,10 @@ The arguments requiered for this function are:
    - The dataframe you are going to upload. 
 
 # UpdateGoogleSheet
+This function will update your Google spreadsheet with the newest workouts. 
+
+The arguments requiered for this function are:
+   - Path to where your Google API credentials live.
+   - The id of the spreadsheet where you want to upload the data. 
+   - The name of the spreadsheet.
+   - The dataframe you are going to upload. 
