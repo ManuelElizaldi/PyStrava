@@ -73,7 +73,11 @@ This function takes the DataFrame ('df') table output from the 'CleanWorkoutJson
 This function takes the 'df' table as an argument and generates a detailed breakdown description of the workouts. It includes various pieces of information, such as:
    - First workout recorded
    - Last workout recorded
-   - Average workout duration
-   - Average calories burned in each workout
-   - Average distance ran for each workout
-   = 
+   - Average workout duration in minutes
+   - Average calories burned
+   - Average distance ran
+   - Average heartrate 
+   - Average speed
+   - Average max speed
+   - Count of total workouts recorded
+   - Average laps per workout
