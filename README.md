@@ -47,12 +47,17 @@
 - 01/24/2024 - Added a file contaning the documentation for the functions used in the scripts. 
 
 # Introduction & Project Desription
+Back in 2020, during the pandemic, I promised myself to prioritize my physical health. To achieve this, I wanted to use technology. By maintaining a digital record of all my workouts, I compelled myself to stay disciplined and on track. I have been using my Garmin smartwatch and the Strava app to log all my activities. Since embarking on this journey, I have witnessed progress in my physical health, abilities, and mental well-being. I have accomplished goals that once seemed impossible, and I have gained self-belief, realizing that I am far more capable than I thought. Initially, running 10km was a struggle, but now I have completed Austin's Half Marathon, a 10km Spartan Race, an Ultra Marathon (50km) and Mexico City's 2023 Marathon.
 
-Back in 2020, during the pandemic, I promised myself to prioritize my physical health. To achieve this, I wanted to use technology. By maintaining a digital record of all my workouts, I compelled myself to stay disciplined and on track. I have been using my Garmin smartwatch and the Strava app to log all my activities. Since embarking on this journey, I have witnessed progress in my physical health, abilities, and mental well-being. I have accomplished goals that once seemed impossible, and I have gained self-belief, realizing that I am far more capable than I thought. Initially, running 10km was a struggle, but now I have completed Austin's Half Marathon, a 10km Spartan Race, an Ultra Marathon (50km) and I am registered for Mexico City's 2023 Marathon and Austin's 2024 Marathon.
+Leveraging my programming and data analysis skills, I aim to explore other ways in which technology can improve my fitness journey. 
 
-Leveraging my programming and data analysis skills, I aim to explore other ways in which technology can improve my fitness journey. In this project, I utilize Strava API to download all my workouts, build an ETL pipeline to clean the data, and then upload it to a Google Sheet. This Google Sheet will serve as the foundation for a workout statistics dashboard.
+## V. 1
+In this version, I utilize Strava API to download all my workouts, build an ETL pipeline to clean the data, and then upload it to a Google Sheet. This Google Sheet will serve as the foundation for a workout statistics dashboard.
 
 Regarding the Machine Learning aspect of the project, I will utilize my workout data to train a Multi Label Classification Model that categorizes the level of effort for each activity.
+
+## V. 2
+Expanding upon V. 1, now I want to build a web app that can display similar statistics to the Google looker dashboard and now the data will live in a SQL database.
 
 # Goals
 1. Build a python script that extracts all my workout data from Strava.
