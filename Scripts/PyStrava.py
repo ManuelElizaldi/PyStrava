@@ -6,7 +6,7 @@ import webbrowser
 from Functions import *
 
 # Importing credentials for Strava's API
-from Credentials import StravaCredentials
+from Credentials.StravaCredentials import data
 import Functions
 
 # Setting up parameters for write_to_gsheet function

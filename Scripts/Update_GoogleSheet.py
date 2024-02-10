@@ -14,7 +14,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 from Functions import *
 # Importing credentials for Strava's API
-from Credentials import StravaCredentials
+from Credentials.StravaCredentials import data
 
 # Importing credentials to get access token
 data = StravaCredentials.data
