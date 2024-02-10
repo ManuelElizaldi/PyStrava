@@ -123,3 +123,5 @@ If you want to use this dashboard as a template for your own analysis, follow th
 ![longitude-latitude](../Images/lat_long.png)
 
 After these steps are done, click "Add to Report" on the top right corner and you will have a copy of this dashboard inside your Google Looker. 
+
+![Return to Table of Contents](https://github.com/ManuelElizaldi/PyStrava/blob/main/README.md#table-of-contents)
