@@ -77,6 +77,7 @@ The data pipeline for this project looks like this:
 
 ## V. 2
 Explain what the goal of v2 is here ******
+![DataPipeline](/Images/DataPipelineV2.png)
 # Technologies Used
 ## Programming Language
 - Python 3.8.5
