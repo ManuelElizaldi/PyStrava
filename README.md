@@ -25,9 +25,9 @@
 - [How To Setup This Project](https://github.com/ManuelElizaldi/PyStrava/blob/main/Documentation/HowToSetUpProject.md)
     - [Strava API Access](https://github.com/ManuelElizaldi/PyStrava/blob/main/Documentation/HowToSetUpProject.md#strava---api-access)
     - [Google API Access](https://github.com/ManuelElizaldi/PyStrava/blob/main/Documentation/HowToSetUpProject.md#google-sheets-api)
-    - [How to Use](#how-to-use)
-    - [Updating Your Data](#updating-your-existing-data) 
-    - [Copy This Dashboard Template](#copy-this-dashboard-template)
+    - [How to Use](https://github.com/ManuelElizaldi/PyStrava/blob/main/Documentation/HowToSetUpProject.md#how-to-use)
+    - [Updating Your Data](https://github.com/ManuelElizaldi/PyStrava/blob/main/Documentation/HowToSetUpProject.md#updating-your-existing-data) 
+    - [Copy This Dashboard Template](https://github.com/ManuelElizaldi/PyStrava/blob/main/Documentation/HowToSetUpProject.md#copy-this-dashboard-template)
 - [Areas of Improvement](#areas-of-improvement)
 
 <h3 align="center">
