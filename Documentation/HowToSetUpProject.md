@@ -26,11 +26,11 @@ In the [PyStrava Notebook](https://github.com/ManuelElizaldi/PyStrava/blob/main/
 
 When you open the page you will see this window, click on authorize.
 
-![AuthorizationStep1](Images/StravaAuthorizationStep1.png)
+![AuthorizationStep1](../Images/StravaAuthorizationStep1.png)
 
 After you authorize, you will see the following page, don't panic, this is what we want. Save the code (red box) in your script. Now you have all the necessary information and authorizations to use Strava's API. While the script is running, make sure you don't close this window.
 
-![AuthorizationStep2](Images/StravaAuthorizationStep2.png)
+![AuthorizationStep2](../Images/StravaAuthorizationStep2.png)
 
 Make sure to declare your data dictionary-variable in your script or declare it in a config.py file and import it to your main script. Your data dictionary should look like this:
 
@@ -87,7 +87,7 @@ From this Json, grab the ```"client_email"``` and share your Google sheet with i
 
 And also declare the sheet id which you can get from the link of the Google Sheet you created to store the data from this project:
 
-![GoogleSheetId](/Images/GoogleSheetId.jpg)
+![GoogleSheetId](../Images/GoogleSheetId.jpg)
 ```
 spreadsheet_id = '1pomkAzlndHBl_czERrwKkoZFUkJRGFjyhRTeoWA6CS4'
 ```
@@ -115,11 +115,11 @@ If you want to use this dashboard as a template for your own analysis, follow th
 1. Open the [Dashboard](https://lookerstudio.google.com/reporting/c8efd23d-4f39-42d1-a336-26aebac76fa5), and on the  ⋮  button in the top right corner, then click "Make a copy".
 2. In the New Data Source section, click on "Create a Data Source".
 
-![Copy This Report Window](/Images/CopyThisReport.png)
+![Copy This Report Window](../Images/CopyThisReport.png)
 
 3. Click on "Google Sheets" in the Google Connectors menu and select the Google Sheet you created for this project. Then, connect it to the dashboard.
 4. If you are going to use the start_lat, start_long, end_lat and end_long columns, make sure you change their data type to Longitude, Latitude
 
-![longitude-latitude](/Images/lat_long.png)
+![longitude-latitude](../Images/lat_long.png)
 
 After these steps are done, click "Add to Report" on the top right corner and you will have a copy of this dashboard inside your Google Looker. 
