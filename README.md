@@ -62,6 +62,7 @@ Regarding the Machine Learning aspect of the project, I will utilize my workout 
 Expanding upon V. 1, now I want to build a web app that can display similar statistics to the Google looker dashboard and now the data will live in a SQL database.
 
 # Goals
+## V. 1
 1. Build a python script that extracts all my workout data from Strava.
 2. Clean and prepare data to be uploaded to Google Drive.
 3. Build a dashboard containing workout metrics in Google Looker.
@@ -74,6 +75,8 @@ Expanding upon V. 1, now I want to build a web app that can display similar stat
 The data pipeline for this project looks like this:
 ![DataPipeline](/Images/DataPipeline.png)
 
+## V. 2
+Explain what the goal of v2 is here ******
 # Technologies Used
 ## Programming Language
 - Python 3.8.5
