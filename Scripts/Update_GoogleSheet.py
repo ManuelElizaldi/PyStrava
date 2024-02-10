@@ -14,10 +14,13 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 from Functions import *
 # Importing credentials for Strava's API
-from Credentials.StravaCredentials import data
+import sys
+sys.path.append(r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\PyStrava\Credentials')
+
+from StravaCredentials import data
 
 # Importing credentials to get access token
-data = StravaCredentials.data
+# data = StravaCredentials.data
 
 # Getting Strava acccess token
 access_token = GetToken(data)
