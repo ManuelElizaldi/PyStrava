@@ -208,8 +208,8 @@ def CleanWorkoutJson(workout_json):
     df = df.rename(columns={'id':'activity_id','average_speed':'average_speed_km/h','max_speed':'max_speed_km/h'})
     df['sport_type'] = df['sport_type'].replace({'Workout':'Functional-Cardio Workout'})
     # Creating the start and end latitude and longitude
-    df[['start_lat', 'start_long']] = df['start_latlng'].apply(lambda x: pd.Series(str(x).strip('[]').split(',')))
-    df[['end_lat', 'end_long']] = df['end_latlng'].apply(lambda x: pd.Series(str(x).strip('[]').split(',')))
+    df['start_lat'], df['start_long'] = zip(*df['start_latlng'].apply(lambda x: (x[0], x[1]) if x else (None, None)))
+    df['end_lat'], df['end_long'] = zip(*df['end_latlng'].apply(lambda x: (x[0], x[1]) if x else (None, None)))
     #Getting the columns we want
     df = df[['activity_id',
                 'name',
