@@ -11,7 +11,7 @@ from time import sleep
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
-
+# Functions contains all the PyStrava functions 
 from Functions import *
 # Importing credentials for Strava's API
 import sys

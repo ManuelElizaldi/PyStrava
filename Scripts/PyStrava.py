@@ -3,11 +3,11 @@ import requests
 import pandas as pd
 from datetime import date
 import webbrowser
+# Functions contains all the PyStrava functions 
 from Functions import *
-
 # Importing credentials for Strava's API
-from Credentials.StravaCredentials import data
-import Functions
+import sys
+sys.path.append(r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\PyStrava\Credentials')
 
 # Setting up parameters for write_to_gsheet function
 service_file_path = r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\PyStrava\Credentials\pacific-castle-303123-909a5ddcda92.json'

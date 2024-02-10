@@ -210,6 +210,7 @@ def CleanWorkoutJson(workout_json):
     # Creating the start and end latitude and longitude
     df['start_lat'], df['start_long'] = zip(*df['start_latlng'].apply(lambda x: (x[0], x[1]) if x else (None, None)))
     df['end_lat'], df['end_long'] = zip(*df['end_latlng'].apply(lambda x: (x[0], x[1]) if x else (None, None)))
+    
     #Getting the columns we want
     df = df[['activity_id',
                 'name',
