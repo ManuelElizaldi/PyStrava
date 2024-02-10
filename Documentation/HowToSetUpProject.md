@@ -12,7 +12,7 @@ Before we can start using Strava's API we first need to complete a couple of ste
 3. Create a Strava application inside this link: [Create a Strava Application](https://www.strava.com/settings/api)
 4. You can answer all the questions however you want, just make sure the “Authorization Callback Domain” field is set to “localhost”. Like so:
 
-![Strava Application Fields](Images/StravaApplicationFields.png)
+![Strava Application Fields](PyStrava/Images/StravaApplicationFields.png)
 
 5. Write down your client id and client secret. 
 
