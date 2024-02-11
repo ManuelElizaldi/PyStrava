@@ -6,7 +6,6 @@
   <br>
 </h1>
 
-# Workout-Analysis
 # Table of Contents:
 - [Currently working on](#currently-working-on)
 - [New Features List](#new-features-)
