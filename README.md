@@ -95,13 +95,13 @@ Explain what the goal of v2 is here ******
 - Gspread 5.7.2
 - Webbrowser
 ## Relevant Documentation
+- [How To Setup This Project](https://github.com/ManuelElizaldi/PyStrava/blob/main/Documentation/HowToSetUpProject.md)
+- [PyStrava's Functions Documentation](https://github.com/ManuelElizaldi/PyStrava/blob/main/FunctionsDocumentation.md)
 - [Strava's API documentation](https://developers.strava.com/)
 - [Pygsheets](https://pygsheets.readthedocs.io/en/stable/)
 - [Requests](https://requests.readthedocs.io/en/latest/)
 - [Gspread Authentication](https://docs.gspread.org/en/latest/oauth2.html#enable-api-access)
 - [Google APIs](https://developers.google.com/docs/api/reference/rest)
-- [PyStrava's Functions Documentation](https://github.com/ManuelElizaldi/PyStrava/blob/main/FunctionsDocumentation.md)
-- [How To Setup This Project](https://github.com/ManuelElizaldi/PyStrava/blob/main/Documentation/HowToSetUpProject.md)
 
 # Areas Of Improvement
 These are some features I plan to implement over time. 
