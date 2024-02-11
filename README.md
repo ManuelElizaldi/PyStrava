@@ -38,7 +38,7 @@
 </h3>
 
 # Currently working on:
-### Migrating my google drive database to postgreSQL
+### V 2. of PyStrava, migrating database to PostgreSQL and creating a web app to showcase workout statistics 
 
 # New Features ⚛️
 - 08/02/2023 - Inside the Google Looker dashboard, for the biking and running pages, I added a score card that displays the total distance traveled for the selected date range. 
