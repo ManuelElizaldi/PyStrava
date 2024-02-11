@@ -99,6 +99,7 @@ Explain what the goal of v2 is here ******
 - [Gspread Authentication](https://docs.gspread.org/en/latest/oauth2.html#enable-api-access)
 - [Google APIs](https://developers.google.com/docs/api/reference/rest)
 - [PyStrava's Functions Documentation](https://github.com/ManuelElizaldi/PyStrava/blob/main/FunctionsDocumentation.md)
+- [How To Setup This Project](https://github.com/ManuelElizaldi/PyStrava/blob/main/Documentation/HowToSetUpProject.md)
 
 # Analysis & Dashboard
 The graphs and statistics you will see in this section were created in the [Google Looker Dashboard](https://lookerstudio.google.com/reporting/c8efd23d-4f39-42d1-a336-26aebac76fa5). Feel free to explore my data.
