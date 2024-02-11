@@ -101,6 +101,21 @@ Explain what the goal of v2 is here ******
 - [PyStrava's Functions Documentation](https://github.com/ManuelElizaldi/PyStrava/blob/main/FunctionsDocumentation.md)
 - [How To Setup This Project](https://github.com/ManuelElizaldi/PyStrava/blob/main/Documentation/HowToSetUpProject.md)
 
+# Areas Of Improvement
+These are some features I plan to implement over time. 
+- Develop an Effort model that enables individuals to calculate their level of effort for each workout. It will be applicable to anyone, providing a tool for assessing effort and facilitating personal improvement.
+- Add a pace metric for running workouts. ✔️
+- To streamline the database updating process, it is essential to implement real-time reporting, eliminating the need to run the Update_GoogleSheet.py file manually every time we want to update our Google Sheet database. Use Kafka technology for this.
+- In order to ensure regular updates, a feature should be created to automatically execute the Update_GoogleSheet.py file on a weekly basis.
+- To enhance the machine learning model, I plan to leverage Garmin's API infrastructure, which provides valuable data such as [VO2 Max](https://www.healthline.com/health/vo2-max) and Sleep data.
+- A key addition to this project would be the creation of a dashboard specifically designed for individual workout statistics. This would involve analyzing metrics like cadence and other aspects that are not currently covered.
+- Considering the additional workout statistics available through Strava's premium membership, it would be beneficial to implement some of these features into the project. 
+- Model can be further improved by creating ratios between variables, such as calories burned per 10 minutes during a workout. This can contribute to the development of a performance score, similar to the effort score.
+- Exploring ways to track activities like bouldering, rugby or soccer is crucial to expand the scope of the project.
+- Furthermore, the inclusion of tracking strength output would provide an additional dimension of information for the machine learning model.
+- To enhance the model's effectiveness, gathering more data is essential. Therefore, increasing the number of workouts performed will greatly improve the model's performance.
+- Add a desktop shortcut that when clicked, runs the PyStrava.py script.
+
 # Analysis & Dashboard
 The graphs and statistics you will see in this section were created in the [Google Looker Dashboard](https://lookerstudio.google.com/reporting/c8efd23d-4f39-42d1-a336-26aebac76fa5). Feel free to explore my data.
 
@@ -245,18 +260,3 @@ This K Nearest Neighbors (KNN) model is designed for multi-label classification 
 - With this model you can build a workout program, where you can use it to classify the intensity level and determine the number of high, medium, low, and no effort workouts within a specific time period.
 - It helps you track your progress and ensures that you stay on track with your program. The model will provide insights on whether you are pushing yourself adequately.
 - Additionally, this model can be used to identify signs of overtraining, helping you maintain a balanced and healthy training regimen.
-
-# Areas Of Improvement
-These are some features I plan to implement over time. 
-- Develop an Effort model that enables individuals to calculate their level of effort for each workout. It will be applicable to anyone, providing a tool for assessing effort and facilitating personal improvement.
-- Add a pace metric for running workouts. ✔️
-- To streamline the database updating process, it is essential to implement real-time reporting, eliminating the need to run the Update_GoogleSheet.py file manually every time we want to update our Google Sheet database. Use Kafka technology for this.
-- In order to ensure regular updates, a feature should be created to automatically execute the Update_GoogleSheet.py file on a weekly basis.
-- To enhance the machine learning model, I plan to leverage Garmin's API infrastructure, which provides valuable data such as [VO2 Max](https://www.healthline.com/health/vo2-max) and Sleep data.
-- A key addition to this project would be the creation of a dashboard specifically designed for individual workout statistics. This would involve analyzing metrics like cadence and other aspects that are not currently covered.
-- Considering the additional workout statistics available through Strava's premium membership, it would be beneficial to implement some of these features into the project. 
-- Model can be further improved by creating ratios between variables, such as calories burned per 10 minutes during a workout. This can contribute to the development of a performance score, similar to the effort score.
-- Exploring ways to track activities like bouldering, rugby or soccer is crucial to expand the scope of the project.
-- Furthermore, the inclusion of tracking strength output would provide an additional dimension of information for the machine learning model.
-- To enhance the model's effectiveness, gathering more data is essential. Therefore, increasing the number of workouts performed will greatly improve the model's performance.
-- Add a desktop shortcut that when clicked, runs the PyStrava.py script.
