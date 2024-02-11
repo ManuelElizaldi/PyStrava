@@ -58,7 +58,8 @@ In this version, I utilize Strava API to download all my workouts, build an ETL 
 Regarding the Machine Learning aspect of the project, I will utilize my workout data to train a Multi Label Classification Model that categorizes the level of effort for each activity.
 
 ## V. 2
-Expanding upon V. 1, now I want to build a web app that can display similar statistics to the Google looker dashboard and now the data will live in a SQL database.
+Expanding upon V. 1, now I want to build a web app that can display the same statistics as the Google looker dashboard and also add new and improved insights like a workout tracker calendar. 
+Additionally, build a PostgreSQL database for my workout data.
 
 # Goals
 ## V. 1
