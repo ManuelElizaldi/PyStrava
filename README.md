@@ -38,8 +38,8 @@
 </h3>
 
 # Currently working on:
-# 🚀
-### V 2. of PyStrava, migrating database to PostgreSQL and creating a web app to showcase workout statistics 
+
+# 🚀 ### V 2. of PyStrava, migrating database to PostgreSQL and creating a web app to showcase workout statistics 
 
 # New Features 
 # ⚛️
