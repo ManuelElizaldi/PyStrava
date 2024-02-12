@@ -8,7 +8,7 @@
 
 # Table of Contents:
 - [Currently working on](#currently-working-on)
-- [New Features List](#new-features-)
+- [New Features List](#new-features)
 - [Introduction & Project Desription](#introduction--project-desription)
     - [Project V. 1](#v-1)
     - [Project V. 2](#v-2)
