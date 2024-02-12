@@ -13,6 +13,8 @@
     - [Project V. 1](#v-1)
     - [Project V. 2](#v-2)
 - [Goals](#goals)
+    - [Project V. 1](#v-1)
+    - [Project V. 2](#v-2) 
 - [Technologies Used](#technologies-used)
 - [Analysis & Dashboard](#analysis--dashboard)
     - [Sports Type Breakdown](#sports-type-breakdown)
