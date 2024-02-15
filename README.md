@@ -79,7 +79,6 @@ The data pipeline for this project looks like this:
 ![DataPipeline](/Images/DataPipeline.png)
 
 ## V. 2
-Explain what the goal of v2 is here ******
 ![DataPipeline](/Images/DataPipelineV2.png)
 # Technologies Used
 ## Programming Language
@@ -95,6 +94,7 @@ Explain what the goal of v2 is here ******
 - Scikit-Learn 1.2.2
 - Gspread 5.7.2
 - Webbrowser
+- Apache Airflow
 ## Relevant Documentation
 - [How To Setup This Project](https://github.com/ManuelElizaldi/PyStrava/blob/main/Documentation/HowToSetUpProject.md)
 - [PyStrava's Functions Documentation](https://github.com/ManuelElizaldi/PyStrava/blob/main/FunctionsDocumentation.md)
