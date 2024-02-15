@@ -123,11 +123,11 @@ def CreateGeneralStatsdf(general_table):
     # Functional type workouts
     functional_activities = general_table.loc[general_table['sport_type'].isin(['Functional-Cardio Workout'])]
     first_recorded_workout = min(general_table['start_date'])
-    most_recent_workout=max(general_table['start_date'])
-    average_workout_duration=round(general_table['workout_time_min'].mean(),2)
-    aprox_average_calories_burned_per_workout=round(general_table['aprox_calories_burned'].mean(),0)
-    average_distance_ran=round(running_activities['distance'].mean(),0)
-    average_biking_distance=round(biking_activities['distance'].mean(),0)
+    most_recent_workout = max(general_table['start_date'])
+    average_workout_duration = round(general_table['workout_time_min'].mean(),2)
+    aprox_average_calories_burned_per_workout = round(general_table['aprox_calories_burned'].mean(),0)
+    average_distance_ran = round(running_activities['distance'].mean(),0)
+    average_biking_distance = round(biking_activities['distance'].mean(),0)
 
     # Creating dataframe from general statistics variables
     # Create the DataFrame
@@ -247,10 +247,10 @@ def CleanWorkoutJson(workout_json):
     # Distance to km
     workout_laps['lap_distance'] = round(workout_laps['lap_distance']/1000,2)
     # Getting the average lap time for each workout
-    avg_lap_time = workout_laps.pivot_table(index=['activity_id'],values = 'lap_time_min',aggfunc='mean')
+    avg_lap_time = workout_laps.pivot_table(index = ['activity_id'],values = 'lap_time_min',aggfunc='mean')
     avg_lap_time = avg_lap_time.reset_index()
     # renaming columns
-    avg_lap_time = avg_lap_time.rename(columns={'lap_time_min':'avg_lap_time'})
+    avg_lap_time = avg_lap_time.rename(columns = {'lap_time_min':'avg_lap_time'})
     # Gettting lap counter from the workout_laps dataframe
     lap_counter = workout_laps['activity_id'].value_counts().rename_axis('activity_id').reset_index(name='lap_count')
     # mergin avg_lap_time and lap_counter dataframes
@@ -262,7 +262,7 @@ def CleanWorkoutJson(workout_json):
     # setting lap counter column to numeric - don't know exactly why 
     merged['lap_count'] = pd.to_numeric(merged['lap_count'])
     # Getting the pace column
-    merged['pace'] = round((merged['workout_time_min']/merged['distance']) - ((merged['workout_time_min']/merged['distance'])%1) + ((((merged['workout_time_min']/merged['distance'])%1)*60)/100),2)
+    merged['pace'] = round((merged['workout_time_min'] / merged['distance']) - ((merged['workout_time_min'] / merged['distance'])%1) + ((((merged['workout_time_min'] / merged['distance'])%1)*60)/100),2)
     # When getting the pace, some workouts wont have pace, so we replace Nans with 0. 
     merged[['pace']] = merged[['pace']].fillna(0)
     return merged
@@ -320,7 +320,7 @@ def CreateScoreColumns(df):
     df['pace_score'] = np.select(pace_conditions, pace_conditions_values)
         
     distance_conditions = [
-        (df['distance']==0), # 1
+        (df['distance'] == 0), # 1
         (df['sport_type'].isin(['Run', 'TrailRun'])) & (df['distance'] >= 0) & (df['distance'] < 5), # 5
         (df['sport_type'].isin(['Run', 'TrailRun'])) & (df['distance'] >= 5) & (df['distance'] < 10), # 10 
         (df['sport_type'].isin(['Run', 'TrailRun'])) & (df['distance'] >= 10) & (df['distance'] < 13), # 25 
@@ -338,11 +338,11 @@ def CreateScoreColumns(df):
         (df['sport_type'].isin(['Swim'])) & (df['distance'] >= 0.30) & (df['distance'] < 0.35), # 20
         (df['sport_type'].isin(['Swim'])) & (df['distance'] >= 0.35) & (df['distance'] < 0.40), # 25
         (df['sport_type'].isin(['Swim'])) & (df['distance'] >= 0.40), # 30
-        (df['distance']> 0.5) & (df['distance'] < 1), # 1
-        (df['distance']> 1) & (df['distance'] < 2), # 2
-        (df['distance']> 2) & (df['distance'] < 3), # 3
-        (df['distance']> 3) & (df['distance'] < 4), # 4
-        (df['distance']> 4) # 5
+        (df['distance'] > 0.5) & (df['distance'] < 1), # 1
+        (df['distance'] > 1) & (df['distance'] < 2), # 2
+        (df['distance'] > 2) & (df['distance'] < 3), # 3
+        (df['distance'] > 3) & (df['distance'] < 4), # 4
+        (df['distance'] > 4) # 5
         ]
 
     distance_conditions_values = [0, 5, 10, 25, 30, # running
@@ -400,7 +400,7 @@ def CreateScoreColumns(df):
                             (df['total_elevation_gain'] >= 200) & (df['total_elevation_gain'] < 300),
                             (df['total_elevation_gain'] >= 300) & (df['total_elevation_gain'] < 400),
                             (df['total_elevation_gain'] >= 400) & (df['total_elevation_gain'] < 500),
-                            (df['total_elevation_gain']> 500)]
+                            (df['total_elevation_gain'] > 500)]
 
     elevation_values = [0,5,10,15,20,25,30]
 
@@ -543,7 +543,7 @@ def CreateScoreColumns(df):
 
 # Creating function that generates the effort counter table by workout
 def EffortLevelBreakdown(df):
-    effort_counter_table = pd.pivot_table(df, values = 'activity_id',index = ['sport_type'], columns=['effort_score_label'], aggfunc='count').fillna('-')
+    effort_counter_table = pd.pivot_table(df, values = 'activity_id',index = ['sport_type'], columns=['effort_score_label'], aggfunc = 'count').fillna('-')
     effort_counter_table = effort_counter_table.reset_index() 
     return effort_counter_table
 
@@ -553,15 +553,15 @@ def DescribeWorkoutdf(workout_df):
     workout_df['start_date'] = pd.to_datetime(workout_df['start_date']).dt.date
     
     # Create variables to hold values
-    first_workout = min(workout_df['start_date'], default=datetime.date.min)
-    last_workout=max(workout_df['start_date'], default=datetime.date.min)
-    avg_workout_duration=round(workout_df['workout_time_min'].mean(),2)
-    avg_calories_burned_per_workout=workout_df['calories'].mean()
-    avg_distance=round(workout_df['distance'].mean(),0)
-    avg_heart_rate=round(workout_df['average_heartrate'].mean(),0)
-    avg_max_heart_rate=round(workout_df['max_heartrate'].mean(),0)
-    avg_speed=round(workout_df['average_speed_km/h'].mean(),0) * 3.6
-    avg_max_speed=round(workout_df['max_speed_km/h'].mean(),0) * 3.6
+    first_workout = min(workout_df['start_date'], default = datetime.date.min)
+    last_workout = max(workout_df['start_date'], default = datetime.date.min)
+    avg_workout_duration = round(workout_df['workout_time_min'].mean(),2)
+    avg_calories_burned_per_workout = workout_df['calories'].mean()
+    avg_distance = round(workout_df['distance'].mean(),0)
+    avg_heart_rate = round(workout_df['average_heartrate'].mean(),0)
+    avg_max_heart_rate = round(workout_df['max_heartrate'].mean(),0)
+    avg_speed = round(workout_df['average_speed_km/h'].mean(),0) * 3.6
+    avg_max_speed = round(workout_df['max_speed_km/h'].mean(),0) * 3.6
     workout_counter = len(workout_df)
     avg_laps = round(workout_df['lap_count'].mean(),0)
 
