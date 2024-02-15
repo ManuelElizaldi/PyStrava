@@ -1,4 +1,5 @@
 config.py
+StravaCredentials.py
 Credentials/
 CopyPyStrava.py
 Outputs/correlation_matrix_scores.csv
