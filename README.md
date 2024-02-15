@@ -79,7 +79,6 @@ The data pipeline for this project looks like this:
 ![DataPipeline](/Images/DataPipeline.png)
 
 ## V. 2
-Explain what the goal of v2 is here ******
 ![DataPipeline](/Images/DataPipelineV2.png)
 # Technologies Used
 ## Programming Language
