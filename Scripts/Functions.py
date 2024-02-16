@@ -14,12 +14,11 @@ spreadsheet_id = '1pomkAzlndHBl_czERrwKkoZFUkJRGFjyhRTeoWA6CS4'
 
 # Creating function that returns the access token that is used in the other api calls
 def GetToken(data):
-    token = requests.post(url= 'https://www.strava.com/api/v3/oauth/token',data=data).json()
+    token = requests.post(url = 'https://www.strava.com/api/v3/oauth/token',data=data).json()
     access_token = token['access_token']
     
     return access_token
 
-    
 # Define a function to retrieve activities from Strava API
 def retrieve_activities(access_token):
     url = "https://www.strava.com/api/v3/activities"
@@ -38,11 +37,13 @@ def retrieve_activities(access_token):
         else:
             r = r.json()
             print(f'Extraction of page {page} complete')
+            
             # if no results then exit loop
             if (not r):
                 print('Extraction done')
                 break
             r = pd.json_normalize(r)
+            
             # Adding the new table to the data frame that is storing all the data
             activities = pd.concat([activities, r])
             page += 1
@@ -101,6 +102,7 @@ def CleanGeneral_Table(general_table):
 def CreateActivitiesBreakdown(general_table):
     print('Creating Activities Breakdown table')
     today = date.today().strftime('%B/%d/%Y')
+    
     # Variables for activities breakdown dataframe 
     today_msg = f'Total workouts as of {today}'
     total_workouts = len(general_table)
@@ -113,6 +115,7 @@ def CreateActivitiesBreakdown(general_table):
 
 def CreateGeneralStatsdf(general_table):
     print('Creating the Genearl Statistics table.')
+    
     # Creating additional dataframes for specific activities:
     # Running type workouts
     running_activities = general_table.loc[general_table['sport_type'].isin(['Run','TrailRun'])]
@@ -124,26 +127,26 @@ def CreateGeneralStatsdf(general_table):
     functional_activities = general_table.loc[general_table['sport_type'].isin(['Functional-Cardio Workout'])]
     first_recorded_workout = min(general_table['start_date'])
     most_recent_workout = max(general_table['start_date'])
-    average_workout_duration = round(general_table['workout_time_min'].mean(),2)
-    aprox_average_calories_burned_per_workout = round(general_table['aprox_calories_burned'].mean(),0)
-    average_distance_ran = round(running_activities['distance'].mean(),0)
-    average_biking_distance = round(biking_activities['distance'].mean(),0)
+    average_workout_duration = round(general_table['workout_time_min'].mean(), 2)
+    aprox_average_calories_burned_per_workout = round(general_table['aprox_calories_burned'].mean(), 0)
+    average_distance_ran = round(running_activities['distance'].mean(), 0)
+    average_biking_distance = round(biking_activities['distance'].mean(), 0)
 
     # Creating dataframe from general statistics variables
     # Create the DataFrame
     general_stats_df = pd.DataFrame({
-    'First Workout':first_recorded_workout,
-    'Most Recent Workout': most_recent_workout,
-    'Average Workout Duration in Minutes':average_workout_duration,
-    'Approximate Average Calories Burned Per Workout':aprox_average_calories_burned_per_workout,
-    'Average Distance Ran in Kilometers':average_distance_ran,
-    'Average Biking Distance in Kilometers':average_biking_distance
+    'First Workout' : first_recorded_workout,
+    'Most Recent Workout' : most_recent_workout,
+    'Average Workout Duration in Minutes' : average_workout_duration,
+    'Approximate Average Calories Burned Per Workout' : aprox_average_calories_burned_per_workout,
+    'Average Distance Ran in Kilometers' : average_distance_ran,
+    'Average Biking Distance in Kilometers' : average_biking_distance
     },index=['Info'])
 
     # Transposing dataframe, setting new index and column
     general_stats_df = general_stats_df.T
     general_stats_df = general_stats_df.reset_index()
-    general_stats_df = general_stats_df.rename(columns={'index':'Info','Info':'Data'})
+    general_stats_df = general_stats_df.rename(columns = {'index' : 'Info', 'Info' : 'Data'})
     print(f'First recorded workout: {first_recorded_workout}')
     print(f'Most recent workout: {most_recent_workout}')
     return general_stats_df
@@ -159,18 +162,18 @@ def GetAllWorkouts(workout_list, access_token):
     time_interval = 900  # 15 minutes = 900 seconds
     
     # Getting time that it will take to finish extraction
-    wait_time = ((len(workout_list)/100) * 900)/60 
-    hours = wait_time/60
+    wait_time = ((len(workout_list) / 100) * 900) / 60 
+    hours = wait_time / 60
     
     # Separating the whole and fractional part of hours
     whole_hours = int(hours)
     fractional_hours = (hours - whole_hours) * 60
     
     # Perform iterations while respecting the rate limit
-    print(f'Extracting all workouts, due to the API rate limit, this will take {whole_hours:02}:{int(fractional_hours):02} hours or {wait_time} minutes.')
+    print(f'Extracting all workouts, due to the API rate limit, this will take {whole_hours : 02} : {int(fractional_hours) : 02} hours or {wait_time} minutes.')
     for i in workout_list:
         print('Extracting workout:', workout_num)
-        req = requests.get(url=f'https://www.strava.com/api/v3/activities/{i}?access_token='+access_token)
+        req = requests.get(url = f'https://www.strava.com/api/v3/activities/{i}?access_token='+access_token)
         if req.status_code == 200:
             req = req.json()
             workout_info.append(req)
@@ -185,7 +188,7 @@ def GetAllWorkouts(workout_list, access_token):
 
         # Pause after every 100 iterations and wait for 15 minutes
         if workout_num % rate_limit == 0:
-            print(f'Reached rate limit of {rate_limit} requests. Sleeping for {int(time_interval/60)} minutes.')
+            print(f'Reached rate limit of {rate_limit} requests. Sleeping for {int(time_interval / 60)} minutes.')
             time.sleep(time_interval)
 
     return workout_info
@@ -199,14 +202,14 @@ def CleanWorkoutJson(workout_json):
     df['distance'] = round(df['distance']/1000,2)
     # Formatting workout time to actual minutes
     df['workout_time_min'] = round(df['moving_time']/60,2)
-    df['workout_time_min'] = round(df['workout_time_min'] - (df['workout_time_min']%1) + (((df['workout_time_min']%1) * 60)/100),2)
+    df['workout_time_min'] = round(df['workout_time_min'] - (df['workout_time_min'] % 1) + (((df['workout_time_min'] % 1) * 60) / 100), 2)
     # Date in the right format
     df["start_date"] = pd.to_datetime(df['start_date']).dt.date
     # Formatting speed to km/h
     df['average_speed'] = df['average_speed'] * 3.6
     df['max_speed'] = df['max_speed'] * 3.6
-    df = df.rename(columns={'id':'activity_id','average_speed':'average_speed_km/h','max_speed':'max_speed_km/h'})
-    df['sport_type'] = df['sport_type'].replace({'Workout':'Functional-Cardio Workout'})
+    df = df.rename(columns = {'id' : 'activity_id', 'average_speed' : 'average_speed_km/h', 'max_speed' : 'max_speed_km/h'})
+    df['sport_type'] = df['sport_type'].replace({'Workout' : 'Functional-Cardio Workout'})
     # Creating the start and end latitude and longitude
     df['start_lat'], df['start_long'] = zip(*df['start_latlng'].apply(lambda x: (x[0], x[1]) if x else (None, None)))
     df['end_lat'], df['end_long'] = zip(*df['end_latlng'].apply(lambda x: (x[0], x[1]) if x else (None, None)))
@@ -231,30 +234,35 @@ def CleanWorkoutJson(workout_json):
                 'max_heartrate']]
 
     # Now working on laps data frame, we create 2, 1 for lap avg time and lap counter
-    workout_laps = pd.json_normalize(workout_json,'laps')
-    workout_laps = workout_laps[['activity.id','name','moving_time','distance','average_heartrate','max_heartrate','average_speed','max_speed']]
-    workout_laps = workout_laps.rename(columns={'activity.id':'activity_id',
-                                                    'name':'lap',
-                                                    'moving_time':'lap_time_min',
-                                                    'distance':'lap_distance',
-                                                    'average_heartrate':'lap_average_heartrate',
-                                                    'max_heartrate':'lap_max_heartrate_km/h',
-                                                    'average_speed':'lap_average_speed_km/h',
-                                                    'max_speed':'lap_max_speed'})
+    workout_laps = pd.json_normalize(workout_json, 'laps')
+    workout_laps = workout_laps[['activity.id', 'name', 'moving_time', 'distance', 'average_heartrate', 'max_heartrate', 'average_speed', 'max_speed']]
+    workout_laps = workout_laps.rename(columns={'activity.id' : 'activity_id',
+                                                    'name' : 'lap',
+                                                    'moving_time' : 'lap_time_min',
+                                                    'distance' : 'lap_distance',
+                                                    'average_heartrate' : 'lap_average_heartrate',
+                                                    'max_heartrate' : 'lap_max_heartrate_km/h',
+                                                    'average_speed' : 'lap_average_speed_km/h',
+                                                    'max_speed' : 'lap_max_speed'})
     # Formatting lap time to actual minutes
-    workout_laps['lap_time_min'] = round(workout_laps['lap_time_min']/60,2)
-    workout_laps['lap_time_min'] = round(workout_laps['lap_time_min'] - (workout_laps['lap_time_min']%1) + (((workout_laps['lap_time_min']%1) * 60)/100),2)
+    workout_laps['lap_time_min'] = round(workout_laps['lap_time_min'] / 60,2)
+    workout_laps['lap_time_min'] = round(workout_laps['lap_time_min'] - (workout_laps['lap_time_min']%1) + (((workout_laps['lap_time_min'] % 1) * 60) / 100), 2)
+    
     # Distance to km
-    workout_laps['lap_distance'] = round(workout_laps['lap_distance']/1000,2)
+    workout_laps['lap_distance'] = round(workout_laps['lap_distance']/ 1000, 2)
     # Getting the average lap time for each workout
-    avg_lap_time = workout_laps.pivot_table(index = ['activity_id'],values = 'lap_time_min',aggfunc='mean')
+    avg_lap_time = workout_laps.pivot_table(index = ['activity_id'],values = 'lap_time_min', aggfunc = 'mean')
     avg_lap_time = avg_lap_time.reset_index()
+    
     # renaming columns
-    avg_lap_time = avg_lap_time.rename(columns = {'lap_time_min':'avg_lap_time'})
+    avg_lap_time = avg_lap_time.rename(columns = {'lap_time_min' : 'avg_lap_time'})
+    
     # Gettting lap counter from the workout_laps dataframe
     lap_counter = workout_laps['activity_id'].value_counts().rename_axis('activity_id').reset_index(name='lap_count')
+    
     # mergin avg_lap_time and lap_counter dataframes
     lap_stats = avg_lap_time.merge(lap_counter,on='activity_id')
+    
     # merging lap stats(avg time and counter) to workout dataframe
     merged = df.merge(lap_stats, on = 'activity_id')
     # Rounding the avg lap time column
@@ -568,23 +576,23 @@ def DescribeWorkoutdf(workout_df):
     # Creating dataframe from general statistics variables
     # Create the DataFrame
     grl_stats_df = pd.DataFrame({
-        'First Recorded Workout:':first_workout,
+        'First Recorded Workout:' : first_workout,
         'Most Recent Workout': last_workout,
-        'Average Workout Duration in Minutes':avg_workout_duration,
-        'Average Calories Burned Per Workout':avg_calories_burned_per_workout,
-        'Average Distance in Kilometers':avg_distance,
-        'Average Heart Rate':avg_heart_rate,
-        'Average Max Hear Rate':avg_max_heart_rate,
-        'Average Speed km/h':avg_speed,
-        'Average Max Speed km/h':avg_max_speed,
-        'Number of Workouts:': workout_counter,
-        'Average Number of Laps':avg_laps
-    },index=['Info'])
+        'Average Workout Duration in Minutes' : avg_workout_duration,
+        'Average Calories Burned Per Workout' : avg_calories_burned_per_workout,
+        'Average Distance in Kilometers' : avg_distance,
+        'Average Heart Rate' : avg_heart_rate,
+        'Average Max Hear Rate' : avg_max_heart_rate,
+        'Average Speed km/h' : avg_speed,
+        'Average Max Speed km/h' : avg_max_speed,
+        'Number of Workouts:' : workout_counter,
+        'Average Number of Laps' : avg_laps
+    },index = ['Info'])
 
     # Transposing dataframe, setting new index and column
     grl_stats_df = grl_stats_df.T
     grl_stats_df = grl_stats_df.reset_index()
-    grl_stats_df = grl_stats_df.rename(columns={'index':'Info','Info':'Data'})
+    grl_stats_df = grl_stats_df.rename(columns={'index' : 'Info', 'Info' : 'Data'})
     return grl_stats_df
 
 # This function uses gspread and pygsheets modules to upload data to google sheets
@@ -600,12 +608,12 @@ def WriteToGsheet(service_file_path, spreadsheet_id, sheet_name, data_df):
     except:
         pass
     wks_write = sh.worksheet_by_title(sheet_name)
-    wks_write.clear('A1',None,'*')
-    wks_write.set_dataframe(data_df, (0,0), encoding='utf-8', fit=True)
+    wks_write.clear('A1', None, '*')
+    wks_write.set_dataframe(data_df, (0, 0), encoding = 'utf-8', fit = True)
     wks_write.frozen_rows = 1
     
 
-def UpdateGoogleSheet(access_token, service_file_path,  clean_activities, all_workouts_df,):
+def UpdateGoogleSheet(access_token, service_file_path,  clean_activities, all_workouts_df):
     # Setting up gspread authentications
     mycred = ServiceAccountCredentials.from_json_keyfile_name(service_file_path,myscope) # type: ignore
     client = gspread.authorize(mycred)
@@ -621,7 +629,7 @@ def UpdateGoogleSheet(access_token, service_file_path,  clean_activities, all_wo
     updated_ids = list(clean_activities['id'])
     # Getting the current ids, not updated 
     not_updated_workouts = list(all_workouts_df['activity_id'])
-    print('Adding',len(updated_ids) - len(not_updated_workouts),'new workouts.')
+    print('Adding',len(updated_ids) - len(not_updated_workouts), 'new workouts.')
     # Comparing both id lists and getting a subset of the ones that are missing
     missing_workouts = list(set(updated_ids).difference(not_updated_workouts))
     

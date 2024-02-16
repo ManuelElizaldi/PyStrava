@@ -16,7 +16,8 @@ from Functions import *
 # Importing credentials for Strava's API
 import sys
 sys.path.append(r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\PyStrava\Credentials')
-
+sys.path.append(r'C:\Users\Usuario\Desktop\Learning-Testing\PyStrava')
+import StravaCredentials
 from StravaCredentials import data
 
 # Importing credentials to get access token
@@ -31,7 +32,7 @@ activities = retrieve_activities(access_token)
 updated_workouts = list(activities['id'])
 
 # Setting up parameters for gspread - updating google sheet
-service_file_path = r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\PyStrava\Credentials\pacific-castle-303123-909a5ddcda92.json'
+service_file_path = r'C:\Users\Usuario\Desktop\Learning-Testing\PyStrava\Credentials\pacific-castle-303123-909a5ddcda92.json'
 spreadsheet_id = '1pomkAzlndHBl_czERrwKkoZFUkJRGFjyhRTeoWA6CS4'
 
 # My scope determines what we want to do with the google api
@@ -76,4 +77,4 @@ all_workouts_df_updated = all_workouts_df_updated.sort_values(by=['start_date'],
 
 # Uploading to Google Sheet
 sheet_name = 'All_Workouts_Table'
-WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,all_workouts_df_updated)
+WriteToGsheet(service_file_path, spreadsheet_id,sheet_name, all_workouts_df_updated)

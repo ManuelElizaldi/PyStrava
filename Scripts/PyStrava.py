@@ -3,12 +3,14 @@ import requests
 import pandas as pd
 from datetime import date
 import webbrowser
+import json
 # Functions contains all the PyStrava functions 
 from Functions import *
 # Importing credentials for Strava's API
 import sys
 sys.path.append(r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\PyStrava\Credentials')
-
+sys.path.append(r'C:\Users\Usuario\Desktop\Learning-Testing\PyStrava')
+import StravaCredentials
 # Setting up parameters for write_to_gsheet function
 service_file_path = r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\PyStrava\Credentials\pacific-castle-303123-909a5ddcda92.json'
 # spreadsheet_id = '1IyEEDEPNtLTigZGgQP0Rhq5_di1Bzit1ZBERn8zNsvE' # Currently setup for testing
@@ -58,6 +60,7 @@ general_table = CleanGeneral_Table(general_table)
 
 # Creating the list of workout ids
 all_workouts_list = list(general_table['id'])
+
 # Testing:
 # all_workouts_list = list(general_table['id'][0:10])
 
@@ -68,6 +71,10 @@ all_workouts_list = list(general_table['id'])
 # This includes detailes like calories burned per workout and other variables that the general_table does not have
 print('Extracting all workouts.')
 all_workouts_json = GetAllWorkouts(all_workouts_list,access_token)
+
+# Saving json as checkpoint
+with open(r'C:\Users\Usuario\Desktop\Learning-Testing\PyStrava\Outputs\all_workouts.json', 'w') as json_file:
+    json.dump(all_workouts_json, json_file)
 
 # Cleaning the json and converting it into a dataframe. Also we create the workout's round details
 all_workouts_df = CleanWorkoutJson(all_workouts_json)
