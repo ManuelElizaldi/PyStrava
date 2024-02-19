@@ -45,7 +45,7 @@ refresh_token = token['refresh_token']
 access_token = token['access_token']
 
 # Getting all workouts general table, from this table we get the list of workout ids
-print('Generating Genearl Table.')
+print('Generating General Table.')
 
 # This API request gives us the general list of activities. 
 # The table lacks certain details that we will get from another API request 
@@ -62,10 +62,10 @@ general_table = CleanGeneral_Table(general_table)
 all_workouts_list = list(general_table['id'])
 
 # Testing:
-# all_workouts_list = list(general_table['id'][0:10])
+# all_workouts_list = list(general_table['id'][0:150])
 
 # Testing:
-#all_workouts_list = all_workouts_list[0:20]
+all_workouts_list = all_workouts_list[0:150]
 
 # Creating a json with the detailed view of all workouts
 # This includes detailes like calories burned per workout and other variables that the general_table does not have
@@ -73,7 +73,7 @@ print('Extracting all workouts.')
 all_workouts_json = GetAllWorkouts(all_workouts_list,access_token)
 
 # Saving json as checkpoint
-with open(r'C:\Users\Usuario\Desktop\Learning-Testing\PyStrava\Outputs\all_workouts.json', 'w') as json_file:
+with open(r'C:\Users\Usuario\Desktop\Learning-Testing\PyStrava\Outputs\test_all_workouts.json', 'w') as json_file:
     json.dump(all_workouts_json, json_file)
 
 # Cleaning the json and converting it into a dataframe. Also we create the workout's round details
@@ -84,9 +84,9 @@ print('Calculating level of effort columns.')
 all_workouts_df = CreateScoreColumns(all_workouts_df)
 
 # saving dataframe
-all_workouts_df.to_csv(r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\PyStrava\Outputs\all_workouts_df.csv')
+all_workouts_df.to_csv(r'C:\Users\Usuario\Desktop\Learning-Testing\PyStrava\Outputs\all_workouts_df.csv')
 
-# Creating a dataframe with general statistics for all sports/workout types
+# # Creating a dataframe with general statistics for all sports/workout types
 print('Creating description of workouts.')
 all_workouts_desc = DescribeWorkoutdf(all_workouts_df)
 
