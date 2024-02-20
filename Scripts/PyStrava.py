@@ -73,8 +73,8 @@ print('Extracting all workouts.')
 all_workouts_json = GetAllWorkouts(all_workouts_list,access_token)
 
 # Saving json as checkpoint
-with open(r'C:\Users\Usuario\Desktop\Learning-Testing\PyStrava\Outputs\test_all_workouts.json', 'w') as json_file:
-    json.dump(all_workouts_json, json_file)
+# with open(r'C:\Users\Usuario\Desktop\Learning-Testing\PyStrava\Outputs\test_all_workouts.json', 'w') as json_file:
+#     json.dump(all_workouts_json, json_file)
 
 # Cleaning the json and converting it into a dataframe. Also we create the workout's round details
 all_workouts_df = CleanWorkoutJson(all_workouts_json)
