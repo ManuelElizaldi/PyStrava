@@ -275,6 +275,58 @@ def CleanWorkoutJson(workout_json):
     merged[['pace']] = merged[['pace']].fillna(0)
     return merged
 
+def CleanLapsJson(workout_json):
+    # parsing json
+    df = pd.json_normalize(workout_json, 'laps')
+    df = df[['activity.id',
+            'id',
+            'lap_index',
+            'moving_time',
+            'distance',
+            'average_speed',
+            'max_speed',
+            'split',
+            'start_index',
+            'end_index',
+            'total_elevation_gain',
+            'average_cadence',
+            'average_heartrate',
+            'max_heartrate',
+            'pace_zone']]
+
+    # renaming laps id
+    df = df.rename(columns={'activity.id' : 'activity_id',
+                            'id' : 'lap_id',
+                            'moving_time' : 'lap_time_min',
+                            'distance' : 'lap_distance',
+                            'average_heartrate' : 'lap_avg_heartrate',
+                            'max_heartrate' : 'lap_max_heartrate_km/h',
+                            'average_speed' : 'lap_avg_speed_km/h',
+                            'max_speed' : 'lap_max_speed_km/h',
+                            'total_elevation_gain' : 'lap_total_elevation_gain',
+                            'average_cadence' : 'avg_cadence'})
+
+    # Formatting lap distance to km
+    df['lap_distance'] = round(df['lap_distance']/1000,2)
+
+    # Formatting lap time to minutes
+    df['lap_time_min'] = round(df['lap_time_min']/60,2)
+    df['lap_time_min'] = round(df['lap_time_min'] - (df['lap_time_min']%1) + (((df['lap_time_min'] % 1) * 60) / 100),2)
+
+    # Formatting lap start index to minutes
+    df['start_index'] = round(df['start_index']/60,2)
+    df['start_index'] = round(df['start_index'] - (df['start_index']%1) + (((df['start_index'] % 1) * 60) / 100),2)
+    
+    # Formatting lap end index to minutes
+    df['end_index'] = round(df['end_index']/60,2)
+    df['end_index'] = round(df['end_index'] - (df['end_index']%1) + (((df['end_index'] % 1) * 60) / 100),2)   
+    
+    # Formatting speed to km/h
+    df['lap_avg_speed_km/h'] = df['lap_avg_speed_km/h'] * 3.6
+    df['lap_max_speed_km/h'] = df['lap_max_speed_km/h'] * 3.6
+    
+    return df
+
 # This function creates the score columns used to build the k nearest neighbors model 
 # points are marked with comments
 def CreateScoreColumns(df):
