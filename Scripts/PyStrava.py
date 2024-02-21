@@ -65,7 +65,7 @@ all_workouts_list = list(general_table['id'])
 # all_workouts_list = list(general_table['id'][0:150])
 
 # Testing:
-all_workouts_list = all_workouts_list[0:150]
+# all_workouts_list = all_workouts_list[0:150]
 
 # Creating a json with the detailed view of all workouts
 # This includes detailes like calories burned per workout and other variables that the general_table does not have
@@ -78,6 +78,9 @@ all_workouts_json = GetAllWorkouts(all_workouts_list,access_token)
 
 # Cleaning the json and converting it into a dataframe. Also we create the workout's round details
 all_workouts_df = CleanWorkoutJson(all_workouts_json)
+
+# Cleaning json to create laps table 
+laps_df = CleanLapsJson(all_workouts_json)
 
 # Creating effort score columns
 print('Calculating level of effort columns.')
