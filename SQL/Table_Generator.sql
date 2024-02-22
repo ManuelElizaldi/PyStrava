@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS public.activity_details
     average_heartrate double precision,
     avg_lap_time double precision,
     total_elevation_gain double precision,
-    max_heartrate integer,
+    max_heartrate double precision,
     distance double precision,
     "average_speed_km/h" double precision,
     "max_speed_km/h" double precision,
@@ -66,6 +66,26 @@ CREATE TABLE IF NOT EXISTS public.activity_scores
     PRIMARY KEY (activity_id)
 );
 
+CREATE TABLE IF NOT EXISTS public.laps
+(
+    activity_id integer NOT NULL,
+    lap_id integer NOT NULL,
+    lap_index integer,
+    lap_time_min double precision,
+    lap_distance double precision,
+    "lap_avg_speed_km/h" double precision,
+    "lap_max_speed_km/h" double precision,
+    split integer,
+    start_index double precision,
+    end_index double precision,
+    lap_total_elevation_gain double precision,
+    avg_cadence double precision,
+    lap_avg_heartrate double precision,
+    "lap_max_heartrate_km/h" double precision,
+    pace_zone integer,
+    PRIMARY KEY (activity_id)
+);
+
 ALTER TABLE IF EXISTS public.activity
     ADD FOREIGN KEY (activity_id)
     REFERENCES public.activity_name (activity_id) MATCH SIMPLE
@@ -98,6 +118,22 @@ ALTER TABLE IF EXISTS public.activity
     NOT VALID;
 
 
+ALTER TABLE IF EXISTS public.activity
+    ADD FOREIGN KEY (activity_id)
+    REFERENCES public.laps (activity_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
+
+ALTER TABLE IF EXISTS public.activity_name
+    ADD FOREIGN KEY (activity_id)
+    REFERENCES public.laps (activity_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
+
 ALTER TABLE IF EXISTS public.activity_details
     ADD FOREIGN KEY (activity_id)
     REFERENCES public.activity_name (activity_id) MATCH SIMPLE
@@ -125,6 +161,22 @@ ALTER TABLE IF EXISTS public.activity_details
 ALTER TABLE IF EXISTS public.activity_details
     ADD FOREIGN KEY (activity_id)
     REFERENCES public.activity_name (activity_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
+
+ALTER TABLE IF EXISTS public.activity_details
+    ADD FOREIGN KEY (activity_id)
+    REFERENCES public.laps (activity_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
+
+ALTER TABLE IF EXISTS public.activity_coordinates
+    ADD FOREIGN KEY (activity_id)
+    REFERENCES public.laps (activity_id) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
     NOT VALID;
