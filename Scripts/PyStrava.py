@@ -4,18 +4,17 @@ import pandas as pd
 from datetime import date
 import webbrowser
 import json
+from sqlalchemy import create_engine
 # Functions contains all the PyStrava functions 
 from Functions import *
 # Importing credentials for Strava's API
 import sys
-sys.path.append(r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\PyStrava\Credentials')
-sys.path.append(r'C:\Users\Usuario\Desktop\Learning-Testing\PyStrava')
-import StravaCredentials
-# Setting up parameters for write_to_gsheet function
-service_file_path = r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\PyStrava\Credentials\pacific-castle-303123-909a5ddcda92.json'
-# spreadsheet_id = '1IyEEDEPNtLTigZGgQP0Rhq5_di1Bzit1ZBERn8zNsvE' # Currently setup for testing
-# use this spreadsheet id to find google sheets file 
-spreadsheet_id = '1pomkAzlndHBl_czERrwKkoZFUkJRGFjyhRTeoWA6CS4' # spreadsheet connected to dashboard in looker 
+sys.path.append([
+    r'C:\Users\Usuario\Desktop\Learning-Testing\PyStrava',
+    r'C:\Users\Usuario\Desktop\Learning-Testing\PyStrava\Scripts'
+    ])
+from Functions import *
+from StravaCredentials import *
 
 # From the StravaCredentials file we are importing we declare the necessary credentials to make API calls.
 try:
@@ -96,11 +95,8 @@ all_workouts_desc = DescribeWorkoutdf(all_workouts_df)
 # Generating the table that shows how many workouts for each effort level 
 all_workouts_effort_table = EffortLevelBreakdown(all_workouts_df)
 
-print('Uploading data to google sheets.')
-# Uploading the workout dataframe and the workout description df to google sheets
-# Change the sheet name to the name in your own google sheet
-sheet_name = 'All_Workouts_Table'
-WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,all_workouts_df)
 
-sheet_name = 'All_Workouts_Desc_Table'
-WriteToGsheet(service_file_path,spreadsheet_id,sheet_name,all_workouts_desc)
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- #
+# Creating connection to database
+db_url = f'postgresql://{username}:{pwd}@{hostname}:{port_id}/{database}'
+engine = create_engine(db_url)
