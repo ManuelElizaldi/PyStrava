@@ -12,10 +12,10 @@ CREATE TABLE IF NOT EXISTS public.activity
     PRIMARY KEY (activity_id)
 );
 
-CREATE TABLE IF NOT EXISTS public.activity_name
+CREATE TABLE IF NOT EXISTS public.sactivity_name
 (
     activity_id integer NOT NULL,
-    name character varying(45),
+    name character varying(50),
     PRIMARY KEY (activity_id)
 );
 
