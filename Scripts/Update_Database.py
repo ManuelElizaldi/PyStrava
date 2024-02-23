@@ -33,7 +33,7 @@ conn = psycopg2.connect(
 access_token = GetToken(data)
 
 # Getting an updated list of activities
-activities = retrieve_activities(access_token)
+updated_workouts = retrieve_activities(access_token)
 
 # Creating list to compare against not updated list
 updated_workouts = list(activities['id'])
@@ -42,11 +42,11 @@ updated_workouts = list(activities['id'])
 cur = conn.cursor()
 query = "select activity_id from activity"
 
-# Parsing json into a dataframe
-all_workouts_df = sqlio.read_sql_query(query, conn)
+# Turning query into dataframe
+not_updated_workouts = sqlio.read_sql_query(query, conn)
 
-# Creating a list of ids
-not_updated_workouts = list(all_workouts_df['activity_id'])
+# Creating a list of ids from the list of activity ids
+not_updated_workouts = list(not_updated_workouts['activity_id'])
 
 # How many new workouts will be added to database
 print('Adding',len(updated_workouts) - len(not_updated_workouts),'workouts to Database')
