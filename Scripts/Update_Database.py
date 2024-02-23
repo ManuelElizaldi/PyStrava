@@ -38,7 +38,7 @@ activities = retrieve_activities(access_token)
 # Creating list to compare against not updated list
 updated_workouts = list(activities['id'])
 
-# Opening and reading the All_Workouts_Table <- this will contain our not updated list of workouts
+# Creating a cursor and also quering the database to get the current list of workouts from activity table
 cur = conn.cursor()
 query = "select activity_id from activity"
 
