@@ -85,8 +85,8 @@ laps_df = CleanLapsJson(all_workouts_json)
 print('Calculating level of effort columns.')
 all_workouts_df = CreateScoreColumns(all_workouts_df)
 
-# saving dataframe
-# all_workouts_df.to_csv(r'C:\Users\Usuario\Desktop\Learning-Testing\PyStrava\Outputs\all_workouts_df.csv')
+# saving dataframe - checkpoint
+all_workouts_df.to_csv(r'C:\Users\Usuario\Desktop\Learning-Testing\PyStrava\Outputs\all_workouts_df.csv')
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- #
 # Creating connection to database
@@ -95,7 +95,7 @@ engine = create_engine(db_url)
 
 # Dividing all_workouts_df to multiple tables to then upload to sql database
 # Laps table was already created 
-activity, activity_name, activity_coordinates, activity_details, activity_scores = DivideTables(workout_df)
+activity, activity_name, activity_coordinates, activity_details, activity_scores = DivideTables(all_workouts_df)
 
 # Uploading to sql database
 activity.to_sql('activity', engine, if_exists = 'replace', index = False)
