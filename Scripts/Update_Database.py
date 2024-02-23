@@ -52,18 +52,19 @@ not_updated_workouts = list(not_updated_workouts['activity_id'])
 print('Adding',len(updated_workouts) - len(not_updated_workouts),'workouts to Database')
 
 # Creating a list containing the missing workouts
+# missing workouts = workouts to be added 
 missing_workouts = list(set(updated_workouts).difference(not_updated_workouts))
 
 # Calling function to extract missing workouts
-missing_workouts_json = GetAllWorkouts(missing_workouts,access_token)
+missing_workouts_json = GetAllWorkouts(missing_workouts, access_token)
 
 # Parsing workout json
 missing_workouts_df = CleanWorkoutJson(missing_workouts_json)
 
-# Creating laps table
+# Parsing workout json to create laps table
 laps_df = CleanLapsJson(missing_workouts_json)
 
-# Creating the score columns
+# Creating the score columns from the workout json 
 missing_workouts_df = CreateScoreColumns(missing_workouts_df)
 
 # Using concat to join both updated and not updated dataframes
@@ -74,7 +75,7 @@ all_workouts_df_updated['start_date'] = pd.to_datetime(all_workouts_df_updated['
 all_workouts_df_updated = all_workouts_df_updated.sort_values(by=['start_date'], ascending=False)
 
 # Dividing all_workouts_df to multiple tables to then upload to database
-activity, activity_name, activity_coordinates, activity_details, activity_scores = DivideTables(all_workouts_df)
+activity, activity_name, activity_coordinates, activity_details, activity_scores = DivideTables(all_workouts_df_updated)
 
 # Sending data to Postgresql
 activity.to_sql('activity', engine, if_exists='replace', index=False)
