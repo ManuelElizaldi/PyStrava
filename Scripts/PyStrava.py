@@ -9,10 +9,10 @@ from sqlalchemy import create_engine
 from Functions import *
 # Importing credentials for Strava's API
 import sys
-sys.path.append([
+sys.path.extend([
     r'C:\Users\Usuario\Desktop\Learning-Testing\PyStrava',
     r'C:\Users\Usuario\Desktop\Learning-Testing\PyStrava\Scripts'
-    ])
+])
 from Functions import *
 from StravaCredentials import *
 
@@ -86,17 +86,21 @@ print('Calculating level of effort columns.')
 all_workouts_df = CreateScoreColumns(all_workouts_df)
 
 # saving dataframe
-all_workouts_df.to_csv(r'C:\Users\Usuario\Desktop\Learning-Testing\PyStrava\Outputs\all_workouts_df.csv')
-
-# # Creating a dataframe with general statistics for all sports/workout types
-print('Creating description of workouts.')
-all_workouts_desc = DescribeWorkoutdf(all_workouts_df)
-
-# Generating the table that shows how many workouts for each effort level 
-all_workouts_effort_table = EffortLevelBreakdown(all_workouts_df)
-
+# all_workouts_df.to_csv(r'C:\Users\Usuario\Desktop\Learning-Testing\PyStrava\Outputs\all_workouts_df.csv')
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- #
 # Creating connection to database
 db_url = f'postgresql://{username}:{pwd}@{hostname}:{port_id}/{database}'
 engine = create_engine(db_url)
+
+# Dividing all_workouts_df to multiple tables to then upload to sql database
+# Laps table was already created 
+activity, activity_name, activity_coordinates, activity_details, activity_scores = DivideTables(workout_df)
+
+# Uploading to sql database
+activity.to_sql('activity', engine, if_exists = 'replace', index = False)
+activity_name.to_sql('activity_name', engine, if_exists = 'replace', index = False)
+activity_coordinates.to_sql('activity_coordinates', engine, if_exists = 'replace', index = False)
+activity_details.to_sql('activity_details', engine, if_exists = 'replace', index = False)
+activity_scores.to_sql('activity_scores', engine, if_exists = 'replace', index = False)
+laps_df.to_sql('laps', engine, if_exists = 'replace', index = False)
