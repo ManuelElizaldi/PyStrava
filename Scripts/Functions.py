@@ -327,6 +327,53 @@ def CleanLapsJson(workout_json):
     
     return df
 
+# Breaking down workout_df to all different tables - laps table is = to laps_df
+def DivideTables(workout_df):    
+    activity = workout_df[['activity_id',
+                        'start_date',
+                        'sport_type',
+                        'effort_score_label']]
+
+    activity_name = workout_df[['activity_id',
+                                'name']]
+
+    activity_coordinates = workout_df[['activity_id',
+                                    'start_lat',
+                                    'start_long',
+                                    'end_lat',
+                                    'end_long']]
+
+    activity_details = workout_df[['activity_id',
+                                'workout_time_min',
+                                'calories',
+                                'average_heartrate',
+                                'avg_lap_time',
+                                'total_elevation_gain',
+                                'max_heartrate',
+                                'distance',
+                                'average_speed_km/h',
+                                'max_speed_km/h',
+                                'average_temp',
+                                'pace',
+                                'lap_count']]
+
+    activity_scores = workout_df[['activity_id',
+                                'distance_score',
+                                'workout_time_score',
+                                'calorie_score',
+                                'total_elevation_gain_score',
+                                'average_heartrate_score',
+                                'max_heartrate_score',
+                                'avg_lap_time_score',
+                                'lap_count_score',
+                                'avg_speed_score',
+                                'max_speed_score',
+                                'pace_score',
+                                'effort_score',
+                                'effort_score_rank']]
+    
+    return activity, activity_name, activity_coordinates, activity_details, activity_scores
+
 # This function creates the score columns used to build the k nearest neighbors model 
 # points are marked with comments
 def CreateScoreColumns(df):
