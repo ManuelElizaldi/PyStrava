@@ -6,6 +6,7 @@ from datetime import date
 from time import sleep
 from sqlalchemy import create_engine
 import pandas.io.sql as sqlio
+import psycopg2
 # Functions contains all the PyStrava functions 
 from Functions import *
 # Importing credentials for Strava's API
@@ -33,23 +34,23 @@ conn = psycopg2.connect(
 access_token = GetToken(data)
 
 # Getting an updated list of activities
-updated_workouts = retrieve_activities(access_token)
+activities = retrieve_activities(access_token)
 
 # Creating list to compare against not updated list
 updated_workouts = list(activities['id'])
 
 # Creating a cursor and also quering the database to get the current list of workouts from activity table
 cur = conn.cursor()
-query = "select activity_id from activity"
+query = "select * from activity"
 
-# Turning query into dataframe
+# Turning query into dataframe - all activities
 not_updated_workouts = sqlio.read_sql_query(query, conn)
 
 # Creating a list of ids from the list of activity ids
-not_updated_workouts = list(not_updated_workouts['activity_id'])
+not_updated_workouts_list = list(not_updated_workouts['activity_id'])
 
 # How many new workouts will be added to database
-print('Adding',len(updated_workouts) - len(not_updated_workouts),'workouts to Database')
+print('Adding',len(updated_workouts) - len(not_updated_workouts_list),'workouts to Database')
 
 # Creating a list containing the missing workouts
 # missing workouts = workouts to be added 
@@ -68,7 +69,7 @@ laps_df = CleanLapsJson(missing_workouts_json)
 missing_workouts_df = CreateScoreColumns(missing_workouts_df)
 
 # Using concat to join both updated and not updated dataframes
-all_workouts_df_updated = pd.concat([all_workouts_df, missing_workouts_df])
+all_workouts_df_updated = pd.concat([not_updated_workouts, missing_workouts_df])
 
 # Sorting by date
 all_workouts_df_updated['start_date'] = pd.to_datetime(all_workouts_df_updated['start_date'])
