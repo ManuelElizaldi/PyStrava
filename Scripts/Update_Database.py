@@ -34,10 +34,11 @@ conn = psycopg2.connect(
 access_token = GetToken(data)
 
 # Getting an updated list of activities
-activities = retrieve_activities(access_token)
+# activities df - this does not include workout details
+updated_workouts = retrieve_activities(access_token)
 
 # Creating list to compare against not updated list
-updated_workouts = list(activities['id'])
+updated_workouts_list = list(updated_workouts['id'])
 
 # Creating a cursor and also quering the database to get the current list of workouts from activity table
 cur = conn.cursor()
@@ -45,16 +46,17 @@ query = "select * from activity"
 
 # Turning query into dataframe - all activities
 not_updated_workouts = sqlio.read_sql_query(query, conn)
+print('Extracting data from SQL database.')
 
 # Creating a list of ids from the list of activity ids
 not_updated_workouts_list = list(not_updated_workouts['activity_id'])
 
 # How many new workouts will be added to database
-print('Adding',len(updated_workouts) - len(not_updated_workouts_list),'workouts to Database')
+print('Adding',len(updated_workouts_list) - len(not_updated_workouts_list),'workouts to Database.')
 
 # Creating a list containing the missing workouts
 # missing workouts = workouts to be added 
-missing_workouts = list(set(updated_workouts).difference(not_updated_workouts))
+missing_workouts = list(set(updated_workouts_list).difference(not_updated_workouts_list))
 
 # Calling function to extract missing workouts
 missing_workouts_json = GetAllWorkouts(missing_workouts, access_token)
@@ -79,6 +81,8 @@ all_workouts_df_updated = all_workouts_df_updated.sort_values(by=['start_date'],
 activity, activity_name, activity_coordinates, activity_details, activity_scores = DivideTables(all_workouts_df_updated)
 
 # Sending data to Postgresql
+print('Uploading data to database.')
+
 activity.to_sql('activity', engine, if_exists='replace', index=False)
 activity_name.to_sql('activity_name', engine, if_exists='replace', index=False)
 activity_coordinates.to_sql('activity_coordinates', engine, if_exists='replace', index=False)
@@ -86,7 +90,10 @@ activity_details.to_sql('activity_details', engine, if_exists='replace', index=F
 activity_scores.to_sql('activity_scores', engine, if_exists='replace', index=False)
 laps_df.to_sql('laps', engine, if_exists='replace', index=False)
 
+print('Database updated.')
+
 # closing sql database connections
 engine.dispose()
 cur.close()
 conn.close()
+print('Connections closed. ')
