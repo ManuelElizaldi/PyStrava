@@ -1,5 +1,4 @@
 # Importing libraries
-import requests
 import pandas as pd
 import numpy as np
 from datetime import date
@@ -7,13 +6,10 @@ from time import sleep
 from sqlalchemy import create_engine
 import pandas.io.sql as sqlio
 import psycopg2
-# Functions contains all the PyStrava functions 
-from Functions import *
-# Importing credentials for Strava's API
 import sys
 sys.path.extend([
-    r'C:\Users\Usuario\Desktop\Learning-Testing\PyStrava',
-    r'C:\Users\Usuario\Desktop\Learning-Testing\PyStrava\Scripts'
+    r'C:\Users\Usuario\OneDrive\Desktop\Learning-Testing\PyStrava',
+    r'C:\Users\Usuario\OneDrive\Desktop\Learning-Testing\PyStrava\Scripts'
 ])
 from Functions import *
 from StravaCredentials import *
@@ -71,7 +67,7 @@ laps_df = CleanLapsJson(missing_workouts_json)
 missing_workouts_df = CreateScoreColumns(missing_workouts_df)
 
 # Using concat to join both updated and not updated dataframes
-all_workouts_df_updated = pd.concat([not_updated_workouts, missing_workouts_df])
+# all_workouts_df_updated = pd.concat([not_updated_workouts, missing_workouts_df])
 
 # Sorting by date
 all_workouts_df_updated['start_date'] = pd.to_datetime(all_workouts_df_updated['start_date'])
@@ -96,4 +92,4 @@ print('Database updated.')
 engine.dispose()
 cur.close()
 conn.close()
-print('Connections closed. ')
+print('Connections closed.')
