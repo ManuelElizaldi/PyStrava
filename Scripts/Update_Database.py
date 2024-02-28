@@ -6,6 +6,7 @@ from time import sleep
 from sqlalchemy import create_engine
 import pandas.io.sql as sqlio
 import psycopg2
+import json
 import sys
 sys.path.extend([
     r'C:\Users\Usuario\OneDrive\Desktop\Learning-Testing\PyStrava',
@@ -56,6 +57,10 @@ missing_workouts = list(set(updated_workouts_list).difference(not_updated_workou
 
 # Calling function to extract missing workouts
 missing_workouts_json = GetAllWorkouts(missing_workouts, access_token)
+
+# Saving json as checkpoint
+with open(r'C:\Users\Usuario\OneDrive\Desktop\Learning-Testing\PyStrava\Outputs\test_updated_all_workouts_json.json', 'w') as json_file:
+    json.dump(missing_workouts_json, json_file)
 
 # Parsing workout json
 missing_workouts_df = CleanWorkoutJson(missing_workouts_json)
