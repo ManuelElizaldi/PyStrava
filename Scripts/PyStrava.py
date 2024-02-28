@@ -16,6 +16,9 @@ sys.path.extend([
 from Functions import *
 from StravaCredentials import *
 
+# Creating date variable
+today = datetime.today().strftime('%Y-%m-%d')
+
 # From the StravaCredentials file we are importing we declare the necessary credentials to make API calls.
 try:
     data = StravaCredentials.data
@@ -72,7 +75,8 @@ print('Extracting all workouts.')
 all_workouts_json = GetAllWorkouts(all_workouts_list,access_token)
 
 # Saving json as checkpoint
-with open(r'C:\Users\Usuario\OneDrive\Desktop\Learning-Testing\PyStrava\Outputs\test_all_workouts.json', 'w') as json_file:
+filename = r'C:\Users\Usuario\OneDrive\Desktop\Learning-Testing\PyStrava\Outputs\test_updated_all_workouts_json{}.json'.format(today)
+with open(filename, 'w') as json_file:
     json.dump(all_workouts_json, json_file)
 
 # Cleaning the json and converting it into a dataframe. Also we create the workout's round details
