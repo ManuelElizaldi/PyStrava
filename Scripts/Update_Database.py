@@ -1,6 +1,6 @@
 # Importing libraries
 import pandas as pd
-import numpy as np
+import datetime
 from datetime import date
 from time import sleep
 from sqlalchemy import create_engine
@@ -26,6 +26,9 @@ conn = psycopg2.connect(
     password = pwd,
     port = port_id
 )
+
+# Creating date variable
+today = datetime.today().strftime('%Y-%m-%d')
 
 # Getting Strava acccess token
 access_token = GetToken(data)
@@ -59,7 +62,7 @@ missing_workouts = list(set(updated_workouts_list).difference(not_updated_workou
 missing_workouts_json = GetAllWorkouts(missing_workouts, access_token)
 
 # Saving json as checkpoint
-with open(r'C:\Users\Usuario\OneDrive\Desktop\Learning-Testing\PyStrava\Outputs\test_updated_all_workouts_json.json', 'w') as json_file:
+with open(r'C:\Users\Usuario\OneDrive\Desktop\Learning-Testing\PyStrava\Outputs\test_updated_all_workouts_json{}.json'.format(today), 'w') as json_file:
     json.dump(missing_workouts_json, json_file)
 
 # Parsing workout json

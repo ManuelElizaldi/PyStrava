@@ -1,6 +1,7 @@
 # Packages required for this project:
 import requests
 import pandas as pd
+import datetime
 from datetime import date
 import webbrowser
 import json
@@ -10,14 +11,14 @@ from Functions import *
 # Importing credentials for Strava's API
 import sys
 sys.path.extend([
-    r'C:\Users\Usuario\Desktop\Learning-Testing\PyStrava',
-    r'C:\Users\Usuario\Desktop\Learning-Testing\PyStrava\Scripts'
+    r'C:\Users\Usuario\OneDrive\Desktop\Learning-Testing\PyStrava',
+    r'C:\Users\Usuario\OneDrive\Desktop\Learning-Testing\PyStrava\Scripts'
 ])
 from Functions import *
 from StravaCredentials import *
 
 # Creating date variable
-today = datetime.today().strftime('%Y-%m-%d')
+today_date = datetime.date.today()
 
 # From the StravaCredentials file we are importing we declare the necessary credentials to make API calls.
 try:
@@ -34,9 +35,6 @@ except:
         'code': code,
         'grant_type':'authorization_code'
     }
-
-# Creating date variable
-today = date.today().strftime('%B/%d/%Y')
 
 # Accessing the token json to get refresh token and access token
 # Getting refresh and access token
@@ -75,7 +73,7 @@ print('Extracting all workouts.')
 all_workouts_json = GetAllWorkouts(all_workouts_list,access_token)
 
 # Saving json as checkpoint
-filename = r'C:\Users\Usuario\OneDrive\Desktop\Learning-Testing\PyStrava\Outputs\test_updated_all_workouts_json{}.json'.format(today)
+filename = r'C:\Users\Usuario\OneDrive\Desktop\Learning-Testing\PyStrava\Outputs\test_updated_all_workouts_json{}.json'.format(today_date)
 with open(filename, 'w') as json_file:
     json.dump(all_workouts_json, json_file)
 
@@ -90,7 +88,11 @@ print('Calculating level of effort columns.')
 all_workouts_df = CreateScoreColumns(all_workouts_df)
 
 # saving dataframe - checkpoint
-all_workouts_df.to_csv(r'C:\Users\Usuario\Desktop\Learning-Testing\PyStrava\Outputs\all_workouts_df.csv')
+filename_all_workouts_df = r'C:\Users\Usuario\OneDrive\Desktop\Learning-Testing\PyStrava\Outputs\all_workouts_df_{}.csv'.format(today_date)
+all_workouts_df.to_csv(filename_all_workouts_df)
+
+filename_laps_df = r'C:\Users\Usuario\OneDrive\Desktop\Learning-Testing\PyStrava\Outputs\laps_df_{}.csv'.format(today_date)
+laps_df.to_csv()
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- #
 # Creating connection to database
