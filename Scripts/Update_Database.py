@@ -45,8 +45,11 @@ cur = conn.cursor()
 query = "select activity_id from activity"
 
 # Turning query into dataframe - all activities
-not_updated_workouts_list = list(sqlio.read_sql_query(query, conn))
+not_updated_workouts = sqlio.read_sql_query(query, conn)
 print('Extracting data from SQL database.')
+
+# Creating a list of ids from the list of activity ids
+not_updated_workouts_list = list(not_updated_workouts['activity_id'])
 
 # How many new workouts will be added to database
 print('Adding',len(updated_workouts_list) - len(not_updated_workouts_list),'workouts to Database.')
@@ -74,22 +77,19 @@ missing_workouts_df = CreateScoreColumns(missing_workouts_df)
 # Using concat to join both updated and not updated dataframes
 # all_workouts_df_updated = pd.concat([not_updated_workouts, missing_workouts_df])
 
-# Sorting by date
-all_workouts_df_updated['start_date'] = pd.to_datetime(all_workouts_df_updated['start_date'])
-all_workouts_df_updated = all_workouts_df_updated.sort_values(by=['start_date'], ascending=False)
 
 # Dividing all_workouts_df to multiple tables to then upload to database
-activity, activity_name, activity_coordinates, activity_details, activity_scores = DivideTables(all_workouts_df_updated)
+activity, activity_name, activity_coordinates, activity_details, activity_scores = DivideTables(missing_workouts_df)
 
 # Sending data to Postgresql
 print('Uploading data to database.')
 
-activity.to_sql('activity', engine, if_exists='replace', index=False)
-activity_name.to_sql('activity_name', engine, if_exists='replace', index=False)
-activity_coordinates.to_sql('activity_coordinates', engine, if_exists='replace', index=False)
-activity_details.to_sql('activity_details', engine, if_exists='replace', index=False)
-activity_scores.to_sql('activity_scores', engine, if_exists='replace', index=False)
-laps_df.to_sql('laps', engine, if_exists='replace', index=False)
+activity.to_sql('activity', engine, if_exists='append', index=False)
+activity_name.to_sql('activity_name', engine, if_exists='append', index=False)
+activity_coordinates.to_sql('activity_coordinates', engine, if_exists='append', index=False)
+activity_details.to_sql('activity_details', engine, if_exists='append', index=False)
+activity_scores.to_sql('activity_scores', engine, if_exists='append', index=False)
+laps_df.to_sql('laps', engine, if_exists='append', index=False)
 
 print('Database updated.')
 
