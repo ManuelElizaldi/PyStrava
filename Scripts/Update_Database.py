@@ -42,14 +42,11 @@ updated_workouts_list = list(updated_workouts['id'])
 
 # Creating a cursor and also quering the database to get the current list of workouts from activity table
 cur = conn.cursor()
-query = "select * from activity"
+query = "select activity_id from activity"
 
 # Turning query into dataframe - all activities
-not_updated_workouts = sqlio.read_sql_query(query, conn)
+not_updated_workouts_list = list(sqlio.read_sql_query(query, conn))
 print('Extracting data from SQL database.')
-
-# Creating a list of ids from the list of activity ids
-not_updated_workouts_list = list(not_updated_workouts['activity_id'])
 
 # How many new workouts will be added to database
 print('Adding',len(updated_workouts_list) - len(not_updated_workouts_list),'workouts to Database.')

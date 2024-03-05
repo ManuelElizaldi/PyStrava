@@ -2,7 +2,7 @@
 import requests
 import pandas as pd
 import datetime
-from datetime import date
+from datetime import datetime
 import webbrowser
 import json
 from sqlalchemy import create_engine
