@@ -48,7 +48,8 @@
 - 10/12/2023 - Added a pace column to the dataset and corresponding looker dashboard score cards.
 - 10/12/2023 - Deployed an update Google Sheet database script.
 - 10/19/2023 - Average speed, max speed, total elevation gain and distance scores now give 0 points when their values are = 0.
-- 01/24/2024 - Added a file contaning the documentation for the functions used in the scripts. 
+- 01/24/2024 - Added a file contaning the documentation for the functions used in the scripts.
+- 03/05/2024 - Built a Postgresql to host my data and created a script that updated the database as needed. 
 
 # Introduction & Project Desription
 Back in 2020, during the pandemic, I promised myself to prioritize my physical health. To achieve this, I wanted to use technology. By maintaining a digital record of all my workouts, I compelled myself to stay disciplined and on track. I have been using my Garmin smartwatch and the Strava app to log all my activities. Since embarking on this journey, I have witnessed progress in my physical health, abilities, and mental well-being. I have accomplished goals that once seemed impossible, and I have gained self-belief, realizing that I am far more capable than I thought. Initially, running 10km was a struggle, but now I have completed Austin's Half Marathon, a 10km Spartan Race, an Ultra Marathon (50km) and Mexico City's 2023 Marathon.
