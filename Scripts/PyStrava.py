@@ -18,7 +18,7 @@ from Functions import *
 from StravaCredentials import *
 
 # Creating date variable
-today_date = datetime.date.today()
+today = date.today().strftime('%Y-%m-%d')
 
 # From the StravaCredentials file we are importing we declare the necessary credentials to make API calls.
 try:

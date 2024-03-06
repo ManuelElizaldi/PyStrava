@@ -1,8 +1,6 @@
 # Importing libraries
 import pandas as pd
-import datetime
 from datetime import date
-from time import sleep
 from sqlalchemy import create_engine
 import pandas.io.sql as sqlio
 import psycopg2
@@ -28,7 +26,7 @@ conn = psycopg2.connect(
 )
 
 # Creating date variable
-today = datetime.today().strftime('%Y-%m-%d')
+today = date.today().strftime('%Y-%m-%d')
 
 # Getting Strava acccess token
 access_token = GetToken(data)
