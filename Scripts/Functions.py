@@ -290,11 +290,11 @@ def CleanLapsJson(workout_json):
             'start_index',
             'end_index',
             'total_elevation_gain',
-            'average_cadence',
             'average_heartrate',
-            'max_heartrate',
-            'pace_zone']]
+            'max_heartrate'
+            ]]
 
+    # removed columns temporarily: 'average_cadence', 'pace_zone'
     # renaming laps id
     df = df.rename(columns={'activity.id' : 'activity_id',
                             'id' : 'lap_id',
