@@ -63,7 +63,7 @@ Regarding the Machine Learning aspect of the project, I will utilize my workout 
 
 ## V. 2
 Expanding upon V. 1, now I want to build a web app that can display the same statistics as the Google looker dashboard and also add new and improved insights like a workout tracker calendar. 
-Additionally, build a PostgreSQL database for my workout data.
+Additionally, build a PostgreSQL database for my workout data and automate the update process of my database through airflow.
 
 # Goals
 ## V. 1
