@@ -80,6 +80,8 @@ The data pipeline for this project looks like this:
 ![DataPipeline](/Images/DataPipeline.png)
 
 ## V. 2
+
+V.2 data pipeline looks like this:
 ![DataPipeline](/Images/DataPipelineV2.png)
 # Technologies Used
 ## Programming Language
