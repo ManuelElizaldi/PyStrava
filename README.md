@@ -103,6 +103,7 @@ V.2 data pipeline looks like this:
 - Gspread 5.7.2
 - Webbrowser
 - Apache Airflow
+- PostgreSQL 15.2
 ## Relevant Documentation
 - [How To Setup This Project](https://github.com/ManuelElizaldi/PyStrava/blob/main/Documentation/HowToSetUpProject.md)
 - [PyStrava's Functions Documentation](https://github.com/ManuelElizaldi/PyStrava/blob/main/FunctionsDocumentation.md)
