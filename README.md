@@ -80,6 +80,11 @@ The data pipeline for this project looks like this:
 ![DataPipeline](/Images/DataPipeline.png)
 
 ## V. 2
+1. Build a web app that displays my workouts statistics.
+2. Build a workout calendar tracker in the web app.
+3. Migrate the Google Sheet data to a PostgreSQL database.
+4. Automate the ETL process to extract workout data.
+5. Enhance the effort score model, now that lap data is available.
 
 V.2 data pipeline looks like this:
 ![DataPipeline](/Images/DataPipelineV2.png)
