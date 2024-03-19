@@ -1,5 +1,6 @@
 config.py
 StravaCredentials.py
+Scripts/secrets.toml
 Credentials/
 CopyPyStrava.py
 Outputs/correlation_matrix_scores.csv
