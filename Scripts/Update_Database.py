@@ -7,8 +7,8 @@ import psycopg2
 import json
 import sys
 sys.path.extend([
-    r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\PyStrava',
-    r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\PyStrava\Scripts'
+    r'C:\Users\Usuario\OneDrive\Desktop\Learning-Testing\PyStrava',
+    r'C:\Users\Usuario\OneDrive\Desktop\Learning-Testing\PyStrava\Scripts'
 ])
 from Functions import *
 from StravaCredentials import *
@@ -27,6 +27,10 @@ conn = psycopg2.connect(
 
 # Creating date variable
 today = date.today().strftime('%Y-%m-%d')
+
+# Getting secret code
+webbrowser.open(f"https://www.strava.com/oauth/authorize?client_id={client_id}&response_type=code&redirect_uri=http://localhost/&approval_prompt=force&scope=profile:read_all,activity:read_all")
+code = input("From the web broswer enter the code:")
 
 # Getting Strava acccess token
 access_token = GetToken(data)
@@ -60,7 +64,7 @@ missing_workouts = list(set(updated_workouts_list).difference(not_updated_workou
 missing_workouts_json = GetAllWorkouts(missing_workouts, access_token)
 
 # Saving json as checkpoint
-with open(r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\PyStrava\Outputs'.format(today), 'w') as json_file:
+with open(r'C:\Users\Usuario\OneDrive\Desktop\Learning-Testing\PyStrava\Outputs\{}-Updated.json'.format(today), 'w') as json_file:
     json.dump(missing_workouts_json, json_file)
 
 # Parsing workout json
