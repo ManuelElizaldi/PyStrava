@@ -4,12 +4,8 @@ from streamlit_calendar import calendar
 
 st.set_page_config(page_title="Demo for streamlit-calendar", page_icon="📆")
 
-mode = st.selectbox(
-    "Calendar Mode:",
-    (
-        "daygrid",
-    ),
-)
+# This gives us the calendar type -> we want daygrid to view all the workouts during a specific month
+mode = "daygrid"
 
 events = [
     {
