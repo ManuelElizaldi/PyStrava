@@ -1,8 +1,12 @@
 import streamlit as st
-
+import pandas as pd
 from streamlit_calendar import calendar
 
 st.set_page_config(page_title="Demo for streamlit-calendar", page_icon="📆")
+
+# Importing dataframe, I will substitute this with sql connection when ready
+df = pd.read_csv(r'C:\Users\Manuel Elizaldi\Desktop\Learning-Testing\PyStrava\Outputs\all_workouts_df.csv')
+dates = df['']
 
 # This gives us the calendar type -> we want daygrid to view all the workouts during a specific month
 mode = "daygrid"
