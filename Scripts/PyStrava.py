@@ -23,6 +23,9 @@ today = date.today().strftime('%Y-%m-%d')
 # From the StravaCredentials file we are importing we declare the necessary credentials to make API calls.
 try:
     data = StravaCredentials.data
+    webbrowser.open(f"https://www.strava.com/oauth/authorize?client_id={client_id}&response_type=code&redirect_uri=http://localhost/&approval_prompt=force&scope=profile:read_all,activity:read_all")
+    code = input("From the web broswer enter the code:")
+    data['code'] = code
 except:
     if data == None:
         client_id = input('Input your Client ID:')

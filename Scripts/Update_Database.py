@@ -31,6 +31,7 @@ today = date.today().strftime('%Y-%m-%d')
 # Getting secret code
 webbrowser.open(f"https://www.strava.com/oauth/authorize?client_id={client_id}&response_type=code&redirect_uri=http://localhost/&approval_prompt=force&scope=profile:read_all,activity:read_all")
 code = input("From the web broswer enter the code:")
+data['code'] = code
 
 # Getting Strava acccess token
 access_token = GetToken(data)
