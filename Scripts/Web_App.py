@@ -17,7 +17,7 @@ conn = psycopg2.connect(
 
 # Creating a cursor and also quering the database to get the current list of workouts from activity table
 cur = conn.cursor()
-query = "select activity_id from activity limit 10"
+query = "select count(activity_id) as `Workout Count` from activity"
 
 # Executing cursor 
 cur.execute(query)
@@ -34,3 +34,5 @@ df = pd.DataFrame(data, columns = column_names)
 st.dataframe(df)
 
 st.set_page_config(page_title="PyStrava", page_icon="", layout="centered", menu_items=None)
+st.title('⚡')
+st.metric(label='Number of Workouts', value=)
